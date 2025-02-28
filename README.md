@@ -24,7 +24,7 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 ***Actor:*** Usuario
 
 ***Caso de uso:*** Elegir curso disponible\
-***Actor:*** Usuario\
+***Actor:*** Usuario
 
 ***Caso de uso:*** Mostrar Ejercicios dentro de un curso\
 ***Actor:*** Sistema
@@ -46,4 +46,9 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 
 ### Diseño
 
-A continuación, mostraremos una primera versión del modelo de dominio de AppLearning donde se destaca la existencia de dos tipos de entidades que heredan de usuario que son **Creador** y **Estudiante** donde la primera entidad es la encargada de crear cursos y la segunda de realizar esos cursos.
+A continuación, mostraremos una primera versión en el siguiente apartado del modelo de dominio de AppLearning donde se destaca la existencia de dos tipos de entidades que heredan de Usuario que son **Creador** y **Estudiante**. La primera entidad es la encargada de crear cursos, mientras que la segunda tiene el rol de realizar esos cursos. 
+
+Otras cuestiones de interés son que la clase **Ejercicio** es una clase abstracta lo que permite añadir nuevos tipos de ejercicio en un futuro. Además se muestra la relación entre los estudiantes y su progreso mediante la clase **ProgresoUsuario**, permitiendo así un seguimiento detallado del aprendizaje. 
+
+### Modelo
+
