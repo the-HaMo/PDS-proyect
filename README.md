@@ -14,10 +14,10 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 
 ### Casos de Uso
 
-***Caso de uso:*** Registrarse en la aplicacion ([Desarrollo-Caso1](https://github.com/the-HaMo/PDS-proyect/blob/main/info/diagrama.jpg))\
+***Caso de uso:*** Registrarse en la aplicacion ([Desarrollo-Caso1](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso1.md))\
 ***Actor:*** Usuario
 
-***Caso de uso:*** Iniciar Sesion en la aplicacion ([Desarrollo-Caso2](https://github.com/the-HaMo/PDS-proyect/blob/main/info/diagrama.jpg))\
+***Caso de uso:*** Iniciar Sesion en la aplicacion ([Desarrollo-Caso2](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso2.md))\
 ***Actor:*** Usuario
 
 ***Caso de uso:*** Cerrar Sesion\
