@@ -1,6 +1,49 @@
-﻿# Proyecto de PDS
-## Repositorio Grupal de la asignatura de Procesos de Desarrollo Software de la Universidad de Murcia. 
-### Nombre de la Aplicacion:  LearningApp
-### Profesor Responsable: Jose Antonio Garcia Diaz
-### Alumnos: Mohammed Amrou Labied Nasser, Jorge Fernandéz Corcoles y Sergio García García
-Con este proyecto esperamos construir una aplicacion que permita al usuario aprender de forma gratuita mediante ejercicios con distintas estrategias didacticas
+﻿# LearningApp
+
+### DESCRIPCIÓN 
+
+**LearningApp** es una aplicación de aprendizaje de idiomas totalmente gratuita desarrollada por los alumnos; **Mohammed Amrou Labied Nasser**, **Sergio García García** y **Jorge Fernandéz Corcoles**, bajo la supervisión del profesor **José Antonio García Díaz**.
+
+El propósito de LearningApp es facilitar el aprendizaje de idiomas como el inglés, francés o el italiano a través de cursos diseñados tanto por la propia aplicación como por otros usuarios con experiencia en la enseñanza.Esto permite a los usuarios acceder a una gran variedad de materiales adaptados a diferentes niveles y estilos de aprendizaje. 
+
+Además, LearningApp brinda la oportunidad de que cada usuario pueda crear y compartir su propio curso, ofreciendo una comunidad de aprendiazje colaboratica donde los estudiantes pueden beneficiarse de contenidos personalizados y adaptados a sus necesidades. 
+
+### Requisitos
+
+En este apartado vamos a identificar los requisitos necesarios para el correcto funcionamiento de LearningApp, tanto a nivel de usuario como a nivel del sistema. Esto permitirá establecer objetivos claros para su implementación, resolviendo posibles ambigüedades y evitando la duplicidad de análisis. Para ello, utilizaremos los casos de uso.
+
+#### Casos de Uso
+
+***Caso de uso:*** Registrarse en la aplicacion\
+***Actor:*** Usuario
+
+***Caso de uso:*** Iniciar Sesion en la aplicacion\
+***Actor:*** Usuario
+
+***Caso de uso:*** Cerrar Sesion\
+***Actor:*** Usuario
+
+***Caso de uso:*** Elegir curso disponible\
+***Actor:*** Usuario\
+
+***Caso de uso:*** Mostrar Ejercicios dentro de un curso\
+***Actor:*** Sistema
+
+***Caso de uso:*** Crear Curso\
+***Actor:*** Usuario
+
+***Caso de uso:*** Compartir cursos creados propios\
+***Actor:*** Usuario
+
+***Caso de uso:*** Dentro de un curso, elige estrategia de aprendizaje\
+***Actor:*** Usuario
+
+***Caso de uso:*** Guarda estado del curso para un usuario\
+***Actor:*** Sistema
+
+***Caso de uso:*** Instalar nuevos cursos en su biblioteca interna\
+***Actor:*** Usuario
+
+### Diseño
+
+A continuación, mostraremos una primera versión del modelo de dominio de AppLearning donde se destaca la existencia de dos tipos de entidades que heredan de usuario que son **Creador** y **Estudiante** donde la primera entidad es la encargada de crear cursos y la segunda de realizar esos cursos.
