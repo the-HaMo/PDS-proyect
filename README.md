@@ -52,6 +52,6 @@ Otras cuestiones de interés son que la clase **Ejercicio** es una clase abstrac
 
 ### Modelo
 
-![Mdominio.V1-0]()
+![Mdominio.V1-0](https://github.com/the-HaMo/PDS-proyect/blob/main/info/diagrama.jpg)
 
->_Nota-General:_ 
+>_Nota-General:_ Como característica adicional, hemos añadido la clase EstadísticaCurso, que almacenará información relacionada de cada curso disponible. Esto permitirá agregar nuevas funcionalidades, como ordenar los cursos por popularidad (cursos en TENDENCIA) o ver el número de "me gusta" que ha recibido cada uno.
