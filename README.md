@@ -14,15 +14,11 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 
 ### Casos de Uso
 
-***Caso de uso:*** Registrarse en la aplicacion\
+***Caso de uso:*** Registrarse en la aplicacion ([Desarrollo-Caso1](https://github.com/the-HaMo/PDS-proyect/blob/main/info/diagrama.jpg))\
 ***Actor:*** Usuario
 
-- [Desarrollo-Caso1](https://github.com/the-HaMo/PDS-proyect/blob/main/info/diagrama.jpg)
-
-***Caso de uso:*** Iniciar Sesion en la aplicacion\
+***Caso de uso:*** Iniciar Sesion en la aplicacion ([Desarrollo-Caso2](https://github.com/the-HaMo/PDS-proyect/blob/main/info/diagrama.jpg))\
 ***Actor:*** Usuario
-
-- [Desarrollo-Caso2](https://github.com/the-HaMo/PDS-proyect/blob/main/info/diagrama.jpg)
 
 ***Caso de uso:*** Cerrar Sesion\
 ***Actor:*** Usuario
@@ -57,6 +53,7 @@ Otras cuestiones de interés son que la clase **Ejercicio** es una clase abstrac
 ### Modelo
 
 >_Nota-General:_ Como característica adicional, hemos añadido la clase EstadísticaCurso, que almacenará información relacionada de cada curso disponible. Esto permitirá agregar nuevas funcionalidades, como ordenar los cursos por popularidad (cursos en TENDENCIA) o ver el número de "me gusta" que ha recibido cada uno.
+
 
 ![Mdominio.V1-0](https://github.com/the-HaMo/PDS-proyect/blob/main/info/diagrama.jpg)
 
