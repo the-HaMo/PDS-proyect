@@ -7,7 +7,7 @@ left to right direction
 :Usuario: --> (Registrarse)
 @enduml
 
-!image.png
+![alt text](image-1.png)
 
 Precondiciones:
 -El nombre de usuario no debe estar registrado previamente en el sistema.
