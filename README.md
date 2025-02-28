@@ -12,7 +12,7 @@ Además, LearningApp brinda la oportunidad de que cada usuario pueda crear y com
 
 En este apartado vamos a identificar los requisitos necesarios para el correcto funcionamiento de LearningApp, tanto a nivel de usuario como a nivel del sistema. Esto permitirá establecer objetivos claros para su implementación, resolviendo posibles ambigüedades y evitando la duplicidad de análisis. Para ello, utilizaremos los casos de uso.
 
-#### Casos de Uso
+### Casos de Uso
 
 ***Caso de uso:*** Registrarse en la aplicacion\
 ***Actor:*** Usuario
@@ -48,7 +48,10 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 
 A continuación, mostraremos una primera versión en el siguiente apartado del modelo de dominio de AppLearning donde se destaca la existencia de dos tipos de entidades que heredan de Usuario que son **Creador** y **Estudiante**. La primera entidad es la encargada de crear cursos, mientras que la segunda tiene el rol de realizar esos cursos. 
 
-Otras cuestiones de interés son que la clase **Ejercicio** es una clase abstracta lo que permite añadir nuevos tipos de ejercicio en un futuro. Además se muestra la relación entre los estudiantes y su progreso mediante la clase **ProgresoUsuario**, permitiendo así un seguimiento detallado del aprendizaje. 
+Otras cuestiones de interés son que la clase **Ejercicio** es una clase abstracta lo que permite añadir nuevos tipos de ejercicio en un futuro . Además se muestra la relación entre los estudiantes y su progreso mediante la clase **ProgresoUsuario**, permitiendo así un seguimiento detallado del aprendizaje.
 
 ### Modelo
 
+![Mdominio.V1-0]()
+
+>_Nota-General:_ 
