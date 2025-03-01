@@ -59,4 +59,12 @@ Otras cuestiones de interés son que la clase **Ejercicio** es una clase abstrac
 
 ### Diseño de Vistas
 
+Una primera versión de las vistas en la aplicación es la siguiente:
+
+![Login.V1-0](https://github.com/the-HaMo/PDS-proyect/blob/main/info/login.jpg)
+
+![MenuPrincipal.V1-0](https://github.com/the-HaMo/PDS-proyect/blob/main/info/menu_principal.jpg)
+
+
+
 
