@@ -48,12 +48,11 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 
 A continuación, mostraremos una primera versión en el siguiente apartado del modelo de dominio de AppLearning donde se destaca la existencia de dos tipos de entidades que heredan de Usuario que son **Creador** y **Estudiante**. La primera entidad es la encargada de crear cursos, mientras que la segunda tiene el rol de realizar esos cursos. 
 
-Otras cuestiones de interés son que la clase **Ejercicio** es una clase abstracta lo que permite añadir nuevos tipos de ejercicio en un futuro . Además se muestra la relación entre los estudiantes y su progreso mediante la clase **ProgresoUsuario**, permitiendo así un seguimiento detallado del aprendizaje.
+Otras cuestiones de interés son que la clase **Ejercicio** es una clase abstracta lo que permite añadir nuevos tipos de ejercicio en un futuro . Además se muestra la relación entre los estudiantes y su progreso mediante la clase **Progreso**, permitiendo así un seguimiento detallado del aprendizaje.
+
+Como característica adicional, hemos añadido la clase **EstadísticaCurso**, que almacenará información relacionada de cada curso disponible. Esto permitirá agregar nuevas funcionalidades, como ordenar los cursos por popularidad (cursos en TENDENCIA) o ver el número de "me gusta" que ha recibido cada uno.
 
 ### Modelo
-
->_Nota-General:_ Como característica adicional, hemos añadido la clase EstadísticaCurso, que almacenará información relacionada de cada curso disponible. Esto permitirá agregar nuevas funcionalidades, como ordenar los cursos por popularidad (cursos en TENDENCIA) o ver el número de "me gusta" que ha recibido cada uno.
-
 
 ![Mdominio.V1-0](https://github.com/the-HaMo/PDS-proyect/blob/main/info/diagrama.jpg)
 
