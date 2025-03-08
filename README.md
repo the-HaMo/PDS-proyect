@@ -10,39 +10,59 @@ Además, LearningApp brinda la oportunidad de que cada usuario pueda crear y com
 
 ### Requisitos
 
-En este apartado vamos a identificar los requisitos necesarios para el correcto funcionamiento de LearningApp, tanto a nivel de usuario como a nivel del sistema. Esto permitirá establecer objetivos claros para su implementación, resolviendo posibles ambigüedades y evitando la duplicidad de análisis. Para ello, utilizaremos los casos de uso.
+En este apartado vamos a identificar los requisitos necesarios para el correcto funcionamiento de LearningApp, tanto a nivel de usuario como a nivel del sistema. Esto permitirá establecer objetivos claros para su implementación, resolviendo posibles ambigüedades y evitando la duplicidad de análisis. Antes de comenzar, es importante destacar la existencia de dos roles dentro de aplicación: el **Estudiante**, quien realiza los cursos ,y el **Colaborador**, quien los crea y los sube a la plataforma.
 
 ### Casos de Uso
 
 ***Caso de uso:*** Registrarse en la aplicacion ([Desarrollo-Caso1](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso1.md))\
-***Actor:*** Usuario
+***Actor:*** Estudiante y Colaborador
 
 ***Caso de uso:*** Iniciar Sesion en la aplicacion ([Desarrollo-Caso2](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso2.md))\
-***Actor:*** Usuario
+***Actor:*** Estudiante y Colaborador 
 
 ***Caso de uso:*** Cerrar Sesion\
-***Actor:*** Usuario
+***Actor:*** Estudiante y Colaborador 
 
 ***Caso de uso:*** Elegir curso disponible\
-***Actor:*** Usuario
+***Actor:*** Estudiante 
 
-***Caso de uso:*** Mostrar Ejercicios dentro de un curso\
-***Actor:*** Sistema
+***Caso de uso:*** Mostrar ejercicios dentro de un curso elegido\
+***Actor:*** Estudiante
 
-***Caso de uso:*** Crear Curso\
-***Actor:*** Usuario
-
-***Caso de uso:*** Compartir cursos creados propios\
-***Actor:*** Usuario
+***Caso de uso:*** Realizar ejercicio de un tema del curso\
+***Actor:*** Estudiante
 
 ***Caso de uso:*** Dentro de un curso, elige estrategia de aprendizaje\
-***Actor:*** Usuario
+***Actor:*** Estudiante
+
+***Caso de uso:*** Instalar nuevos cursos en su biblioteca interna\
+***Actor:*** Estudiante 
+
+***Caso de uso:*** Crear curso\
+***Actor:*** Colaborador
+
+***Caso de uso:*** Subir cursos a la plataforma\
+***Actor:*** Colaborador
+
+***Caso de uso:*** Subir cursos a la plataforma\
+***Actor:*** Colaborador
+
+***Caso de uso:*** Modificar un curso creado\
+***Actor:*** Colaborador
 
 ***Caso de uso:*** Guarda estado del curso para un usuario\
 ***Actor:*** Sistema
 
-***Caso de uso:*** Instalar nuevos cursos en su biblioteca interna\
-***Actor:*** Usuario
+>_Nota:_ A continuación, se muestra los casos de uso de la funcionalidad adicional que hemos diseñado.
+
+***Caso de uso:*** Visualizar información estádistica sobre un curso\
+***Actor:*** Estudiante y Colaborador 
+
+***Caso de uso:*** Ver el número de me gustas que ha recibido un curso\
+***Actor:*** Estudiante y Colaborador 
+
+***Caso de uso:*** Mostrar una lista ordenada de los cursos según su el número de likes\
+***Actor:*** Sistema
 
 ### Diseño
 
@@ -50,7 +70,7 @@ A continuación, mostraremos una primera versión en el siguiente apartado del m
 
 Otras cuestiones de interés son que la clase **Ejercicio** es una clase abstracta lo que permite añadir nuevos tipos de ejercicio en un futuro . Además se muestra la relación entre los estudiantes y su progreso mediante la clase **Progreso**, permitiendo así un seguimiento detallado del aprendizaje.
 
-Como característica adicional, hemos añadido la clase **EstadísticaCurso**, que almacenará información relacionada de cada curso disponible. Esto permitirá agregar nuevas funcionalidades, como ordenar los cursos por popularidad (cursos en TENDENCIA) o ver el número de "me gusta" que ha recibido cada uno.
+Como funcionalidad adicional, hemos añadido la clase **EstadísticaCurso**, que almacenará información relacionada de cada curso disponible. Esto permitirá agregar nuevas funcionalidades, como ordenar los cursos por popularidad (cursos en TENDENCIA) o ver el número de "me gusta" que ha recibido cada uno.
 
 ### Modelo
 
