@@ -2,7 +2,7 @@
 
 ### DESCRIPCIÓN 
 
-**LearningApp** es una aplicación de aprendizaje de idiomas totalmente gratuita desarrollada por los alumnos; **Mohammed Amrou Labied Nasser**, **Sergio García García** y **Jorge Fernandéz Corcoles**, bajo la supervisión del profesor **Antonio Lopéz Martinéz Carrasco**.
+**LearningApp** es una aplicación de aprendizaje de idiomas totalmente gratuita desarrollada por los alumnos; **Mohammed Amrou Labied Nasser**, **Sergio García García** y **Jorge Fernández Córcoles**, bajo la supervisión del profesor **Antonio Lopéz Martinéz Carrasco**.
 
 El propósito de LearningApp es facilitar el aprendizaje de idiomas como el inglés, francés o el italiano a través de cursos diseñados tanto por la propia aplicación como por otros usuarios con experiencia en la enseñanza.Esto permite a los usuarios acceder a una gran variedad de materiales adaptados a diferentes niveles y estilos de aprendizaje. 
 
