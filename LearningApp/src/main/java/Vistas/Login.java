@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -31,19 +30,9 @@ public class Login {
 	    private JLabel logoLabel;
 	    private ImageIcon originalIcon;
 
-	    public static void main(String[] args) {
-	        EventQueue.invokeLater(() -> {
-	            try {
-	                Login window = new Login();
-	                window.frame.setVisible(true);
-	            } catch (Exception e) {
-	                e.printStackTrace();
-	            }
-	        });
-	    }
-
 	    public Login() {
 	        initialize();
+            this.frame.setVisible(true);
 	    }
 
 	    private void initialize() {
@@ -137,6 +126,12 @@ public class Login {
 	        loginButton.setForeground(Color.WHITE);
 	        loginButton.setPreferredSize(new Dimension(120, 40));
 	        buttonsPanel.add(loginButton);
+			loginButton.addActionListener(e -> {
+				CursosEstudiante window = new CursosEstudiante();
+				window.initialize();
+				frame.dispose();
+				
+			});
 
 	        JButton registerButton = new JButton("Register");
 	        registerButton.setFont(new Font("Arial", Font.BOLD, 14));
