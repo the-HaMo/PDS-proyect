@@ -143,14 +143,11 @@ public class Login {
 	        Component horizontalStrut = Box.createHorizontalStrut(20);
 	        buttonsPanel.add(horizontalStrut);
 
-	        // 🔹 Eventos de botones
-	        loginButton.addActionListener(e -> {
-	            System.out.println("Username: " + usernameField.getText());
-	            System.out.println("Password: " + new String(passwordField.getPassword()));
-	        });
-
+	       
 	        registerButton.addActionListener(e -> {
-	            System.out.println("Register button clicked");
+	           Registro window = new Registro();
+	           window.setVisible(true);
+	           frame.dispose();
 	        });
 	    }
 
