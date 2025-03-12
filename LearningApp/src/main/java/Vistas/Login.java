@@ -137,6 +137,12 @@ public class Login {
 	        loginButton.setForeground(Color.WHITE);
 	        loginButton.setPreferredSize(new Dimension(120, 40));
 	        buttonsPanel.add(loginButton);
+			loginButton.addActionListener(e -> {
+				Cursos window = new Cursos();
+				window.initialize();
+				frame.dispose();
+				
+			});
 
 	        JButton registerButton = new JButton("Register");
 	        registerButton.setFont(new Font("Arial", Font.BOLD, 14));
