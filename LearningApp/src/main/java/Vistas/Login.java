@@ -41,25 +41,21 @@ public class Login {
 	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        frame.getContentPane().setLayout(new BorderLayout());
 
-	        // 🔹 Panel principal con BorderLayout
 	        JPanel mainPanel = new JPanel(new BorderLayout());
 	        mainPanel.setBackground(SystemColor.inactiveCaption);
 	        mainPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
 	        frame.getContentPane().add(mainPanel);
 
-	        // 🔹 Zona Norte (Título)
 	        JLabel titleLabel = new JLabel("LearningApp", SwingConstants.CENTER);
 	        titleLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 26));
 	        titleLabel.setForeground(new Color(70, 130, 180));
 	        titleLabel.setBorder(new EmptyBorder(10, 0, 10, 0));
 	        mainPanel.add(titleLabel, BorderLayout.NORTH);
 
-	        // 🔹 Zona Central (Logo y campos)
 	        JPanel centerPanel = new JPanel(new BorderLayout());
 	        centerPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
 	        mainPanel.add(centerPanel, BorderLayout.CENTER);
 
-	        // 🔹 Logo en la parte norte del centro
 	        JPanel logoPanel = new JPanel(new BorderLayout());
 	        logoPanel.setPreferredSize(new Dimension(0, 200));
 	        centerPanel.add(logoPanel, BorderLayout.NORTH);
@@ -73,7 +69,6 @@ public class Login {
 	        Component verticalStrut = Box.createVerticalStrut(20);
 	        logoPanel.add(verticalStrut, BorderLayout.SOUTH);
 
-	        // 🔹 Redimensionar la imagen dinámicamente cuando cambie el tamaño del panel
 	        logoPanel.addComponentListener(new ComponentAdapter() {
 	            @Override
 	            public void componentResized(ComponentEvent e) {
@@ -81,12 +76,10 @@ public class Login {
 	            }
 	        });
 
-	     // 🔹 Panel para los campos (con padding en la zona sur)
 	        JPanel fieldsPanel = new JPanel(new GridLayout(2, 1, 10, 10));
 	        fieldsPanel.setBorder(new EmptyBorder(30, 50, 20, 50)); // Padding
 	        centerPanel.add(fieldsPanel, BorderLayout.SOUTH);
 	        
-	        // 🔹 Panel para el campo de Username
 	        JPanel usernamePanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // Centrado
 	        JLabel usernameLabel = new JLabel("Username:");
 	        usernameLabel.setForeground(new Color(0, 0, 128));
@@ -98,7 +91,6 @@ public class Login {
 	        usernameField.setFont(new Font("Arial", Font.PLAIN, 14));
 	        usernamePanel.add(usernameField);
 
-	        // 🔹 Panel para el campo de Password
 	        JPanel passwordPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // Centrado
 	        JLabel passwordLabel = new JLabel("Password:");
 	        passwordLabel.setForeground(new Color(0, 0, 128));
@@ -110,12 +102,9 @@ public class Login {
 	        passwordField.setFont(new Font("Arial", Font.PLAIN, 14));
 	        passwordPanel.add(passwordField);
 
-	        // 🔹 Agregar los paneles al fieldsPanel
 	        fieldsPanel.add(usernamePanel);
 	        fieldsPanel.add(passwordPanel);
 
-
-	        // 🔹 Zona Sur (Botones)
 	        JPanel buttonsPanel = new JPanel();
 	        buttonsPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
 	        mainPanel.add(buttonsPanel, BorderLayout.SOUTH);
@@ -151,7 +140,7 @@ public class Login {
 	        });
 	    }
 
-	    // 🔹 Método para escalar la imagen al tamaño completo del logoPanel
+	    // Método para escalar la imagen al tamaño completo del logoPanel
 	    private void setScaledImage(JLabel label, ImageIcon icon, int width, int height) {
 	        if (width > 0 && height > 0) { 
 	            Image img = icon.getImage();
