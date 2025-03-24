@@ -1,10 +1,22 @@
 package Vistas;
 
 import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.io.File;
+
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
 
 public class CursosEstudiante {
 
@@ -29,17 +41,48 @@ public class CursosEstudiante {
         panel_abajo.setOpaque(false);
         frame.getContentPane().add(panel_abajo, BorderLayout.SOUTH);
         
-        JPanel panel_arriba = new JPanel();
+        JPanel panel_arriba = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         panel_arriba.setOpaque(false);
         frame.getContentPane().add(panel_arriba, BorderLayout.NORTH);
-        panel_arriba.setLayout(new BoxLayout(panel_arriba, BoxLayout.X_AXIS));
         
+        JButton botonImportar = new JButton("Importar Curso");
+        panel_arriba.add(botonImportar);
         
         JPanel panel_medio = new JPanel();
         panel_medio.setOpaque(false);
         frame.getContentPane().add(panel_medio, BorderLayout.CENTER);
-        frame.setBounds(100, 100, 480, 550);
+        frame.setBounds(100, 100, 500, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+		botonImportar.addActionListener(e -> {
+			JFileChooser fileChooser = new JFileChooser();
+            int seleccion = fileChooser.showOpenDialog(frame); // Mostrar el diálogo
 
+            if (seleccion == JFileChooser.APPROVE_OPTION) { // Si el usuario seleccionó un archivo
+                File curso = fileChooser.getSelectedFile();
+				if (curso.getName().endsWith(".json") || curso.getName().endsWith(".yaml")) {
+					JOptionPane.showMessageDialog(frame, "El archivo seleccionado es: " + curso.getName());
+				} else {
+					JOptionPane.showMessageDialog(frame, "El archivo seleccionado no es correcto.");
+				}
+            }
+		});
+
+        DefaultListModel<Elemento> modeloCursos = new DefaultListModel<>();
+        
+        modeloCursos.addElement(new Elemento("Curso de Java", "Aprende Java desde cero"));
+        modeloCursos.addElement(new Elemento("Curso de Python", "Aprende Python desde cero"));
+        modeloCursos.addElement(new Elemento("Curso de C++", "Aprende C++ desde cero"));
+        modeloCursos.addElement(new Elemento("Curso de JavaScript", "Aprende JavaScript desde cero"));
+        
+        JList<Elemento> listaCursos = new JList<>(modeloCursos);
+        listaCursos.setCellRenderer(new ElementoListRenderer());
+        //listaCursos.setPreferredSize(new Dimension(260,300));
+        JScrollPane scroll = new JScrollPane(listaCursos);
+        scroll.setPreferredSize(new Dimension(260, 300));
+        panel_medio.add(scroll, BorderLayout.CENTER);
+        
+        frame.getContentPane().add(panel_medio, BorderLayout.CENTER);
+        
     }
 }

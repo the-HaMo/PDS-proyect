@@ -19,4 +19,11 @@ public enum Controlador {
 		//Usuario u = new Usuario(nombre, contraseña, rol);
 		
 	}
+	
+	public void iniciarSesion(String nombre, String contraseña) {
+		if (usuarioActual == null) {
+			//repositorio para sacar el usuario´
+			//usuarioActual = repositorio.getUsuario(nombre, contraseña);
+		}
+	}
 }
