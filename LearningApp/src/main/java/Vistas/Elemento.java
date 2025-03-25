@@ -5,15 +5,15 @@ import java.awt.Dimension;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
+import Clases.Curso;
+
 public class Elemento extends JPanel {
 
     private static final long serialVersionUID = 1L;
-    private String nombre;
-    private String descripcion;
+    private Curso curso;
 
-    public Elemento(String nombre, String descripcion) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
+    public Elemento(Curso curso) {
+    	this.curso = curso;
         initializeComponent();
     }
 
@@ -23,8 +23,8 @@ public class Elemento extends JPanel {
         this.setBackground(Color.WHITE);
         this.setBorder(new TitledBorder("Curso"));
 
-        JLabel nombreLabel = new JLabel("Nombre: " + nombre);
-        JLabel descripcionLabel = new JLabel("Descripción: " + descripcion);
+        JLabel nombreLabel = new JLabel("Nombre: " + curso.getNombre());
+        JLabel descripcionLabel = new JLabel("Descripción: " + curso.getDescripcion());
 
         // 🔹 Agregamos los labels al panel
         this.add(nombreLabel);

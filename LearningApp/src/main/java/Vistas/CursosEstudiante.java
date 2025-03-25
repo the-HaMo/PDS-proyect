@@ -12,6 +12,8 @@ import java.io.File;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Clases.Curso;
+
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
@@ -69,11 +71,14 @@ public class CursosEstudiante {
 		});
 
         DefaultListModel<Elemento> modeloCursos = new DefaultListModel<>();
-        
-        modeloCursos.addElement(new Elemento("Curso de Java", "Aprende Java desde cero"));
-        modeloCursos.addElement(new Elemento("Curso de Python", "Aprende Python desde cero"));
-        modeloCursos.addElement(new Elemento("Curso de C++", "Aprende C++ desde cero"));
-        modeloCursos.addElement(new Elemento("Curso de JavaScript", "Aprende JavaScript desde cero"));
+        Curso c1= new Curso("Curso de Java", "Aprende Java desde cero");
+        Curso c2 = new Curso("Curso de Python", "Aprende Python desde cero");
+        Curso c3 = new Curso("Curso de C++", "Aprende C++ desde cero");
+        Curso c4 = new Curso("Curso de JavaScript", "Aprende JavaScript desde cero");
+        modeloCursos.addElement(new Elemento(c1));
+        modeloCursos.addElement(new Elemento(c2));
+        modeloCursos.addElement(new Elemento(c3));
+        modeloCursos.addElement(new Elemento(c4));
         
         JList<Elemento> listaCursos = new JList<>(modeloCursos);
         listaCursos.setCellRenderer(new ElementoListRenderer());
