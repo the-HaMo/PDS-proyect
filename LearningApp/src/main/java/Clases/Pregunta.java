@@ -1,5 +1,6 @@
 package Clases;
 
+//deberia ser abstracta ua que hay varios tipos de preguntas
 public class Pregunta {
 
 	private String enunciado;

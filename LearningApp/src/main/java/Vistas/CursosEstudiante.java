@@ -63,6 +63,8 @@ public class CursosEstudiante {
             if (seleccion == JFileChooser.APPROVE_OPTION) { // Si el usuario seleccionó un archivo
                 File curso = fileChooser.getSelectedFile();
 				if (curso.getName().endsWith(".json") || curso.getName().endsWith(".yaml")) {
+					//Curso cursoImportado = FUNCION PARA LEER JSON O YAML
+					//Controlador.INSTANCE.importarCurso(cursoImportado);
 					JOptionPane.showMessageDialog(frame, "El archivo seleccionado es: " + curso.getName());
 				} else {
 					JOptionPane.showMessageDialog(frame, "El archivo seleccionado no es correcto.");
@@ -71,6 +73,9 @@ public class CursosEstudiante {
 		});
 
         DefaultListModel<Elemento> modeloCursos = new DefaultListModel<>();
+        /*
+         * Cursos default
+         */
         Curso c1= new Curso("Curso de Java", "Aprende Java desde cero");
         Curso c2 = new Curso("Curso de Python", "Aprende Python desde cero");
         Curso c3 = new Curso("Curso de C++", "Aprende C++ desde cero");
@@ -90,4 +95,5 @@ public class CursosEstudiante {
         frame.getContentPane().add(panel_medio, BorderLayout.CENTER);
         
     }
+
 }

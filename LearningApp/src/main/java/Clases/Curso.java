@@ -13,6 +13,16 @@ public class Curso {
 		this.descripcion = descripcion;
 	}
 	
+	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.bloques_contenidos = bloques_contenidos;
+	}
+	
+	public List<BloqueContenido> getBloquesContenidos() {
+        return this.bloques_contenidos;
+	}
+	
 	public String getNombre() {
 		return this.nombre;
 	}
