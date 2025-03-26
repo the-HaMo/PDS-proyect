@@ -20,4 +20,9 @@ public class Curso {
 	public String getDescripcion() {
 		return this.descripcion;
 	}
+	
+	public void setBloquesContenidos(List<BloqueContenido> bloques_contenidos) {
+		this.bloques_contenidos = bloques_contenidos;
+	}
+	
 }
