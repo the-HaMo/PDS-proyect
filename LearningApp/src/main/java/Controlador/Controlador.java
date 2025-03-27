@@ -26,4 +26,12 @@ public enum Controlador {
 			//usuarioActual = repositorio.getUsuario(nombre, contraseña);
 		}
 	}
+	
+	public void cerrarSesion() {
+		usuarioActual = null;
+	}
+	
+	public void importarCurso(Curso curso) {
+		// usuarioActual.importarCurso(curso);
+	}
 }
