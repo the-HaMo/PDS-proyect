@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import Clases.Curso;
+import Utilidades.LectorCurso;
 
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
@@ -56,30 +57,31 @@ public class CursosEstudiante {
         frame.setBounds(100, 100, 500, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-		botonImportar.addActionListener(e -> {
-			JFileChooser fileChooser = new JFileChooser();
-            int seleccion = fileChooser.showOpenDialog(frame); // Mostrar el diálogo
-
-            if (seleccion == JFileChooser.APPROVE_OPTION) { // Si el usuario seleccionó un archivo
-                File curso = fileChooser.getSelectedFile();
-				if (curso.getName().endsWith(".json") || curso.getName().endsWith(".yaml")) {
-					/*
-					 * if (curso.getName().endsWith(".json")) {
-					 *         // FUNCION PARA LEER JSON
-					 * }else{
-					 *        // FUNCION PARA LEER YAML
-					 * }
-					 * Curso cursoImportado = FUNCION PARA LEER JSON O YAML
-					 * Controlador.INSTANCE.importarCurso(cursoImportado);
-					*/
-					JOptionPane.showMessageDialog(frame, "El archivo seleccionado es: " + curso.getName());
-				} else {
-					JOptionPane.showMessageDialog(frame, "El archivo seleccionado no es correcto.");
-				}
-            }
-		});
-
         DefaultListModel<Elemento> modeloCursos = new DefaultListModel<>();
+        botonImportar.addActionListener(e -> {
+            JFileChooser fileChooser = new JFileChooser();
+            int seleccion = fileChooser.showOpenDialog(frame);
+
+            if (seleccion == JFileChooser.APPROVE_OPTION) {
+                File cursoFile = fileChooser.getSelectedFile();
+
+                if (cursoFile.getName().endsWith(".json")) {
+                    Curso cursoImportado = LectorCurso.leerCursoDesdeJSON(cursoFile);
+                    
+                    if (cursoImportado != null) {
+                        // Aquí puedes añadirlo a tu lista de cursos
+                        modeloCursos.addElement(new Elemento(cursoImportado));
+                        JOptionPane.showMessageDialog(frame, "Curso importado correctamente: " + cursoImportado.getNombre());
+                    } else {
+                        JOptionPane.showMessageDialog(frame, "Error al importar el curso.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(frame, "El archivo seleccionado no es un JSON válido.");
+                }
+            }
+        });
+
+        
         /*
          * Cursos default los 4 primeros
          */
