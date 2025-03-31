@@ -1,7 +1,11 @@
 package Clases;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class PreguntaTraduccion extends Pregunta {
-    private String respuestaCorrecta;
+    
+	@JsonProperty("respuestaCorrecta")
+	private String respuestaCorrecta;
 
     public PreguntaTraduccion() {}
 

@@ -1,12 +1,16 @@
 package Clases;
 
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Curso {
 
 	private String nombre;
 	private String descripcion;
+	@JsonProperty("bloques_contenidos")
 	private List<BloqueContenido> bloques_contenidos;
+	
+	public Curso() {}
 	
 	public Curso(String nombre, String descripcion) {
 		this.nombre = nombre;

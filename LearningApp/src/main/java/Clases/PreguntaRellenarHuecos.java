@@ -1,7 +1,13 @@
 package Clases;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class PreguntaRellenarHuecos extends Pregunta {
+	
+	@JsonProperty("textoConHuecos")
     private String textoConHuecos;
+	 
+	@JsonProperty("respuesta")
     private String respuesta;
 
     public PreguntaRellenarHuecos() {}

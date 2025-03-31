@@ -27,5 +27,9 @@ public abstract class Pregunta {
         return enunciado;
     }
 
+    public void setEnunciado(String enunciado) {
+        this.enunciado = enunciado;
+    }
+    
     public abstract String getRespuesta();
 }

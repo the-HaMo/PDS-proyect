@@ -1,10 +1,13 @@
 package Clases;
 
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class PreguntaTest extends Pregunta {
-    private List<String> opciones;
+
+    @JsonProperty("respuestaCorrecta")
     private String respuestaCorrecta;
+    private List<String> opciones;
 
     public PreguntaTest() {}
 
@@ -18,8 +21,16 @@ public class PreguntaTest extends Pregunta {
     public String getRespuesta() {
         return respuestaCorrecta;
     }
+    
+    public void setRespuestaCorrecta(String respuestaCorrecta) {
+        this.respuestaCorrecta = respuestaCorrecta;
+    }
 
     public List<String> getOpciones() {
         return opciones;
+    }
+    
+    public void setOpciones(List<String> opciones) {
+        this.opciones = opciones;
     }
 }
