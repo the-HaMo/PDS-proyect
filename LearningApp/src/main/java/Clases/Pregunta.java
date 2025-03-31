@@ -1,22 +1,17 @@
 package Clases;
 
-//deberia ser abstracta ua que hay varios tipos de preguntas
-public class Pregunta {
+public abstract class Pregunta {
+    protected String enunciado;
 
-	private String enunciado;
-	private String respuesta;
-	
-	public Pregunta(String enunciado, String respuesta) {
-		this.enunciado = enunciado;
-		this.respuesta = respuesta;
-	}
+    public Pregunta() {}
 
-	public String getEnunciado() {
-		return enunciado;
-	}
+    public Pregunta(String enunciado) {
+        this.enunciado = enunciado;
+    }
 
-	public String getRespuesta() {
-		return respuesta;
-	}
-	
+    public String getEnunciado() {
+        return enunciado;
+    }
+
+    public abstract String getRespuesta();
 }

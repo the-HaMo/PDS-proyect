@@ -16,7 +16,7 @@ public enum Controlador {
          } else if(rol.equals("Colaborador")) {
         	Colaborador c = new Colaborador(nombre, contraseña, rol);
          }
-		//usuarioActual = usu;
+		
 		
 	}
 	
