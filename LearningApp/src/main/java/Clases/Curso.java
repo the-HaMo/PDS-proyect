@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "cursos")
 public class Curso {
 
 	@Id
@@ -14,7 +15,7 @@ public class Curso {
 	private String descripcion;
 	
 	@JsonProperty("bloques_contenidos")
-	@OneToMany(mappedBy = "Curso", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
 	private List<BloqueContenido> bloques_contenidos;
 	
 	public Curso() {}

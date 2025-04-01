@@ -1,5 +1,9 @@
 package Clases;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "colaboradores")
 public class Colaborador extends Usuario {
 
 

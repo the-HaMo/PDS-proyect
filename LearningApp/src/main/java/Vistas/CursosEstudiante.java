@@ -77,14 +77,14 @@ public class CursosEstudiante {
                         
                        // System.out.println(cursoImportado.toString());
                         
-                        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ejemplo");
+                        /*EntityManagerFactory emf = Persistence.createEntityManagerFactory("ejemplo");
                         EntityManager em = emf.createEntityManager();
 
                         em.getTransaction().begin();
                         em.persist(cursoImportado);
                         em.getTransaction().commit();
                         em.close();
-                        emf.close();
+                        emf.close();*/
                         JOptionPane.showMessageDialog(frame, "Curso importado correctamente: " + cursoImportado.getNombre());
                     } else {
                         JOptionPane.showMessageDialog(frame, "Error al importar el curso.");

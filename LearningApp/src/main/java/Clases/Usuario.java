@@ -1,11 +1,20 @@
 package Clases;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "usuarios")
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Usuario {
 
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long ID;
+	
 	private String nombre;
 	private String contraseña;
 	private String rol;
-	private String ID;
+
 	
 	public Usuario(String nombre, String contraseña, String rol) {
 		this.nombre = nombre;
@@ -23,13 +32,5 @@ public abstract class Usuario {
 
 	public String getRol() {
 		return rol;
-	}
-	
-	public void setID(String ID) {
-		this.ID = ID;
-	}
-	
-	public String getID() {
-		return ID;
 	}
 }

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "bloques_contenidos")
 public class BloqueContenido {
 	
 	@Id
@@ -19,7 +20,7 @@ public class BloqueContenido {
     @JsonProperty("nombreBloque")
     private String nombreBloque;
     
-    @OneToMany(mappedBy = "BloqueContenido", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "bloqueContenido", cascade = CascadeType.ALL)
     private List<Pregunta> preguntas;
 
     public BloqueContenido() {}
