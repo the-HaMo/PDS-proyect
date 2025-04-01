@@ -11,7 +11,7 @@ public class BloqueContenido {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 	
 	@ManyToOne
     @JoinColumn(name = "curso_id")
@@ -20,7 +20,7 @@ public class BloqueContenido {
     @JsonProperty("nombreBloque")
     private String nombreBloque;
     
-    @OneToMany(mappedBy = "bloqueContenido", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "bloqueContenido")
     private List<Pregunta> preguntas;
 
     public BloqueContenido() {}

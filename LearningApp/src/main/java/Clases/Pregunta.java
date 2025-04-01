@@ -24,6 +24,10 @@ public abstract class Pregunta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 	
+	@ManyToOne
+    @JoinColumn(name = "bloque_contenido_id")
+    private BloqueContenido bloqueContenido;
+	
     protected String enunciado;
 
     public Pregunta() {}

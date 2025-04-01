@@ -3,11 +3,16 @@ package Clases;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "estudiantes")
+@DiscriminatorValue("ESTUDIANTE")
 public class Estudiante extends Usuario{
 
+	private String rol;
+
+	public Estudiante() {}
+	
 	public Estudiante(String nombre, String contraseña, String rol) {
-        super(nombre, contraseña, rol);
+        super(nombre, contraseña);
+        this.rol = rol;
     }
 
 }

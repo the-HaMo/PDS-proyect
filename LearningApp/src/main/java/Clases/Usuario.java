@@ -3,23 +3,26 @@ package Clases;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "Usuarios")
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "tipo_usuario", discriminatorType = DiscriminatorType.STRING)
 public abstract class Usuario {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long ID;
+	private Integer id;
 	
 	private String nombre;
 	private String contraseña;
-	private String rol;
+	//private String rol;
 
-	
-	public Usuario(String nombre, String contraseña, String rol) {
+	public Usuario() {
+	}
+
+	public Usuario(String nombre, String contraseña) {
 		this.nombre = nombre;
 		this.contraseña = contraseña;
-		this.rol = rol;
+		//this.rol = rol;
 	}
 
 	public String getNombre() {
@@ -30,7 +33,11 @@ public abstract class Usuario {
 		return contraseña;
 	}
 
-	public String getRol() {
-		return rol;
+	//public String getRol() {
+	//	return rol;
+	//}
+	
+	public Integer getId() {
+		return id;
 	}
 }
