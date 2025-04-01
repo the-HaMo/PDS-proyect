@@ -3,11 +3,23 @@ package Clases;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class BloqueContenido {
+import jakarta.persistence.*;
 
+@Entity
+public class BloqueContenido {
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+	
+	@ManyToOne
+    @JoinColumn(name = "curso_id")
+    private Curso curso;
+	
     @JsonProperty("nombreBloque")
     private String nombreBloque;
-
+    
+    @OneToMany(mappedBy = "BloqueContenido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Pregunta> preguntas;
 
     public BloqueContenido() {}

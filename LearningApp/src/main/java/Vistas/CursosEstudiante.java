@@ -14,6 +14,9 @@ import javax.swing.JScrollPane;
 
 import Clases.Curso;
 import Utilidades.LectorCurso;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
@@ -71,6 +74,15 @@ public class CursosEstudiante {
                     if (cursoImportado != null) {
                         // Aquí puedes añadirlo a tu lista de cursos
                         modeloCursos.addElement(new Elemento(cursoImportado));
+                        
+                        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ejemplo");
+                        EntityManager em = emf.createEntityManager();
+
+                        em.getTransaction().begin();
+                        em.persist(cursoImportado);
+                        em.getTransaction().commit();
+                        em.close();
+                        emf.close();
                         JOptionPane.showMessageDialog(frame, "Curso importado correctamente: " + cursoImportado.getNombre());
                     } else {
                         JOptionPane.showMessageDialog(frame, "Error al importar el curso.");
@@ -85,10 +97,13 @@ public class CursosEstudiante {
         /*
          * Cursos default los 4 primeros
          */
+        
+        
         Curso c1= new Curso("Curso de Java", "Aprende Java desde cero");
         Curso c2 = new Curso("Curso de Python", "Aprende Python desde cero");
         Curso c3 = new Curso("Curso de C++", "Aprende C++ desde cero");
         Curso c4 = new Curso("Curso de JavaScript", "Aprende JavaScript desde cero");
+        
         modeloCursos.addElement(new Elemento(c1));
         modeloCursos.addElement(new Elemento(c2));
         modeloCursos.addElement(new Elemento(c3));

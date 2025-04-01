@@ -2,6 +2,7 @@ package Clases;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import jakarta.persistence.*;
 
 @JsonTypeInfo(
 	    use = JsonTypeInfo.Id.NAME,
@@ -14,7 +15,14 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 	    @JsonSubTypes.Type(value = PreguntaTraduccion.class, name = "traduccion")
 })
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Pregunta {
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+	
     protected String enunciado;
 
     public Pregunta() {}

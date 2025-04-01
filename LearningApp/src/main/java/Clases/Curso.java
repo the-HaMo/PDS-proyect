@@ -2,12 +2,19 @@ package Clases;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 
+@Entity
 public class Curso {
 
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 	private String nombre;
 	private String descripcion;
+	
 	@JsonProperty("bloques_contenidos")
+	@OneToMany(mappedBy = "Curso", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<BloqueContenido> bloques_contenidos;
 	
 	public Curso() {}

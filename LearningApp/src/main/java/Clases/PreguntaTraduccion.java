@@ -2,6 +2,9 @@ package Clases;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class PreguntaTraduccion extends Pregunta {
     
 	@JsonProperty("respuestaCorrecta")
