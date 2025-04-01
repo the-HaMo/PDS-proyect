@@ -44,9 +44,6 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 ***Caso de uso:*** Subir cursos a la plataforma\
 ***Actor:*** Colaborador
 
-***Caso de uso:*** Subir cursos a la plataforma\
-***Actor:*** Colaborador
-
 ***Caso de uso:*** Modificar un curso creado\
 ***Actor:*** Colaborador
 
