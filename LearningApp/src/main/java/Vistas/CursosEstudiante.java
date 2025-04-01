@@ -75,6 +75,8 @@ public class CursosEstudiante {
                         // Aquí puedes añadirlo a tu lista de cursos
                         modeloCursos.addElement(new Elemento(cursoImportado));
                         
+                       // System.out.println(cursoImportado.toString());
+                        
                         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ejemplo");
                         EntityManager em = emf.createEntityManager();
 

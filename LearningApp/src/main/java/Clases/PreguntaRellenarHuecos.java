@@ -29,4 +29,9 @@ public class PreguntaRellenarHuecos extends Pregunta {
     public String getTextoConHuecos() {
         return textoConHuecos;
     }
+    
+	public String toString() {
+		return ("Pregunta de rellenar huecos: " + this.enunciado + "\nTexto con huecos: "
+				+ this.textoConHuecos + "\nRespuesta: " + this.respuesta);
+	}
 }

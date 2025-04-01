@@ -21,4 +21,8 @@ public class PreguntaTraduccion extends Pregunta {
     public String getRespuesta() {
         return respuestaCorrecta;
     }
+    
+	public String toString() {
+		return ("Pregunta de traducción: " + this.enunciado + "\nRespuesta: " + this.respuestaCorrecta);
+	}
 }

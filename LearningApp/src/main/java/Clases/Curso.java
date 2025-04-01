@@ -46,4 +46,8 @@ public class Curso {
 		this.bloques_contenidos = bloques_contenidos;
 	}
 	
+	public String toString() {
+		return ("Curso: " + this.nombre + "\nDescripcion: " + this.descripcion + "\nBloques de contenido: "+ this.bloques_contenidos.toString());
+	}
+	
 }

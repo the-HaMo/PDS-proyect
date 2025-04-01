@@ -36,4 +36,9 @@ public class PreguntaTest extends Pregunta {
     public void setOpciones(List<String> opciones) {
         this.opciones = opciones;
     }
+    
+	public String toString() {
+		return ("Pregunta de test: " + this.enunciado + "\nOpciones: " + this.opciones.toString() + "\nRespuesta: "
+				+ this.respuestaCorrecta);
+	}
 }

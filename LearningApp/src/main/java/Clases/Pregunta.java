@@ -40,4 +40,6 @@ public abstract class Pregunta {
     }
     
     public abstract String getRespuesta();
+
+	public abstract String toString();
 }

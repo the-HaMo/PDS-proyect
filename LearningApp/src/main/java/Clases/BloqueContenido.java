@@ -44,4 +44,7 @@ public class BloqueContenido {
     public void setPreguntas(List<Pregunta> preguntas) {
         this.preguntas = preguntas;
     }
+    public String toString() {
+    	       return ("Bloque de contenido: " + this.nombreBloque + "\nPreguntas: " + this.preguntas.toString());
+    }
 }
