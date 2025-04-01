@@ -23,6 +23,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Clases.Estudiante;
+import Controlador.Controlador;
+
 public class Login {
 	  private 	JFrame frame;
 	    private JTextField usernameField;
@@ -116,9 +119,17 @@ public class Login {
 	        loginButton.setPreferredSize(new Dimension(120, 40));
 	        buttonsPanel.add(loginButton);
 			loginButton.addActionListener(e -> {
+				String username = usernameLabel.getText();
+				String passwd = new String(passwordLabel.getText());
+				if (Controlador.INSTANCE.getUsuarioActual() instanceof Estudiante) {
 				CursosEstudiante window = new CursosEstudiante();
 				window.initialize();
 				frame.dispose();
+				} else {
+				CursosColaborador window = new CursosColaborador();
+				window.showView();
+				frame.dispose();	
+				}
 				
 			});
 

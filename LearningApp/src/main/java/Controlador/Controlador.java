@@ -34,4 +34,8 @@ public enum Controlador {
 	public void importarCurso(Curso curso) {
 		// usuarioActual.importarCurso(curso);
 	}
+	
+	public Usuario getUsuarioActual() {
+		return usuarioActual;
+	}
 }

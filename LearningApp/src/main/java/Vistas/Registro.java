@@ -97,7 +97,7 @@ public class Registro extends JFrame {
                 String repetirContrasena = new String(txtContrasena2.getPassword());
                 String rolSeleccionado = (String) comboRol.getSelectedItem();
 
-                if (registrarUsuario(usuario, contrasena, repetirContrasena)) {
+                if (registrarUsuario(contrasena, repetirContrasena)) {
                     JOptionPane.showMessageDialog(Registro.this, "Usuario registrado exitosamente", "Registro",
                             JOptionPane.INFORMATION_MESSAGE);
                     Controlador.INSTANCE.crearUsuario(usuario, contrasena, rolSeleccionado);
@@ -116,7 +116,7 @@ public class Registro extends JFrame {
         getContentPane().add(panelPrincipal);
     }
 
-    public boolean registrarUsuario(String nombre, String contrasena, String contrasena2) {
+    public boolean registrarUsuario(String contrasena, String contrasena2) {
         return contrasena.equals(contrasena2);
     }
 }
