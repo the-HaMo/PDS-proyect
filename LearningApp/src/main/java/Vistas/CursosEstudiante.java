@@ -122,4 +122,8 @@ public class CursosEstudiante {
         
     }
 
+	public void Mostrar() {
+		frame.setVisible(true);
+	}
+
 }
