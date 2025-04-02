@@ -88,7 +88,7 @@ public class CursosColaborador {
         boton.setFocusPainted(false);
         boton.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15)); // Mejor espaciado
         boton.addActionListener(e -> accion.run());
-
+        
         // Contenedor del botón para mayor separación
         JPanel panelBoton = new JPanel();
         panelBoton.setBackground(Color.WHITE);

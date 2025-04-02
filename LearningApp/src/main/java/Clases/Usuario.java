@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 public abstract class Usuario {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // SEQUENCE
 	private Integer id;
 	
 	private String nombre;
