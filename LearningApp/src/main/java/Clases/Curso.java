@@ -13,6 +13,8 @@ public class Curso {
     private Integer id;
 	private String nombre;
 	private String descripcion;
+	//private String autor;
+	//private ImageIcon imagen;
 	
 	@JsonProperty("bloques_contenidos")
 	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)

@@ -3,6 +3,7 @@ package Clases;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "Estudiantes")
 @DiscriminatorValue("ESTUDIANTE")
 public class Estudiante extends Usuario{
 
