@@ -98,11 +98,14 @@ public class Registro extends JFrame {
                 String rolSeleccionado = (String) comboRol.getSelectedItem();
 
                 if (registrarUsuario(contrasena, repetirContrasena)) {
-                    JOptionPane.showMessageDialog(Registro.this, "Usuario registrado exitosamente", "Registro",
-                            JOptionPane.INFORMATION_MESSAGE);
-                    Controlador.INSTANCE.crearUsuario(usuario, contrasena, rolSeleccionado);
-                    new Login();
-                    dispose();
+                    if(Controlador.INSTANCE.crearUsuario(usuario, contrasena, rolSeleccionado)) {
+                    	JOptionPane.showMessageDialog(Registro.this, "Usuario registrado exitosamente", "Registro",JOptionPane.INFORMATION_MESSAGE);
+                    	new Login();
+                        dispose();
+                    }else {
+						JOptionPane.showMessageDialog(Registro.this, "El usuario ya existe", "Registro",
+								JOptionPane.ERROR_MESSAGE);
+                    }    
                 } else {
                     JOptionPane.showMessageDialog(Registro.this, "Las contraseñas no coinciden", "Registro",
                             JOptionPane.ERROR_MESSAGE);

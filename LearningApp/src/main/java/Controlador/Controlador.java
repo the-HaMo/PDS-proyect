@@ -18,7 +18,10 @@ public enum Controlador {
 		
 	}
 	
-	public void crearUsuario(String nombre, String contraseña, String rol) {
+	public boolean crearUsuario(String nombre, String contraseña, String rol) {
+		if(repositorio.obtenerUsuarioPorNombre(nombre)!=null) {
+            return false;
+		}
 		if(rol.equals("Estudiante")) {
             Estudiante e = new Estudiante(nombre, contraseña);
             repositorio.guardarUsuario(e);
@@ -26,6 +29,7 @@ public enum Controlador {
         	Colaborador c = new Colaborador(nombre, contraseña);
         	repositorio.guardarUsuario(c);
          }
+		return true;
 		
 	}
 	
