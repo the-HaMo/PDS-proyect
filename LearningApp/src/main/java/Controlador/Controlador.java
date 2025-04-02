@@ -1,4 +1,8 @@
 package Controlador;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import Clases.*;
 import Repositorio.RepositorioUsuario;
 
@@ -23,8 +27,6 @@ public enum Controlador {
         	repositorio.guardarUsuario(c);
          }
 		
-		
-		
 	}
 	
 	public boolean iniciarSesion(String nombre, String contraseña) {
@@ -36,6 +38,12 @@ public enum Controlador {
 			}
 		}
 		return false;
+	}
+	
+	public List<Curso> getCursosEnOrdenLikes(List<Curso> cursosOnline){
+		return cursosOnline.stream()
+				.sorted(Comparator.comparing(Curso::getNumMeGustas).reversed())
+				.collect(Collectors.toList());
 	}
 	
 	public void cerrarSesion() {

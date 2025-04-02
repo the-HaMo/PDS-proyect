@@ -1,6 +1,9 @@
 package Clases;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -15,6 +18,8 @@ public class Curso {
 	private String descripcion;
 	//private String autor;
 	//private ImageIcon imagen;
+	private int NumDescargas;
+	private int NumMeGustas;
 	
 	@JsonProperty("bloques_contenidos")
 	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
@@ -22,16 +27,22 @@ public class Curso {
 	
 	public Curso() {}
 	
-	public Curso(String nombre, String descripcion) {
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-	}
-	
-	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos) {
+	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos, int NumDescargas, int NumMeGustas) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.bloques_contenidos = bloques_contenidos;
+		this.NumDescargas = NumDescargas;
+		this.NumMeGustas = NumMeGustas;
 	}
+	
+	public Curso(String nombre, String descripcion) {
+		this(nombre, descripcion, null, 0, 0);
+	}
+	
+	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos) {
+		this(nombre, descripcion, bloques_contenidos, 0, 0);
+	}
+	
 	
 	public List<BloqueContenido> getBloquesContenidos() {
         return this.bloques_contenidos;
@@ -43,6 +54,23 @@ public class Curso {
 	
 	public String getDescripcion() {
 		return this.descripcion;
+	}
+	
+
+	public int getNumDescargas() {
+		return NumDescargas;
+	}
+
+	public void addNumDescargas() {
+		NumDescargas += 1;
+	}
+
+	public int getNumMeGustas() {
+		return NumMeGustas;
+	}
+
+	public void AddNumMeGustas() {
+		NumMeGustas += 1;
 	}
 	
 	public void setBloquesContenidos(List<BloqueContenido> bloques_contenidos) {
