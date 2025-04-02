@@ -1,9 +1,6 @@
 package Clases;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -16,7 +13,11 @@ public class Curso {
     private Integer id;
 	private String nombre;
 	private String descripcion;
-	//private String autor;
+	
+	@ManyToOne
+	@JoinColumn(name = "autor_id", nullable = false)
+	private Colaborador autor;
+	
 	//private ImageIcon imagen;
 	private int NumDescargas;
 	private int NumMeGustas;
@@ -73,12 +74,17 @@ public class Curso {
 		NumMeGustas += 1;
 	}
 	
+	public Colaborador getAutor() {
+		return autor;
+	}
+	
+	public void setAutor(Colaborador autor) {
+		this.autor = autor;
+	}
+	
 	public void setBloquesContenidos(List<BloqueContenido> bloques_contenidos) {
 		this.bloques_contenidos = bloques_contenidos;
 	}
 	
-	public String toString() {
-		return ("Curso: " + this.nombre + "\nDescripcion: " + this.descripcion + "\nBloques de contenido: "+ this.bloques_contenidos.toString());
-	}
 	
 }

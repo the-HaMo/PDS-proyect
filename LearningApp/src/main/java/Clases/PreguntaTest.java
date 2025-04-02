@@ -8,7 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "PreguntasTest")
 @DiscriminatorValue("TEST")
 public class PreguntaTest extends Pregunta {
 

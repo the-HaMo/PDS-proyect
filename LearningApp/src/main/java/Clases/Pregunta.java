@@ -26,8 +26,8 @@ public abstract class Pregunta {
     private Integer id;
 	
 	@ManyToOne
-    @JoinColumn(name = "bloque_contenido_id")
-    private BloqueContenido bloqueContenido;
+	@JoinColumn(name = "bloque_contenido_id", nullable = false)
+	private BloqueContenido bloqueContenido;
 	
     protected String enunciado;
 
@@ -44,6 +44,7 @@ public abstract class Pregunta {
     public void setEnunciado(String enunciado) {
         this.enunciado = enunciado;
     }
+    
     
     public abstract String getRespuesta();
 

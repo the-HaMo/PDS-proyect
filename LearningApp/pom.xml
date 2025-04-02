@@ -45,12 +45,39 @@
             <artifactId>hibernate-community-dialects</artifactId>
             <version>6.2.7.Final</version>
         </dependency>
+        
     	<dependency>
-      		<groupId>junit</groupId>
-      		<artifactId>junit</artifactId>
-     		<version>3.8.1</version>
-     		<scope>test</scope>
-    	</dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.11.0</version>
+			<scope>test</scope>
+		</dependency>
+<!--  Soporte para tests parametrizados  -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>5.11.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>3.26.0</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>5.10.0</version>
+			<scope>test</scope>
+		</dependency>
+<!--  Integración con JUnit 5  -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>5.10.0</version>
+			<scope>test</scope>
+		</dependency>
     
     <dependency>
         <groupId>com.fasterxml.jackson.core</groupId>
