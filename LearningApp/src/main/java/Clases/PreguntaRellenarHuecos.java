@@ -2,9 +2,13 @@ package Clases;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "PreguntasRellenarHuecos")
+@DiscriminatorValue("RELLENAR_HUECOS")
 public class PreguntaRellenarHuecos extends Pregunta {
 	
 	@JsonProperty("textoConHuecos")

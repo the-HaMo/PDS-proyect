@@ -16,8 +16,9 @@ import jakarta.persistence.*;
 })
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "preguntas")
+@Table(name = "Preguntas")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipo_preguntas", discriminatorType = DiscriminatorType.STRING)
 public abstract class Pregunta {
 	
 	@Id

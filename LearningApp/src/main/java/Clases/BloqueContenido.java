@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "bloques_contenidos")
+@Table(name = "Bloques_Contenidos")
 public class BloqueContenido {
 	
 	@Id

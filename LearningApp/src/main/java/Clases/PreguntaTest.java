@@ -3,9 +3,13 @@ package Clases;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "PreguntasTest")
+@DiscriminatorValue("TEST")
 public class PreguntaTest extends Pregunta {
 
     @JsonProperty("respuestaCorrecta")
