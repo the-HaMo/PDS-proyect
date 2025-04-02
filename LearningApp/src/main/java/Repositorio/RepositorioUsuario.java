@@ -43,6 +43,21 @@ public class RepositorioUsuario {
             em.close();
         }
     }
+    
+    public Usuario iniciarSesion(String nombre, String contraseña) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            List<Usuario> usuarios = em.createQuery(
+                    "SELECT u FROM Usuario u WHERE u.nombre = :nombre AND u.contraseña = :contraseña", Usuario.class)
+                    .setParameter("nombre", nombre)
+                    .setParameter("contraseña", contraseña)
+                    .getResultList();
+
+            return usuarios.isEmpty() ? null : usuarios.get(0);
+        } finally {
+            em.close();
+        }
+    }
 
     public List<Usuario> obtenerTodosLosUsuarios() {
         EntityManager em = emf.createEntityManager();

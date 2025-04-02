@@ -7,8 +7,8 @@ public class Main {
 
         // Crear estudiantes
         System.out.println("Creando estudiantes...");
-        usuarioController.crearEstudiante("Juan Pérez", "12345", "Estudiante");
-        usuarioController.crearEstudiante("Ana López", "abcd", "Estudiante");
+        usuarioController.crearEstudiante("Juan Pérez", "12345");
+        usuarioController.crearEstudiante("Ana López", "abcd");
         System.out.println("Creados");
         // Mostrar todos los usuarios
         usuarioController.mostrarUsuarios();

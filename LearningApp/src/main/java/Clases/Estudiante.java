@@ -7,13 +7,12 @@ import jakarta.persistence.*;
 @DiscriminatorValue("ESTUDIANTE")
 public class Estudiante extends Usuario{
 
-	private String rol;
 
 	public Estudiante() {}
 	
-	public Estudiante(String nombre, String contraseña, String rol) {
+	public Estudiante(String nombre, String contraseña) {
         super(nombre, contraseña);
-        this.rol = rol;
+        //this.rol = rol;
     }
 
 }

@@ -14,8 +14,8 @@ public class UsuarioController {
     }
 
     // Crear un estudiante
-    public void crearEstudiante(String nombre, String contraseña, String rol) {
-        Estudiante estudiante = new Estudiante(nombre, contraseña, rol); // Crear un Estudiante
+    public void crearEstudiante(String nombre, String contraseña) {
+        Estudiante estudiante = new Estudiante(nombre, contraseña); // Crear un Estudiante
         usuarioRepository.guardarUsuario(estudiante); // Guardar en el repositorio
         System.out.println("Estudiante creado con éxito.");
     }
