@@ -11,6 +11,7 @@ public class CursosColaborador {
 
     public CursosColaborador() {
         initialize();
+        this.frame.setVisible(true);
     }
 
     private void initialize() {
@@ -125,11 +126,9 @@ public class CursosColaborador {
         }
     }
 
-    public void showView() {
+    public void Mostrar() {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new CursosColaborador().showView());
-    }
+    
 }

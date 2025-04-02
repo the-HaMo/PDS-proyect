@@ -1,43 +1,35 @@
 package Clases;
 
 import jakarta.persistence.*;
-
 @Entity
 @Table(name = "Usuarios")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)  // Cambio de TABLE_PER_CLASS a JOINED
 @DiscriminatorColumn(name = "tipo_usuario", discriminatorType = DiscriminatorType.STRING)
 public abstract class Usuario {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	private String nombre;
-	private String contraseña;
-	//private String rol;
+    private Integer id;
 
-	public Usuario() {
-	}
+    private String nombre;
+    private String contrasena;
 
-	public Usuario(String nombre, String contraseña) {
-		this.nombre = nombre;
-		this.contraseña = contraseña;
-		//this.rol = rol;
-	}
+    public Usuario() {}
 
-	public String getNombre() {
-		return nombre;
-	}
+    public Usuario(String nombre, String contrasena) {
+        this.nombre = nombre;
+        this.contrasena = contrasena;
+    }
 
-	public String getContraseña() {
-		return contraseña;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	//public String getRol() {
-	//	return rol;
-	//}
-	
-	public Integer getId() {
-		return id;
-	}
+    public String getContraseña() {
+        return contrasena;
+    }
+
+    public Integer getId() {
+        return id;
+    }
 }

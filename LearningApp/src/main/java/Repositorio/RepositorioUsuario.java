@@ -32,11 +32,11 @@ public class RepositorioUsuario {
         }
     }
 
-    public Usuario obtenerUsuarioPorNombre(String nombre) {
+    public Usuario obtenerUsuarioPorNombre(String n) {
         EntityManager em = emf.createEntityManager();
         try {
             List<Usuario> usuarios = em.createQuery("SELECT u FROM Usuario u WHERE u.nombre = :nombre", Usuario.class)
-                                       .setParameter("nombre", nombre)
+                                       .setParameter("nombre", n)
                                        .getResultList();
             return usuarios.isEmpty() ? null : usuarios.get(0);
         } finally {
@@ -44,13 +44,13 @@ public class RepositorioUsuario {
         }
     }
     
-    public Usuario iniciarSesion(String nombre, String contraseña) {
+    public Usuario iniciarSesion(String n, String c) {
         EntityManager em = emf.createEntityManager();
         try {
             List<Usuario> usuarios = em.createQuery(
-                    "SELECT u FROM Usuario u WHERE u.nombre = :nombre AND u.contraseña = :contraseña", Usuario.class)
-                    .setParameter("nombre", nombre)
-                    .setParameter("contraseña", contraseña)
+                    "SELECT u FROM Usuario u WHERE u.nombre = :nombre AND u.contrasena = :contrasena", Usuario.class)
+                    .setParameter("nombre", n)
+                    .setParameter("contrasena", c)
                     .getResultList();
 
             return usuarios.isEmpty() ? null : usuarios.get(0);
@@ -58,6 +58,7 @@ public class RepositorioUsuario {
             em.close();
         }
     }
+
 
     public List<Usuario> obtenerTodosLosUsuarios() {
         EntityManager em = emf.createEntityManager();

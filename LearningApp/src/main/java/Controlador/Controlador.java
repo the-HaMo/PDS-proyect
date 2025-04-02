@@ -27,13 +27,15 @@ public enum Controlador {
 		
 	}
 	
-	public void iniciarSesion(String nombre, String contraseña) {
+	public boolean iniciarSesion(String nombre, String contraseña) {
 		if (usuarioActual == null) {	
 			Usuario u=repositorio.iniciarSesion(nombre, contraseña);
 			if(u!=null) {
-                usuarioActual = u;
+                 usuarioActual = u;
+                 return true;
 			}
 		}
+		return false;
 	}
 	
 	public void cerrarSesion() {
