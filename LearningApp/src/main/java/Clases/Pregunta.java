@@ -45,6 +45,17 @@ public abstract class Pregunta {
         this.enunciado = enunciado;
     }
     
+    public Integer getId() {
+        return id;
+    }
+    
+    public BloqueContenido getBloqueContenido() {
+        return bloqueContenido;
+    }
+    
+    public void setBloqueContenido(BloqueContenido bloqueContenido) {
+        this.bloqueContenido = bloqueContenido;
+    }
     
     public abstract String getRespuesta();
 

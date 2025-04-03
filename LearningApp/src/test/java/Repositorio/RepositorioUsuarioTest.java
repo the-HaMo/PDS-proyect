@@ -20,33 +20,33 @@ public class RepositorioUsuarioTest {
     @Test
     @Order(1)
     public void testGuardarYBuscarUsuario() {
-        Estudiante e = new Estudiante("prueba1", "pass1");
+        Estudiante e = new Estudiante("Jorge", "1234");
         repositorio.guardarUsuario(e);
 
-        Usuario u = repositorio.obtenerUsuarioPorNombre("prueba1");
+        Usuario u = repositorio.obtenerUsuarioPorNombre("Jorge");
         assertNotNull(u);
-        assertEquals("prueba1", u.getNombre());
+        assertEquals("Jorge", u.getNombre());
     }
 
     @Test
     @Order(2)
     public void testIniciarSesionExitosa() {
-        Usuario u = repositorio.iniciarSesion("prueba1", "pass1");
+        Usuario u = repositorio.iniciarSesion("Jorge", "1234");
         assertNotNull(u);
-        assertEquals("prueba1", u.getNombre());
+        assertEquals("Jorge", u.getNombre());
     }
 
     @Test
     @Order(3)
     public void testIniciarSesionFallida() {
-        Usuario u = repositorio.iniciarSesion("prueba1", "wrong");
+        Usuario u = repositorio.iniciarSesion("Jorge", "wrong");
         assertNull(u);
     }
 
     @Test
     @Order(4)
     public void testEliminarUsuario() {
-        Usuario u = repositorio.obtenerUsuarioPorNombre("prueba1");
+        Usuario u = repositorio.obtenerUsuarioPorNombre("Jorge");
         assertNotNull(u);
 
         repositorio.eliminarUsuario(u.getId());
