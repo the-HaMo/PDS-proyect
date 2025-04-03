@@ -8,9 +8,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import Clases.BloqueContenido;
-import Clases.Colaborador;
 import Clases.Curso;
-import Clases.Estudiante;
+
 
 class ControladorTest {
 
