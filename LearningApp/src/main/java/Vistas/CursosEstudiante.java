@@ -14,12 +14,8 @@ import javax.swing.JScrollPane;
 
 import Clases.Curso;
 import Utilidades.LectorCurso;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 
 import java.awt.BorderLayout;
-import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
