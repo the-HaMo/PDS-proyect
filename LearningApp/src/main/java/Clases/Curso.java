@@ -1,5 +1,6 @@
 package Clases;
 
+import java.util.LinkedList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -26,7 +27,9 @@ public class Curso {
 	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
 	private List<BloqueContenido> bloques_contenidos;
 	
-	public Curso() {}
+	public Curso() {
+		this.bloques_contenidos = new LinkedList<BloqueContenido>();
+	}
 	
 	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos, int NumDescargas, int NumMeGustas) {
 		this.nombre = nombre;
@@ -37,7 +40,7 @@ public class Curso {
 	}
 	
 	public Curso(String nombre, String descripcion) {
-		this(nombre, descripcion, null, 0, 0);
+		this(nombre, descripcion, new LinkedList<BloqueContenido>(), 0, 0);
 	}
 	
 	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos) {
@@ -82,9 +85,14 @@ public class Curso {
 		this.autor = autor;
 	}
 	
-	public void setBloquesContenidos(List<BloqueContenido> bloques_contenidos) {
-		this.bloques_contenidos = bloques_contenidos;
+	public void addBloque(BloqueContenido bloque) {
+		bloques_contenidos.add(bloque);
 	}
 	
-	
+	public long numPreguntasTotales() {
+		return this.getBloquesContenidos().stream()
+				.flatMap(b -> b.getPreguntas().stream())
+				.count();
+				
+	}
 }

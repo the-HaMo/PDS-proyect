@@ -1,5 +1,6 @@
 package Clases;
 
+import java.util.LinkedList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -23,11 +24,17 @@ public class BloqueContenido {
     @OneToMany(mappedBy = "bloqueContenido")
     private List<Pregunta> preguntas;
 
-    public BloqueContenido() {}
+    public BloqueContenido() {
+    	this.preguntas = new LinkedList<Pregunta>();
+    }
 
     public BloqueContenido(String nombreBloque, List<Pregunta> preguntas) {
         this.nombreBloque = nombreBloque;
         this.preguntas = preguntas;
+    }
+    
+    public BloqueContenido(String nombreBloque) {
+    	this(nombreBloque, new LinkedList<Pregunta>());
     }
 
     public String getNombreBloque() {
@@ -42,9 +49,10 @@ public class BloqueContenido {
         return preguntas;
     }
 
-    public void setPreguntas(List<Pregunta> preguntas) {
-        this.preguntas = preguntas;
+    public void addPregunta(Pregunta p) {
+    	preguntas.add(p);
     }
+    
     public String toString() {
     	       return ("Bloque de contenido: " + this.nombreBloque + "\nPreguntas: " + this.preguntas.toString());
     }
