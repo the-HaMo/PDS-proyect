@@ -27,8 +27,8 @@ public class PreguntaTest extends Pregunta {
         return respuestaCorrecta;
     }
     
-    public void setRespuestaCorrecta(String respuestaCorrecta) {
-        this.respuestaCorrecta = respuestaCorrecta;
+    public boolean isCorrecta(String respuesta) {
+        return respuesta.toLowerCase().equals(respuestaCorrecta);
     }
 
     public List<String> getOpciones() {
