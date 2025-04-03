@@ -25,6 +25,10 @@ public class PreguntaTraduccion extends Pregunta {
         return respuestaCorrecta;
     }
     
+    public boolean isCorrecta(String respuesta) {
+        return respuesta.equals(respuestaCorrecta);
+    }
+    
 	public String toString() {
 		return ("Pregunta de traducción: " + this.enunciado + "\nRespuesta: " + this.respuestaCorrecta);
 	}

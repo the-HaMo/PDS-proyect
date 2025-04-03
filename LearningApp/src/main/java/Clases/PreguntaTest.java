@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
 @Entity
 @DiscriminatorValue("TEST")
@@ -28,8 +27,8 @@ public class PreguntaTest extends Pregunta {
         return respuestaCorrecta;
     }
     
-    public void setRespuestaCorrecta(String respuestaCorrecta) {
-        this.respuestaCorrecta = respuestaCorrecta;
+    public boolean isCorrecta(String respuesta) {
+        return respuesta.toLowerCase().equals(respuestaCorrecta);
     }
 
     public List<String> getOpciones() {

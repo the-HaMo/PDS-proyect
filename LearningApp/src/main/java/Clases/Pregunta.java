@@ -30,7 +30,7 @@ public abstract class Pregunta {
 	private BloqueContenido bloqueContenido;
 	
     protected String enunciado;
-
+    
     public Pregunta() {}
 
     public Pregunta(String enunciado) {
