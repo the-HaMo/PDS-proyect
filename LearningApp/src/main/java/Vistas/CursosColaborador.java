@@ -20,7 +20,7 @@ public class CursosColaborador {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new BorderLayout());
 
-        // --- Panel del título ---
+        // Panel del título
         JPanel panelTitulo = new JPanel(new BorderLayout());
         panelTitulo.setBackground(new Color(0, 255, 0));
         panelTitulo.setPreferredSize(new Dimension(10, 50));
@@ -31,76 +31,91 @@ public class CursosColaborador {
         panelTitulo.add(lblApp, BorderLayout.CENTER);
 
         JLabel lblUsuario = new JLabel("Hola --- !");
-        lblUsuario.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0)); // Espaciado izquierdo
+        lblUsuario.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
         panelTitulo.add(lblUsuario, BorderLayout.SOUTH);
 
-        // --- Panel de Bibliotecas ---
+        // Panel de bibliotecas
         JPanel panelBibliotecas = new JPanel(new BorderLayout());
         panelBibliotecas.setBackground(new Color(128, 255, 128));
         frame.getContentPane().add(panelBibliotecas, BorderLayout.CENTER);
 
-        // --- Biblioteca General ---
+        // -------------------- Panel General (CursosOnline) --------------------
         modeloGeneral = new DefaultListModel<>();
         listaGeneral = new JList<>(modeloGeneral);
-        JPanel panelGeneral = crearBibliotecaPanel("CursosOnline", listaGeneral, "Compartir Curso", this::compartirCurso);
+
+        JPanel panelGeneral = new JPanel(new BorderLayout());
+        panelGeneral.setPreferredSize(new Dimension(250, 300));
+        panelGeneral.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "CursosOnline"));
+        panelGeneral.setBackground(Color.WHITE);
+
+        JScrollPane scrollGeneral = new JScrollPane(listaGeneral);
+        scrollGeneral.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
+        panelGeneral.add(scrollGeneral, BorderLayout.CENTER);
+
+        JButton btnCompartir = new JButton("Compartir Curso");
+        btnCompartir.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+        btnCompartir.setForeground(Color.WHITE);
+        btnCompartir.setBackground(Color.decode("#4CAF50"));
+        btnCompartir.setFocusPainted(false);
+        btnCompartir.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+        btnCompartir.addActionListener(e -> compartirCurso());
+
+        JPanel panelBotonCompartir = new JPanel();
+        panelBotonCompartir.setBackground(Color.WHITE);
+        panelBotonCompartir.add(btnCompartir);
+        panelGeneral.add(panelBotonCompartir, BorderLayout.SOUTH);
+
         panelBibliotecas.add(panelGeneral, BorderLayout.WEST);
 
-        // --- Biblioteca Privada ---
+        // -------------------- Panel Privado (MisCursos) --------------------
         modeloPrivado = new DefaultListModel<>();
         listaPrivado = new JList<>(modeloPrivado);
-        JPanel panelPrivado = crearBibliotecaPanel("MisCursos", listaPrivado, "Importar Curso", this::importarCurso);
+
+        JPanel panelPrivado = new JPanel(new BorderLayout());
+        panelPrivado.setPreferredSize(new Dimension(250, 300));
+        panelPrivado.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "MisCursos"));
+        panelPrivado.setBackground(Color.WHITE);
+
+        JScrollPane scrollPrivado = new JScrollPane(listaPrivado);
+        scrollPrivado.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
+        panelPrivado.add(scrollPrivado, BorderLayout.CENTER);
+
+        JButton btnImportar = new JButton("Importar Curso");
+        btnImportar.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+        btnImportar.setForeground(Color.WHITE);
+        btnImportar.setBackground(Color.decode("#4CAF50"));
+        btnImportar.setFocusPainted(false);
+        btnImportar.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+        btnImportar.addActionListener(e -> importarCurso());
+
+        JPanel panelBotonImportar = new JPanel();
+        panelBotonImportar.setBackground(Color.WHITE);
+        panelBotonImportar.add(btnImportar);
+        panelPrivado.add(panelBotonImportar, BorderLayout.SOUTH);
+
         panelBibliotecas.add(panelPrivado, BorderLayout.EAST);
-        
+
         Component verticalStrut = Box.createVerticalStrut(20);
         verticalStrut.setPreferredSize(new Dimension(0, 10));
         panelBibliotecas.add(verticalStrut, BorderLayout.NORTH);
-        
-        JPanel panel = new JPanel();
-        panel.setBackground(new Color(128, 255, 128));
-        panel.setPreferredSize(new Dimension(10, 30));
-        frame.getContentPane().add(panel, BorderLayout.SOUTH);
-        panel.setLayout(new BorderLayout(0, 0));
-        
-        JPanel panel_1 = new JPanel();
-        panel_1.setBackground(new Color(128, 255, 128));
-        frame.getContentPane().add(panel_1, BorderLayout.WEST);
-        
-        JPanel panel_2 = new JPanel();
-        panel_2.setBackground(new Color(128, 255, 128));
-        frame.getContentPane().add(panel_2, BorderLayout.EAST);
+
+        JPanel panelSur = new JPanel();
+        panelSur.setBackground(new Color(128, 255, 128));
+        panelSur.setPreferredSize(new Dimension(10, 30));
+        frame.getContentPane().add(panelSur, BorderLayout.SOUTH);
+
+        JPanel panelOeste = new JPanel();
+        panelOeste.setBackground(new Color(128, 255, 128));
+        frame.getContentPane().add(panelOeste, BorderLayout.WEST);
+
+        JPanel panelEste = new JPanel();
+        panelEste.setBackground(new Color(128, 255, 128));
+        frame.getContentPane().add(panelEste, BorderLayout.EAST);
     }
 
-    private JPanel crearBibliotecaPanel(String titulo, JList<String> lista, String botonTexto, Runnable accion) {
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), titulo));
-        panel.setPreferredSize(new Dimension(250, 300));
-        panel.setBackground(Color.WHITE); // Fondo blanco
-
-        // Lista dentro de un scrollPane con bordes suaves
-        JScrollPane scrollPane = new JScrollPane(lista);
-        scrollPane.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3)); 
-        panel.add(scrollPane, BorderLayout.CENTER);
-
-        // Botón con mejor estilo
-        JButton boton = new JButton(botonTexto);
-        boton.setFont(new Font("Sans-Serif", Font.BOLD, 12));
-        boton.setForeground(Color.WHITE);
-        boton.setBackground(Color.decode("#4CAF50")); // Verde moderno
-        boton.setFocusPainted(false);
-        boton.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15)); // Mejor espaciado
-        boton.addActionListener(e -> accion.run());
-        
-        // Contenedor del botón para mayor separación
-        JPanel panelBoton = new JPanel();
-        panelBoton.setBackground(Color.WHITE);
-        panelBoton.add(boton);
-
-        panel.add(panelBoton, BorderLayout.SOUTH);
-
-        return panel;
-    }
-
-
+    
+    // Funcionalidad de los botones 
+    
     private void importarCurso() {
         String curso = JOptionPane.showInputDialog(frame, "Ingrese el nombre del curso:");
 
@@ -129,6 +144,4 @@ public class CursosColaborador {
     public void Mostrar() {
         frame.setVisible(true);
     }
-
-    
 }
