@@ -8,6 +8,7 @@ public class CursosColaborador {
     private JFrame frame;
     private DefaultListModel<String> modeloGeneral, modeloPrivado;
     private JList<String> listaGeneral, listaPrivado;
+    private JPanel panelBotones;
 
     public CursosColaborador() {
         initialize();
@@ -29,10 +30,6 @@ public class CursosColaborador {
         JLabel lblApp = new JLabel("LearningApp Colaborador", SwingConstants.CENTER);
         lblApp.setFont(new Font("Tahoma", Font.BOLD, 16));
         panelTitulo.add(lblApp, BorderLayout.CENTER);
-
-        JLabel lblUsuario = new JLabel("Hola --- !");
-        lblUsuario.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
-        panelTitulo.add(lblUsuario, BorderLayout.SOUTH);
 
         // Panel de bibliotecas
         JPanel panelBibliotecas = new JPanel(new BorderLayout());
@@ -98,6 +95,23 @@ public class CursosColaborador {
         Component verticalStrut = Box.createVerticalStrut(20);
         verticalStrut.setPreferredSize(new Dimension(0, 10));
         panelBibliotecas.add(verticalStrut, BorderLayout.NORTH);
+        
+        panelBotones = new JPanel();
+        panelBotones.setBackground(new Color(128, 255, 128));
+        panelBibliotecas.add(panelBotones, BorderLayout.NORTH);
+        panelBotones.setLayout(new BorderLayout(0, 0));
+        
+        JButton btnlogout = new JButton("Logout");
+        btnlogout.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+        btnlogout.setForeground(Color.WHITE);
+        btnlogout.setBackground(Color.decode("#4CAF50"));
+        btnlogout.setFocusPainted(false);
+        btnlogout.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+        panelBotones.add(btnlogout, BorderLayout.EAST);
+        
+        JLabel lblNewLabel = new JLabel("Hola --- !");
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+        panelBotones.add(lblNewLabel, BorderLayout.WEST);
 
         JPanel panelSur = new JPanel();
         panelSur.setBackground(new Color(128, 255, 128));

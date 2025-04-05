@@ -38,10 +38,6 @@ public class CursosEstudiante {
         lblApp.setFont(new Font("Tahoma", Font.BOLD, 16));
         panelTitulo.add(lblApp, BorderLayout.CENTER);
 
-        JLabel lblUsuario = new JLabel("Hola --- !");
-        lblUsuario.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
-        panelTitulo.add(lblUsuario, BorderLayout.SOUTH);
-
         // Panel de bibliotecas
         JPanel panelBibliotecas = new JPanel(new BorderLayout());
         panelBibliotecas.setBackground(new Color(128, 255, 128));
@@ -60,7 +56,7 @@ public class CursosEstudiante {
         scrollGeneral.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
         panelGeneral.add(scrollGeneral, BorderLayout.CENTER);
 
-        JButton btnCompartir = new JButton("Importar Curso");
+        JButton btnCompartir = new JButton("Exportar Curso");
         btnCompartir.setFont(new Font("Sans-Serif", Font.BOLD, 12));
         btnCompartir.setForeground(Color.WHITE);
         btnCompartir.setBackground(Color.decode("#4CAF50"));
@@ -95,7 +91,7 @@ public class CursosEstudiante {
         scrollPrivado.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
         panelPrivado.add(scrollPrivado, BorderLayout.CENTER);
 
-        JButton btnImportar = new JButton("Tendencias");
+        JButton btnImportar = new JButton("Ver detalles");
         btnImportar.setFont(new Font("Sans-Serif", Font.BOLD, 12));
         btnImportar.setForeground(Color.WHITE);
         btnImportar.setBackground(Color.decode("#4CAF50"));
@@ -108,10 +104,23 @@ public class CursosEstudiante {
         panelPrivado.add(panelBotonImportar, BorderLayout.SOUTH);
 
         panelBibliotecas.add(panelPrivado, BorderLayout.EAST);
-
-        Component verticalStrut = Box.createVerticalStrut(20);
-        verticalStrut.setPreferredSize(new Dimension(0, 10));
-        panelBibliotecas.add(verticalStrut, BorderLayout.NORTH);
+        
+        JPanel panel = new JPanel();
+        panel.setBackground(new Color(128, 255, 128));
+        panelBibliotecas.add(panel, BorderLayout.NORTH);
+        panel.setLayout(new BorderLayout(0, 0));
+        
+        JButton btnlogout = new JButton("Logout");
+        btnlogout.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+        btnlogout.setForeground(Color.WHITE);
+        btnlogout.setBackground(Color.decode("#4CAF50"));
+        btnlogout.setFocusPainted(false);
+        btnlogout.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+        panel.add(btnlogout, BorderLayout.EAST);
+        
+        JLabel lblNewLabel = new JLabel("Hola ---!");
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+        panel.add(lblNewLabel, BorderLayout.WEST);
 
         JPanel panelSur = new JPanel();
         panelSur.setBackground(new Color(128, 255, 128));
