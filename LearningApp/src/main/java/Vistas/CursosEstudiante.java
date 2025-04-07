@@ -1,125 +1,142 @@
 package Vistas;
 
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.io.File;
-
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-
-import Clases.Curso;
-import Utilidades.LectorCurso;
-
-import java.awt.BorderLayout;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
+import java.awt.*;
+import javax.swing.*;
 
 public class CursosEstudiante {
 
     private JFrame frame;
 
-    /**
-     * Create the application.
-     */
-    public CursosEstudiante() {
-        initialize();
-        this.frame.setVisible(true);
-    }
-
-    /**
-     * Initialize the contents of the frame.
-     */
-    public void initialize() {
-        frame = new JFrame();
-        frame.getContentPane().setBackground(new Color(209, 250, 208));
-        
-        JPanel panel_abajo = new JPanel();
-        panel_abajo.setOpaque(false);
-        frame.getContentPane().add(panel_abajo, BorderLayout.SOUTH);
-        
-        JPanel panel_arriba = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        panel_arriba.setOpaque(false);
-        frame.getContentPane().add(panel_arriba, BorderLayout.NORTH);
-        
-        JButton botonImportar = new JButton("Importar Curso");
-        panel_arriba.add(botonImportar);
-        
-        JPanel panel_medio = new JPanel();
-        panel_medio.setOpaque(false);
-        frame.getContentPane().add(panel_medio, BorderLayout.CENTER);
-        frame.setBounds(100, 100, 500, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        DefaultListModel<Elemento> modeloCursos = new DefaultListModel<>();
-        botonImportar.addActionListener(e -> {
-            JFileChooser fileChooser = new JFileChooser();
-            int seleccion = fileChooser.showOpenDialog(frame);
-
-            if (seleccion == JFileChooser.APPROVE_OPTION) {
-                File cursoFile = fileChooser.getSelectedFile();
-
-                if (cursoFile.getName().endsWith(".json")) {
-                    Curso cursoImportado = LectorCurso.leerCursoDesdeJSON(cursoFile);
-                    
-                    if (cursoImportado != null) {
-                        // Aquí puedes añadirlo a tu lista de cursos
-                        modeloCursos.addElement(new Elemento(cursoImportado));
-                        
-                       // System.out.println(cursoImportado.toString());
-                        
-                        /*EntityManagerFactory emf = Persistence.createEntityManagerFactory("ejemplo");
-                        EntityManager em = emf.createEntityManager();
-
-                        em.getTransaction().begin();
-                        em.persist(cursoImportado);
-                        em.getTransaction().commit();
-                        em.close();
-                        emf.close();*/
-                        JOptionPane.showMessageDialog(frame, "Curso importado correctamente: " + cursoImportado.getNombre());
-                    } else {
-                        JOptionPane.showMessageDialog(frame, "Error al importar el curso.");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(frame, "El archivo seleccionado no es un JSON válido.");
-                }
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+                CursosEstudiante window = new CursosEstudiante();
+                window.frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
-
-        
-        /*
-         * Cursos default los 4 primeros
-         */
-        
-        
-        Curso c1= new Curso("Curso de Java", "Aprende Java desde cero");
-        Curso c2 = new Curso("Curso de Python", "Aprende Python desde cero");
-        Curso c3 = new Curso("Curso de C++", "Aprende C++ desde cero");
-        Curso c4 = new Curso("Curso de JavaScript", "Aprende JavaScript desde cero");
-        
-        modeloCursos.addElement(new Elemento(c1));
-        modeloCursos.addElement(new Elemento(c2));
-        modeloCursos.addElement(new Elemento(c3));
-        modeloCursos.addElement(new Elemento(c4));
-        
-        JList<Elemento> listaCursos = new JList<>(modeloCursos);
-        listaCursos.setCellRenderer(new ElementoListRenderer());
-        //listaCursos.setPreferredSize(new Dimension(260,300));
-        JScrollPane scroll = new JScrollPane(listaCursos);
-        scroll.setPreferredSize(new Dimension(260, 300));
-        panel_medio.add(scroll, BorderLayout.CENTER);
-        
-        frame.getContentPane().add(panel_medio, BorderLayout.CENTER);
-        
     }
 
-	public void Mostrar() {
-		frame.setVisible(true);
-	}
+    public CursosEstudiante() {
+        initialize();
+    }
 
+    private void initialize() {
+    	frame = new JFrame("Cursos Colaborador");
+        frame.setBounds(100, 100, 800, 600); // Tamaño aumentado
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(new BorderLayout());
+
+        // Panel del título
+        JPanel panelTitulo = new JPanel(new BorderLayout());
+        panelTitulo.setBackground(new Color(0, 255, 0));
+        panelTitulo.setPreferredSize(new Dimension(10, 50));
+        frame.getContentPane().add(panelTitulo, BorderLayout.NORTH);
+
+        JLabel lblApp = new JLabel("LearningApp Estudiante", SwingConstants.CENTER);
+        lblApp.setFont(new Font("Tahoma", Font.BOLD, 16));
+        panelTitulo.add(lblApp, BorderLayout.CENTER);
+
+        // Panel de bibliotecas
+        JPanel panelBibliotecas = new JPanel(new BorderLayout());
+        panelBibliotecas.setBackground(new Color(128, 255, 128));
+        frame.getContentPane().add(panelBibliotecas, BorderLayout.CENTER);
+
+        // -------------------- Panel General (CursosOnline) --------------------
+        DefaultListModel<String> modeloGeneral = new DefaultListModel<>();
+        JList<String> listaGeneral = new JList<>(modeloGeneral);
+
+        JPanel panelGeneral = new JPanel(new BorderLayout());
+        panelGeneral.setPreferredSize(new Dimension(370, 300));
+        panelGeneral.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "CursosOnline"));
+        panelGeneral.setBackground(Color.WHITE);
+
+        JScrollPane scrollGeneral = new JScrollPane(listaGeneral);
+        scrollGeneral.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
+        panelGeneral.add(scrollGeneral, BorderLayout.CENTER);
+
+        JButton btnCompartir = new JButton("Exportar Curso");
+        btnCompartir.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+        btnCompartir.setForeground(Color.WHITE);
+        btnCompartir.setBackground(Color.decode("#4CAF50"));
+        btnCompartir.setFocusPainted(false);
+        btnCompartir.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+        
+        JButton btnTendencias = new JButton("Tendencias");
+        btnTendencias.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+        btnTendencias.setForeground(Color.WHITE);
+        btnTendencias.setBackground(Color.decode("#4CAF50"));
+        btnTendencias.setFocusPainted(false);
+        btnTendencias.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+       
+        JPanel panelBotonCompartir = new JPanel();
+        panelBotonCompartir.setBackground(Color.WHITE);
+        panelBotonCompartir.add(btnCompartir);
+        panelBotonCompartir.add(btnTendencias);
+        panelGeneral.add(panelBotonCompartir, BorderLayout.SOUTH);
+
+        panelBibliotecas.add(panelGeneral, BorderLayout.WEST);
+
+        // -------------------- Panel Privado (MisCursos) --------------------
+        DefaultListModel<String> modeloPrivado = new DefaultListModel<>();
+        JList<String> listaPrivado = new JList<>(modeloPrivado);
+
+        JPanel panelPrivado = new JPanel(new BorderLayout());
+        panelPrivado.setPreferredSize(new Dimension(370, 300));
+        panelPrivado.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "MisCursos"));
+        panelPrivado.setBackground(Color.WHITE);
+
+        JScrollPane scrollPrivado = new JScrollPane(listaPrivado);
+        scrollPrivado.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
+        panelPrivado.add(scrollPrivado, BorderLayout.CENTER);
+
+        JButton btnImportar = new JButton("Ver detalles");
+        btnImportar.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+        btnImportar.setForeground(Color.WHITE);
+        btnImportar.setBackground(Color.decode("#4CAF50"));
+        btnImportar.setFocusPainted(false);
+        btnImportar.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+       
+        JPanel panelBotonImportar = new JPanel();
+        panelBotonImportar.setBackground(Color.WHITE);
+        panelBotonImportar.add(btnImportar);
+        panelPrivado.add(panelBotonImportar, BorderLayout.SOUTH);
+
+        panelBibliotecas.add(panelPrivado, BorderLayout.EAST);
+        
+        JPanel panel = new JPanel();
+        panel.setBackground(new Color(128, 255, 128));
+        panelBibliotecas.add(panel, BorderLayout.NORTH);
+        panel.setLayout(new BorderLayout(0, 0));
+        
+        JButton btnlogout = new JButton("Logout");
+        btnlogout.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+        btnlogout.setForeground(Color.WHITE);
+        btnlogout.setBackground(Color.decode("#4CAF50"));
+        btnlogout.setFocusPainted(false);
+        btnlogout.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+        panel.add(btnlogout, BorderLayout.EAST);
+        
+        JLabel lblNewLabel = new JLabel("Hola ---!");
+        lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+        panel.add(lblNewLabel, BorderLayout.WEST);
+
+        JPanel panelSur = new JPanel();
+        panelSur.setBackground(new Color(128, 255, 128));
+        panelSur.setPreferredSize(new Dimension(10, 30));
+        frame.getContentPane().add(panelSur, BorderLayout.SOUTH);
+
+        JPanel panelOeste = new JPanel();
+        panelOeste.setBackground(new Color(128, 255, 128));
+        frame.getContentPane().add(panelOeste, BorderLayout.WEST);
+
+        JPanel panelEste = new JPanel();
+        panelEste.setBackground(new Color(128, 255, 128));
+        frame.getContentPane().add(panelEste, BorderLayout.EAST);
+    }
+    
+    public void Mostrar() {
+    	frame.setVisible(true);
+    }
 }
