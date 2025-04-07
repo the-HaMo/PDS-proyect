@@ -167,4 +167,8 @@ public class Login {
 			label.setIcon(new ImageIcon(scaledImg));
 		}
 	}
+	
+	public void show() {
+		this.frame.setVisible(true);
+	}
 }
