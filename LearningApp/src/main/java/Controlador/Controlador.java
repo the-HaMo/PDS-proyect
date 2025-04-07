@@ -61,4 +61,5 @@ public enum Controlador {
 	public Usuario getUsuarioActual() {
 		return usuarioActual;
 	}
+	
 }

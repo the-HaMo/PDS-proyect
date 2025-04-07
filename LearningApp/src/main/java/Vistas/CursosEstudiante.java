@@ -2,6 +2,7 @@ package Vistas;
 
 import java.awt.*;
 import javax.swing.*;
+import Controlador.Controlador;
 
 public class CursosEstudiante {
 
@@ -119,6 +120,7 @@ public class CursosEstudiante {
         panel.add(btnlogout, BorderLayout.EAST);
         btnlogout.addActionListener(e -> {
         	// GUARDAR EL ESTADO ACTUAL 
+        	Controlador.INSTANCE.cerrarSesion();
         	frame.dispose();
         	Login login = new Login();
         	login.show();

@@ -2,6 +2,7 @@ package Vistas;
 
 import java.awt.*;
 import javax.swing.*;
+import Controlador.Controlador;
 
 public class CursosColaborador {
 
@@ -109,6 +110,7 @@ public class CursosColaborador {
         btnlogout.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
         btnlogout.addActionListener(e -> {
         	// GUARDAR EL ESTADO ACTUAL 
+        	Controlador.INSTANCE.cerrarSesion();
         	frame.dispose();
         	Login login = new Login();
         	login.show();
