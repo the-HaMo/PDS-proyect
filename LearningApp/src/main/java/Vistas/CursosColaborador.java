@@ -12,8 +12,8 @@ import Utilidades.LectorCurso;
 public class CursosColaborador {
 
     private JFrame frame;
-    private DefaultListModel<String> modeloGeneral, modeloPrivado;
-    private JList<String> listaGeneral, listaPrivado;
+    private DefaultListModel<Curso> modeloGeneral, modeloPrivado;
+    private JList<Curso> listaGeneral, listaPrivado;
     private JPanel panelBotones;
 
     public CursosColaborador() {
@@ -45,7 +45,9 @@ public class CursosColaborador {
         // -------------------- Panel General (CursosOnline) --------------------
         modeloGeneral = new DefaultListModel<>();
         listaGeneral = new JList<>(modeloGeneral);
-
+        
+        listaGeneral.setCellRenderer(crearCursoRenderer());
+        
         JPanel panelGeneral = new JPanel(new BorderLayout());
         panelGeneral.setPreferredSize(new Dimension(370, 300));
         panelGeneral.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "CursosOnline"));
@@ -73,7 +75,9 @@ public class CursosColaborador {
         // -------------------- Panel Privado (MisCursos) --------------------
         modeloPrivado = new DefaultListModel<>();
         listaPrivado = new JList<>(modeloPrivado);
-
+        
+        listaPrivado.setCellRenderer(crearCursoRenderer());
+        
         JPanel panelPrivado = new JPanel(new BorderLayout());
         panelPrivado.setPreferredSize(new Dimension(370, 300));
         panelPrivado.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "MisCursos"));
@@ -153,9 +157,8 @@ public class CursosColaborador {
             Curso curso = LectorCurso.leerCursoDesdeJSON(archivoSeleccionado);
             
             if (curso != null) {
-                String nombreCurso = curso.getNombre();
-                if (!modeloPrivado.contains(nombreCurso)) {
-                    modeloPrivado.addElement(nombreCurso);
+                if (!modeloPrivado.contains(curso)) {
+                    modeloPrivado.addElement(curso);
                 } else {
                     JOptionPane.showMessageDialog(frame, "Este curso ya ha sido importado.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
@@ -167,10 +170,11 @@ public class CursosColaborador {
     }
 
     private void compartirCurso() {
-        String curso = listaPrivado.getSelectedValue();
-        if (curso != null) {
-            if (!modeloGeneral.contains(curso)) {
-                modeloGeneral.addElement(curso);
+        Curso cursoSeleccionado = listaPrivado.getSelectedValue();
+        
+        if (cursoSeleccionado != null) {
+            if (!modeloGeneral.contains(cursoSeleccionado)) {
+                modeloGeneral.addElement(cursoSeleccionado);
             } else {
                 JOptionPane.showMessageDialog(frame, "Este curso ya está en la Biblioteca General.", "Aviso", JOptionPane.WARNING_MESSAGE);
             }
@@ -179,9 +183,31 @@ public class CursosColaborador {
         }
     }
 
+
     public void Mostrar() {
         frame.setVisible(true);
     }
+    
+    //Formato de Cursos en las listas privada y publica
+    private DefaultListCellRenderer crearCursoRenderer() {
+        return new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                                                          boolean isSelected, boolean cellHasFocus) {
+                JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof Curso) {
+                    Curso curso = (Curso) value;
+                    label.setText("<html>" +
+                            "<span style='font-size: 14px; color: #2E8B57;'><b>" + curso.getNombre() + "</b></span><br/>" +
+                            "Autor: " + (curso.getAutor() != null ? curso.getAutor().getNombre() : "Sin autor") + "<br/>" +
+                            "Descripción: " + curso.getDescripcion() +
+                            "</html>");
+                }
+                return label;
+            }
+        };
+    }
+
     
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {

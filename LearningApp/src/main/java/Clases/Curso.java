@@ -114,4 +114,9 @@ public class Curso {
 				.count();
 				
 	}
+	
+	@Override
+	public String toString() {
+	    return String.format("%s - %s (%s)", nombre, idioma, autor != null ? autor.getNombre() : "Sin autor");
+	}
 }
