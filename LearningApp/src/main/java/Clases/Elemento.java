@@ -2,11 +2,13 @@ package Clases;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
 
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
@@ -23,58 +25,89 @@ public class Elemento extends JPanel {
     private String idioma;
     private ImageIcon fto;
     
+    
     public Elemento(Curso c) {
-    	System.out.println("Creando elemento....");
-    	this.autor = c.getAutor().getNombre();
-    	this.Nombre = c.getNombre();
-    	this.descripcion = c.getDescripcion();
-    	this.idioma = c.getIdioma();
-    	switch (idioma) {
-    		case "español":
-    			ImageIcon spain = new ImageIcon(getClass().getResource("/spain.png"));
-    		    Image spainScalar = imagenCircular(spain.getImage());
-    		    this.fto = new ImageIcon(spainScalar);
-    			break;
-    		case "francés":
-    			ImageIcon france = new ImageIcon(getClass().getResource("/france.png"));
-    		    Image franceScalar = imagenCircular(france.getImage());
-    		    this.fto = new ImageIcon(franceScalar);
-    			break;
-    		case "ingles":
-    			ImageIcon uk = new ImageIcon(getClass().getResource("/United-Kingdom.png"));
-    		    Image ukScalar = imagenCircular(uk.getImage());
-    		    this.fto = new ImageIcon(ukScalar);
-    			break;
-    	}
-    	
-    	initializeComponent(Color.BLACK);
-    	
+        System.out.println("Creando elemento para curso: " + c.getNombre());
+        
+        this.autor = c.getAutor().getNombre();
+        this.Nombre = c.getNombre();
+        this.descripcion = c.getDescripcion();
+        this.idioma = c.getIdioma();
+
+        // Debug: Imprime la ruta del idioma
+        System.out.println("Idioma del curso: " + idioma);
+        
+        // Carga la imagen con depuración
+        this.fto = cargarImagenIdioma(idioma);
+        System.out.println("Imagen cargada: " + (fto != null ? "Éxito" : "Falló"));
+        
+        initializeComponent(Color.BLACK);
+    }
+
+    private ImageIcon cargarImagenIdioma(String idioma) {
+        String ruta = "";
+        switch (idioma.toLowerCase()) {
+            case "español":
+                ruta = "/spain.png";
+                break;
+            case "francés":
+                ruta = "/france.png";
+                break;
+            case "ingles":
+                ruta = "/United-Kingdom.png";
+                break;
+            default:
+                System.err.println("Idioma no reconocido: " + idioma);
+                return crearIconoTexto(idioma); // Fallback
+        }
+
+        try {
+            // Debug: Imprime la ruta completa
+            System.out.println("Buscando imagen en: " + getClass().getResource(ruta));
+            ImageIcon icono = new ImageIcon(getClass().getResource(ruta));
+            if (icono.getImage() == null) throw new Exception("Imagen no encontrada");
+            return new ImageIcon(imagenCircular(icono.getImage()));
+        } catch (Exception e) {
+            System.err.println("Error cargando imagen: " + e.getMessage());
+            return crearIconoTexto(idioma); // Fallback
+        }
+    }
+    
+    private ImageIcon crearIconoTexto(String texto) {
+        BufferedImage img = new BufferedImage(72, 72, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = img.createGraphics();
+        g.setColor(Color.LIGHT_GRAY);
+        g.fillOval(0, 0, 72, 72);
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.BOLD, 14));
+        g.drawString(texto.substring(0, 2).toUpperCase(), 20, 40);
+        g.dispose();
+        return new ImageIcon(img);
     }
     
     
     private void initializeComponent(Color color) {
         this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-        fixSize(this, 300, 100);
         this.setBackground(Color.LIGHT_GRAY);
-        this.setBorder(new TitledBorder(""));
+        this.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5)); // Márgenes
 
+        // Panel para la imagen (izquierda)
         JLabel lblimagen = new JLabel();
-        Image Imagen = fto.getImage();
-        lblimagen.setIcon(new ImageIcon(imagenCircular(Imagen)));
-        fixSize(lblimagen, 75, 84);
+        if (fto != null) {
+            lblimagen.setIcon(fto); // Usa el ImageIcon ya procesado
+        } else {
+            lblimagen.setText("No image"); // Fallback visual
+        }
+        lblimagen.setPreferredSize(new Dimension(75, 84));
+        this.add(lblimagen);
 
-        InfoModelo nomb = new InfoModelo(Nombre, 15, color);
-        InfoModelo aut = new InfoModelo(autor, 15, Color.BLACK);
-        InfoModelo descrip = new InfoModelo(descripcion, 11, Color.BLACK);
-        
+        // Panel para la info (derecha)
         JPanel info = new JPanel();
         info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));
-        fixSize(info, 200, 100);
-        info.setOpaque(false);
-        info.add(nomb);
-        info.add(aut);
-        info.add(descrip);
-        info.add(lblimagen);
+        info.add(new InfoModelo(Nombre, 15, color));
+        info.add(new InfoModelo(autor, 12, Color.BLACK));
+        info.add(new InfoModelo(descripcion, 11, Color.GRAY));
+        this.add(info);
     }
     
        

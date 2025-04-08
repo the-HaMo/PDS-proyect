@@ -16,6 +16,7 @@ public class Colaborador extends Usuario {
 	public Colaborador(String nombre, String contraseña) {
 		super(nombre, contraseña);
 	}
+
 	
 	public List<Curso> getCursosCreados() {
 		return this.cursos_Creados;
@@ -23,7 +24,7 @@ public class Colaborador extends Usuario {
 
 	@Override
 	public void addCurso(Curso curso) {
-		cursos_Creados.add(curso);
+	cursos_Creados.add(curso);	
 	}
 
 }

@@ -75,14 +75,7 @@ public class CursosColaborador {
         // -------------------- Panel Privado (MisCursos) --------------------
         modeloPrivado = new DefaultListModel<>();
         listaPrivado = new JList<>(modeloPrivado);
-        listaPrivado.setCellRenderer(new DefaultListCellRenderer() {
-            @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value, 
-                    int index, boolean isSelected, boolean cellHasFocus) {
-                String text = (value instanceof Curso) ? ((Curso)value).getNombre() : "No es un Curso";
-                return super.getListCellRendererComponent(list, text, index, isSelected, cellHasFocus);
-            }
-        });
+        listaPrivado.setCellRenderer(new ElementoListRenderer());
         
         JPanel panelPrivado = new JPanel(new BorderLayout());
         panelPrivado.setPreferredSize(new Dimension(370, 300));
@@ -148,6 +141,8 @@ public class CursosColaborador {
         JPanel panelEste = new JPanel();
         panelEste.setBackground(new Color(128, 255, 128));
         frame.getContentPane().add(panelEste, BorderLayout.EAST);
+        
+        cargarCursos();
     }
 
     
@@ -169,8 +164,12 @@ public class CursosColaborador {
                 } else {
                     JOptionPane.showMessageDialog(frame, "Este curso ya ha sido importado.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
-            } else
-				JOptionPane.showMessageDialog(frame, "No se pudo importar el curso.", "Error", JOptionPane.ERROR_MESSAGE);
+
+            } else {
+                JOptionPane.showMessageDialog(frame, "No se pudo importar el curso.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            Controlador.INSTANCE.reconstruirRelacionesCurso(curso);
+            Controlador.INSTANCE.importarCurso(curso);
         }
 
     }
@@ -187,6 +186,8 @@ public class CursosColaborador {
         } else {
             JOptionPane.showMessageDialog(frame, "Seleccione un curso para compartir.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        Controlador.INSTANCE.publicarCurso(cursoSeleccionado);
+        cargarCursos(); // Actualiza la lista de cursos
     }
 
 
@@ -194,7 +195,6 @@ public class CursosColaborador {
         frame.setVisible(true);
     }
     
-    //Formato de Cursos en las listas privada y publica
     private DefaultListCellRenderer crearCursoRenderer() {
     	return new DefaultListCellRenderer() {
             private static final long serialVersionUID = 1L;
@@ -211,16 +211,21 @@ public class CursosColaborador {
             }
         };
     }
+    
+	public void cargarCursos() {
+		modeloPrivado.clear();
+		modeloGeneral.clear();
+
+		for (Curso curso : Controlador.INSTANCE.getCursosPrivadosAutor()) {
+			modeloPrivado.addElement(curso);
+		}
+
+		for (Curso curso : Controlador.INSTANCE.getCursosPublicadosAutor()) {
+			modeloGeneral.addElement(curso);
+		}
+	}
+
 
     
-    public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-                CursosColaborador window = new CursosColaborador();
-                window.frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
+   
 }

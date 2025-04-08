@@ -48,6 +48,12 @@ public class BloqueContenido {
     public List<Pregunta> getPreguntas() {
         return preguntas;
     }
+    
+	public void setPreguntas(List<Pregunta> preguntas) {
+		for (Pregunta pregunta : preguntas) {
+			addPregunta(pregunta);
+		}
+	}
 
     public void addPregunta(Pregunta pregunta) {
         if (!preguntas.contains(pregunta)) {
@@ -63,4 +69,8 @@ public class BloqueContenido {
     public String toString() {
     	       return ("Bloque de contenido: " + this.nombreBloque + "\nPreguntas: " + this.preguntas.toString());
     }
+    
+	public Integer getId() {
+		return id;
+	}
 }
