@@ -2,6 +2,7 @@ package Vistas;
 
 import java.awt.*;
 import javax.swing.*;
+import Controlador.Controlador;
 
 public class CursosEstudiante {
 
@@ -117,6 +118,13 @@ public class CursosEstudiante {
         btnlogout.setFocusPainted(false);
         btnlogout.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
         panel.add(btnlogout, BorderLayout.EAST);
+        btnlogout.addActionListener(e -> {
+        	// GUARDAR EL ESTADO ACTUAL 
+        	Controlador.INSTANCE.cerrarSesion();
+        	frame.dispose();
+        	Login login = new Login();
+        	login.show();
+        });
         
         JLabel lblNewLabel = new JLabel("Hola ---!");
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
