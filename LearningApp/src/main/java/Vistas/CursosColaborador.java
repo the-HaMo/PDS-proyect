@@ -46,7 +46,7 @@ public class CursosColaborador {
         modeloGeneral = new DefaultListModel<>();
         listaGeneral = new JList<>(modeloGeneral);
         
-        listaGeneral.setCellRenderer(crearCursoRenderer());
+        listaGeneral.setCellRenderer(new ElementoListRenderer());
         
         JPanel panelGeneral = new JPanel(new BorderLayout());
         panelGeneral.setPreferredSize(new Dimension(370, 300));
@@ -75,8 +75,14 @@ public class CursosColaborador {
         // -------------------- Panel Privado (MisCursos) --------------------
         modeloPrivado = new DefaultListModel<>();
         listaPrivado = new JList<>(modeloPrivado);
-        
-        listaPrivado.setCellRenderer(crearCursoRenderer());
+        listaPrivado.setCellRenderer(new DefaultListCellRenderer() {
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value, 
+                    int index, boolean isSelected, boolean cellHasFocus) {
+                String text = (value instanceof Curso) ? ((Curso)value).getNombre() : "No es un Curso";
+                return super.getListCellRendererComponent(list, text, index, isSelected, cellHasFocus);
+            }
+        });
         
         JPanel panelPrivado = new JPanel(new BorderLayout());
         panelPrivado.setPreferredSize(new Dimension(370, 300));
@@ -155,6 +161,7 @@ public class CursosColaborador {
     	if (result == JFileChooser.APPROVE_OPTION) {
             File archivoSeleccionado = fileChooser.getSelectedFile();
             Curso curso = LectorCurso.leerCursoDesdeJSON(archivoSeleccionado);
+
             
             if (curso != null) {
                 if (!modeloPrivado.contains(curso)) {
@@ -162,9 +169,8 @@ public class CursosColaborador {
                 } else {
                     JOptionPane.showMessageDialog(frame, "Este curso ya ha sido importado.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
-            } else {
-                JOptionPane.showMessageDialog(frame, "No se pudo importar el curso.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            } else
+				JOptionPane.showMessageDialog(frame, "No se pudo importar el curso.", "Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }

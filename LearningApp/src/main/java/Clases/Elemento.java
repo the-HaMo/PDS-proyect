@@ -24,6 +24,7 @@ public class Elemento extends JPanel {
     private ImageIcon fto;
     
     public Elemento(Curso c) {
+    	System.out.println("Creando elemento....");
     	this.autor = c.getAutor().getNombre();
     	this.Nombre = c.getNombre();
     	this.descripcion = c.getDescripcion();
@@ -73,8 +74,7 @@ public class Elemento extends JPanel {
         info.add(nomb);
         info.add(aut);
         info.add(descrip);
-        this.add(lblimagen);
-        this.add(info);
+        info.add(lblimagen);
     }
     
        
