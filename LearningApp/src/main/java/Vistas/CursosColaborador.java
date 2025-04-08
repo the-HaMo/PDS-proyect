@@ -195,22 +195,6 @@ public class CursosColaborador {
         frame.setVisible(true);
     }
     
-    private DefaultListCellRenderer crearCursoRenderer() {
-    	return new DefaultListCellRenderer() {
-            private static final long serialVersionUID = 1L;
-            private final ElementoListRenderer renderer = new ElementoListRenderer();
-
-            @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value,
-                                                          int index, boolean isSelected, boolean cellHasFocus) {
-                if (value instanceof Curso) {
-                    Elemento elemento = new Elemento((Curso) value);
-                    return renderer.getListCellRendererComponent(list, elemento, index, isSelected, cellHasFocus);
-                }
-                return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            }
-        };
-    }
     
 	public void cargarCursos() {
 		modeloPrivado.clear();
