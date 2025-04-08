@@ -23,6 +23,7 @@ public class RepositorioPreguntaTest {
     public static void setUp() {
         repositorio = new RepositorioPregunta();
         bloqueDummy = crearBloqueContenidoEnDB(); // Bloque válido para relacionar preguntas
+        
     }
 
     private static BloqueContenido crearBloqueContenidoEnDB() {
