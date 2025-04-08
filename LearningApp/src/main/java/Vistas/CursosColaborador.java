@@ -5,9 +5,7 @@ import java.io.File;
 
 import javax.swing.*;
 
-import Clases.BloqueContenido;
 import Clases.Curso;
-import Clases.Pregunta;
 import Controlador.Controlador;
 import Utilidades.LectorCurso;
 
@@ -144,8 +142,6 @@ public class CursosColaborador {
         JPanel panelEste = new JPanel();
         panelEste.setBackground(new Color(128, 255, 128));
         frame.getContentPane().add(panelEste, BorderLayout.EAST);
-        
-        
     }
 
     
@@ -169,8 +165,6 @@ public class CursosColaborador {
             } else {
                 JOptionPane.showMessageDialog(frame, "No se pudo importar el curso.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            Controlador.INSTANCE.reconstruirRelacionesCurso(curso);
-            Controlador.INSTANCE.importarCurso(curso);
         }
 
     }
@@ -187,7 +181,6 @@ public class CursosColaborador {
         } else {
             JOptionPane.showMessageDialog(frame, "Seleccione un curso para compartir.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        Controlador.INSTANCE.publicarCurso(cursoSeleccionado);
     }
 
 
@@ -197,27 +190,31 @@ public class CursosColaborador {
     
     //Formato de Cursos en las listas privada y publica
     private DefaultListCellRenderer crearCursoRenderer() {
-        return new DefaultListCellRenderer() {
+    	return new DefaultListCellRenderer() {
+            private static final long serialVersionUID = 1L;
+            private final ElementoListRenderer renderer = new ElementoListRenderer();
+
             @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value, int index,
-                                                          boolean isSelected, boolean cellHasFocus) {
-                JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+            public Component getListCellRendererComponent(JList<?> list, Object value,
+                                                          int index, boolean isSelected, boolean cellHasFocus) {
                 if (value instanceof Curso) {
-                    Curso curso = (Curso) value;
-                    label.setText("<html>" +
-                            "<span style='font-size: 14px; color: #2E8B57;'><b>" + curso.getNombre() + "</b></span><br/>" +
-                            "Autor: " + (curso.getAutor() != null ? curso.getAutor().getNombre() : "Sin autor") + "<br/>" +
-                            "Descripción: " + curso.getDescripcion() +
-                            "</html>");
+                    Elemento elemento = new Elemento((Curso) value);
+                    return renderer.getListCellRendererComponent(list, elemento, index, isSelected, cellHasFocus);
                 }
-                return label;
+                return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
             }
         };
     }
-    
-    
-
 
     
-   
+    public static void main(String[] args) {
+        EventQueue.invokeLater(() -> {
+            try {
+                CursosColaborador window = new CursosColaborador();
+                window.frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
 }
