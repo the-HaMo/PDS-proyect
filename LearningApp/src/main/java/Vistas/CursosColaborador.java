@@ -145,7 +145,7 @@ public class CursosColaborador {
         panelEste.setBackground(new Color(128, 255, 128));
         frame.getContentPane().add(panelEste, BorderLayout.EAST);
         
-        
+        cargarCursos();
     }
 
     
@@ -188,6 +188,7 @@ public class CursosColaborador {
             JOptionPane.showMessageDialog(frame, "Seleccione un curso para compartir.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         Controlador.INSTANCE.publicarCurso(cursoSeleccionado);
+        cargarCursos(); // Actualiza la lista de cursos
     }
 
 
@@ -215,7 +216,18 @@ public class CursosColaborador {
         };
     }
     
-    
+	public void cargarCursos() {
+		modeloPrivado.clear();
+		modeloGeneral.clear();
+
+		for (Curso curso : Controlador.INSTANCE.getCursosPrivadosAutor()) {
+			modeloPrivado.addElement(curso);
+		}
+
+		for (Curso curso : Controlador.INSTANCE.getCursosPublicadosAutor()) {
+			modeloGeneral.addElement(curso);
+		}
+	}
 
 
     

@@ -63,6 +63,10 @@ public class Curso {
 		return this.nombre;
 	}
 	
+	public Integer getId() {
+		return this.id;
+	}
+	
 	public String getDescripcion() {
 		return this.descripcion;
 	}
@@ -99,6 +103,12 @@ public class Curso {
 	
 	public void setIdioma(String idioma) {
 		this.idioma = idioma;
+	}
+	
+	public void setBloquesContenidos(List<BloqueContenido> bloques_contenidos) {
+		for (BloqueContenido bloque : bloques_contenidos) {
+			addBloque(bloque);
+		}
 	}
 	
 	public void addBloque(BloqueContenido bloque) {
