@@ -89,6 +89,7 @@ public class Curso {
 	}
 	
 	public void addBloque(BloqueContenido bloque) {
+		bloque.setCurso(this);
 		bloques_contenidos.add(bloque);
 	}
 	

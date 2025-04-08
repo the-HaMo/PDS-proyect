@@ -53,6 +53,10 @@ public class BloqueContenido {
     	preguntas.add(p);
     }
     
+	public void setCurso(Curso curso) {
+		this.curso = curso;
+	}
+    
     public String toString() {
     	       return ("Bloque de contenido: " + this.nombreBloque + "\nPreguntas: " + this.preguntas.toString());
     }
