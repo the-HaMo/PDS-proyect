@@ -196,22 +196,19 @@ public class CursosColaborador {
         frame.setVisible(true);
     }
     
-    //Formato de Cursos en las listas privada y publica
     private DefaultListCellRenderer crearCursoRenderer() {
-        return new DefaultListCellRenderer() {
+    	return new DefaultListCellRenderer() {
+            private static final long serialVersionUID = 1L;
+            private final ElementoListRenderer renderer = new ElementoListRenderer();
+
             @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value, int index,
-                                                          boolean isSelected, boolean cellHasFocus) {
-                JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+            public Component getListCellRendererComponent(JList<?> list, Object value,
+                                                          int index, boolean isSelected, boolean cellHasFocus) {
                 if (value instanceof Curso) {
-                    Curso curso = (Curso) value;
-                    label.setText("<html>" +
-                            "<span style='font-size: 14px; color: #2E8B57;'><b>" + curso.getNombre() + "</b></span><br/>" +
-                            "Autor: " + (curso.getAutor() != null ? curso.getAutor().getNombre() : "Sin autor") + "<br/>" +
-                            "Descripción: " + curso.getDescripcion() +
-                            "</html>");
+                    Elemento elemento = new Elemento((Curso) value);
+                    return renderer.getListCellRendererComponent(list, elemento, index, isSelected, cellHasFocus);
                 }
-                return label;
+                return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
             }
         };
     }
