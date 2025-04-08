@@ -49,8 +49,11 @@ public class BloqueContenido {
         return preguntas;
     }
 
-    public void addPregunta(Pregunta p) {
-    	preguntas.add(p);
+    public void addPregunta(Pregunta pregunta) {
+        if (!preguntas.contains(pregunta)) {
+            preguntas.add(pregunta);
+            pregunta.setBloqueContenido(this);
+        }
     }
     
 	public void setCurso(Curso curso) {

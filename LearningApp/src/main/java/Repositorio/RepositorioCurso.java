@@ -1,6 +1,7 @@
 package Repositorio;
 
 import Clases.Curso;
+import Clases.Usuario;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -70,11 +71,52 @@ public class RepositorioCurso {
                 "SELECT DISTINCT c FROM Curso c " +
                 "LEFT JOIN FETCH c.bloques_contenidos b " +
                 "LEFT JOIN FETCH b.preguntas " +
-                "WHERE c.colaborador.id = :autor_id", Curso.class)
+                "WHERE c.autor.id = :autor_id", Curso.class)
                 .setParameter("autor_id", idAutor)
                 .getResultList();
         } finally {
             em.close();
         }
     }
+    
+    public List<Curso> obtenerCursosPorAutorYPublicados(Integer idAutor) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery(
+                "SELECT DISTINCT c FROM Curso c " +
+                "LEFT JOIN FETCH c.bloques_contenidos b " +
+                "LEFT JOIN FETCH b.preguntas " +
+                "WHERE c.autor.id = :autor_id AND c.publicado = true", Curso.class)
+                .setParameter("autor_id", idAutor)
+                .getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
+    public List<Curso> obtenerCursosPorAutorPrivados(Integer idAutor) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery(
+                "SELECT DISTINCT c FROM Curso c " +
+                "LEFT JOIN FETCH c.bloques_contenidos b " +
+                "LEFT JOIN FETCH b.preguntas " +
+                "WHERE c.autor.id = :autor_id AND c.publicado = false", Curso.class)
+                .setParameter("autor_id", idAutor)
+                .getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    public void actualizarCurso(Curso c) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(c);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
 }

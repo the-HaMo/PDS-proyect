@@ -2,6 +2,8 @@ package Clases;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
@@ -120,5 +122,18 @@ public class Curso {
 	@Override
 	public String toString() {
 	    return String.format("%s - %s (%s)", nombre, idioma, autor != null ? autor.getNombre() : "Sin autor");
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (o == null || getClass() != o.getClass()) return false;
+	    Curso curso = (Curso) o;
+	    return Objects.equals(id, curso.id);
+	}
+	
+	@Override
+	public int hashCode() {
+	    return Objects.hash(id);
 	}
 }

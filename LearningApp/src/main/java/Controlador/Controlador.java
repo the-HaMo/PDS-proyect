@@ -66,9 +66,28 @@ public enum Controlador {
     }
 	
 	public void importarCurso(Curso curso) {
+	if(usuarioActual instanceof Colaborador) {
 		curso.setAutor((Colaborador) usuarioActual);
-		repositorioUsuarios.añadirCursoAUsuario(usuarioActual, curso);
-		repositorioCursos.guardarCurso(curso);
+	}
+	reconstruirRelacionesCurso(curso);
+	repositorioCursos.guardarCurso(curso);
+	}
+	
+	public void publicarCurso(Curso curso) {
+		curso.Publicar();
+		repositorioCursos.actualizarCurso(curso);
+	}
+	
+	public List<Curso> getCursosPublicados() {
+		return repositorioCursos.obtenerCursosPublicados();
+	}
+	
+	public List<Curso> getCursosPublicadosAutor() {
+		return repositorioCursos.obtenerCursosPorAutor(usuarioActual.getId());
+	}
+	
+	public List<Curso> getCursosPrivadosAutor() {
+		return repositorioCursos.obtenerCursosPorAutorPrivados(usuarioActual.getId());
 	}
 	
 	public Usuario getUsuarioActual() {

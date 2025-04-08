@@ -144,6 +144,8 @@ public class CursosColaborador {
         JPanel panelEste = new JPanel();
         panelEste.setBackground(new Color(128, 255, 128));
         frame.getContentPane().add(panelEste, BorderLayout.EAST);
+        
+        
     }
 
     
@@ -185,6 +187,7 @@ public class CursosColaborador {
         } else {
             JOptionPane.showMessageDialog(frame, "Seleccione un curso para compartir.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        Controlador.INSTANCE.publicarCurso(cursoSeleccionado);
     }
 
 
