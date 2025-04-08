@@ -126,7 +126,7 @@ public class CursosEstudiante {
         	login.show();
         });
         
-        JLabel lblNewLabel = new JLabel("Hola ---!");
+        JLabel lblNewLabel = new JLabel("Hola "+ Controlador.INSTANCE.getUsuarioActual().getNombre() + "!");
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
         panel.add(lblNewLabel, BorderLayout.WEST);
 
