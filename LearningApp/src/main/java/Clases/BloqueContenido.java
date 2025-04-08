@@ -21,7 +21,7 @@ public class BloqueContenido {
     @JsonProperty("nombreBloque")
     private String nombreBloque;
     
-    @OneToMany(mappedBy = "bloqueContenido")
+    @OneToMany(mappedBy = "bloqueContenido", cascade = CascadeType.ALL)
     private List<Pregunta> preguntas;
 
     public BloqueContenido() {

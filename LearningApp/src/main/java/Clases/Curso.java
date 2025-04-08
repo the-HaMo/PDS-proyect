@@ -23,6 +23,8 @@ public class Curso {
 	private int NumDescargas;
 	private int NumMeGustas;
 	
+	private boolean esPublico;
+	
 	@JsonProperty("bloques_contenidos")
 	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
 	private List<BloqueContenido> bloques_contenidos;
@@ -37,6 +39,7 @@ public class Curso {
 		this.bloques_contenidos = bloques_contenidos;
 		this.NumDescargas = NumDescargas;
 		this.NumMeGustas = NumMeGustas;
+		this.esPublico= false;
 	}
 	
 	public Curso(String nombre, String descripcion) {
@@ -87,6 +90,10 @@ public class Curso {
 	
 	public void addBloque(BloqueContenido bloque) {
 		bloques_contenidos.add(bloque);
+	}
+	
+	public void Publicar() {
+		this.esPublico = true;
 	}
 	
 	public long numPreguntasTotales() {

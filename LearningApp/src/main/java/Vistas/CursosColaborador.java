@@ -117,7 +117,7 @@ public class CursosColaborador {
         });
         panelBotones.add(btnlogout, BorderLayout.EAST);
         
-        JLabel lblNewLabel = new JLabel("Hola --- !");
+        JLabel lblNewLabel = new JLabel("Hola " + Controlador.INSTANCE.getUsuarioActual().getNombre() + " !");
         lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
         panelBotones.add(lblNewLabel, BorderLayout.WEST);
 
