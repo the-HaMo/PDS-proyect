@@ -14,12 +14,13 @@ public class Curso {
     private Integer id;
 	private String nombre;
 	private String descripcion;
+	@JsonProperty("idioma")
+	private String idioma;
 	
 	@ManyToOne
 	@JoinColumn(name = "autor_id", nullable = false)
 	private Colaborador autor;
 	
-	//private ImageIcon imagen;
 	private int NumDescargas;
 	private int NumMeGustas;
 	
@@ -33,21 +34,22 @@ public class Curso {
 		this.bloques_contenidos = new LinkedList<BloqueContenido>();
 	}
 	
-	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos, int NumDescargas, int NumMeGustas) {
+	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos, int NumDescargas, int NumMeGustas, String idioma) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.bloques_contenidos = bloques_contenidos;
 		this.NumDescargas = NumDescargas;
 		this.NumMeGustas = NumMeGustas;
 		this.esPublico= false;
+		this.idioma = idioma;
 	}
 	
 	public Curso(String nombre, String descripcion) {
-		this(nombre, descripcion, new LinkedList<BloqueContenido>(), 0, 0);
+		this(nombre, descripcion, new LinkedList<BloqueContenido>(), 0, 0, "Español");
 	}
 	
 	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos) {
-		this(nombre, descripcion, bloques_contenidos, 0, 0);
+		this(nombre, descripcion, bloques_contenidos, 0, 0, "Español");
 	}
 	
 	
@@ -84,8 +86,17 @@ public class Curso {
 		return autor;
 	}
 	
+	
 	public void setAutor(Colaborador autor) {
 		this.autor = autor;
+	}
+	
+	public String getIdioma() {
+		return idioma;
+	}
+	
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
 	}
 	
 	public void addBloque(BloqueContenido bloque) {

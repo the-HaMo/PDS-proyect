@@ -23,9 +23,9 @@ class ControladorTest {
 		bl.add(b1);
 		bl.add(b2);
 		bl.add(b3);
-		Curso c1 = new Curso("c1", "c1", bl, 2, 3);
-		Curso c2 = new Curso("c2", "c2", bl, 2, 4);
-		Curso c3 = new Curso("c2", "c2", bl, 2, 6);	
+		Curso c1 = new Curso("c1", "c1", bl, 2, 3, "Español");
+		Curso c2 = new Curso("c2", "c2", bl, 2, 4, "Español");
+		Curso c3 = new Curso("c2", "c2", bl, 2, 6, "Español");	
 		List<Curso> cursosOnline = new LinkedList<Curso>();
 		cursosOnline.add(c1);
 		cursosOnline.add(c2);

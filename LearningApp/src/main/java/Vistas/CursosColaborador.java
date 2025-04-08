@@ -154,11 +154,8 @@ public class CursosColaborador {
             
             if (curso != null) {
                 String nombreCurso = curso.getNombre();
-                
                 if (!modeloPrivado.contains(nombreCurso)) {
                     modeloPrivado.addElement(nombreCurso);
-                    // También podrías guardar el objeto Curso en una lista si lo necesitas
-                    // para operaciones posteriores.
                 } else {
                     JOptionPane.showMessageDialog(frame, "Este curso ya ha sido importado.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
