@@ -1,8 +1,13 @@
 package Vistas;
 
 import java.awt.*;
+import java.io.File;
+
 import javax.swing.*;
+
+import Clases.Curso;
 import Controlador.Controlador;
+import Utilidades.LectorCurso;
 
 public class CursosColaborador {
 
@@ -139,15 +144,29 @@ public class CursosColaborador {
     // Funcionalidad de los botones 
     
     private void importarCurso() {
-        String curso = JOptionPane.showInputDialog(frame, "Ingrese el nombre del curso:");
+        
+    	JFileChooser fileChooser = new JFileChooser();
+    	int result = fileChooser.showOpenDialog(frame);
 
-        if (curso != null && !curso.trim().isEmpty()) {
-            if (!modeloPrivado.contains(curso)) {
-                modeloPrivado.addElement(curso);
+    	if (result == JFileChooser.APPROVE_OPTION) {
+            File archivoSeleccionado = fileChooser.getSelectedFile();
+            Curso curso = LectorCurso.leerCursoDesdeJSON(archivoSeleccionado);
+            
+            if (curso != null) {
+                String nombreCurso = curso.getNombre();
+                
+                if (!modeloPrivado.contains(nombreCurso)) {
+                    modeloPrivado.addElement(nombreCurso);
+                    // También podrías guardar el objeto Curso en una lista si lo necesitas
+                    // para operaciones posteriores.
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Este curso ya ha sido importado.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                }
             } else {
-                JOptionPane.showMessageDialog(frame, "Este curso ya ha sido importado.", "Aviso", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(frame, "No se pudo importar el curso.", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
+
     }
 
     private void compartirCurso() {
