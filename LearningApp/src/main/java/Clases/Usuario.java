@@ -31,4 +31,6 @@ public abstract class Usuario {
     public Integer getId() {
         return id;
     }
+    
+    public abstract void addCurso(Curso curso);
 }

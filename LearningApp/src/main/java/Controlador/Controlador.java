@@ -55,7 +55,7 @@ public enum Controlador {
 	}
 	
 	public void importarCurso(Curso curso) {
-		// usuarioActual.importarCurso(curso);
+		usuarioActual.addCurso(curso);
 	}
 	
 	public Usuario getUsuarioActual() {

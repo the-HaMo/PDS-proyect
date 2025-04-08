@@ -82,4 +82,16 @@ public class RepositorioUsuario {
             em.close();
         }
     }
+    
+    public void actualizarUsuario(Usuario usuario) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.merge(usuario);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
+
 }

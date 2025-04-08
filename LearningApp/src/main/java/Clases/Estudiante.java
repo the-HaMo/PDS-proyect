@@ -14,4 +14,6 @@ public class Estudiante extends Usuario{
         //this.rol = rol;
     }
 
+	@Override
+	public void addCurso(Curso curso) {}
 }

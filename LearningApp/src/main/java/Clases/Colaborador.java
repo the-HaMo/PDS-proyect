@@ -17,13 +17,13 @@ public class Colaborador extends Usuario {
 		super(nombre, contraseña);
 	}
 	
-	public void añadirCurso(Curso curso) {
-		this.cursos_Creados.add(curso);
-	}
-
-	
 	public List<Curso> getCursosCreados() {
 		return this.cursos_Creados;
+	}
+
+	@Override
+	public void addCurso(Curso curso) {
+		cursos_Creados.add(curso);
 	}
 
 }
