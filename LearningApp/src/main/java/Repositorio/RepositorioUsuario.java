@@ -1,5 +1,7 @@
 package Repositorio;
 
+import Clases.Colaborador;
+import Clases.Curso;
 import Clases.Usuario;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -93,5 +95,20 @@ public class RepositorioUsuario {
             em.close();
         }
     }
+    
+    public void añadirCursoAUsuario(Usuario usuario, Curso curso) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            usuario = em.merge(usuario); 
+            usuario.addCurso(curso);     
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+    }
 
-}
+    }
+
+
+

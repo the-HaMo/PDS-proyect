@@ -8,19 +8,9 @@ public class CursosEstudiante {
 
     private JFrame frame;
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-                CursosEstudiante window = new CursosEstudiante();
-                window.frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
-
     public CursosEstudiante() {
         initialize();
+        this.frame.setVisible(true);
     }
 
     private void initialize() {

@@ -5,7 +5,9 @@ import java.io.File;
 
 import javax.swing.*;
 
+import Clases.BloqueContenido;
 import Clases.Curso;
+import Clases.Pregunta;
 import Controlador.Controlador;
 import Utilidades.LectorCurso;
 
@@ -165,6 +167,8 @@ public class CursosColaborador {
             } else {
                 JOptionPane.showMessageDialog(frame, "No se pudo importar el curso.", "Error", JOptionPane.ERROR_MESSAGE);
             }
+            Controlador.INSTANCE.reconstruirRelacionesCurso(curso);
+            Controlador.INSTANCE.importarCurso(curso);
         }
 
     }
@@ -207,16 +211,10 @@ public class CursosColaborador {
             }
         };
     }
+    
+    
+
 
     
-    public static void main(String[] args) {
-        EventQueue.invokeLater(() -> {
-            try {
-                CursosColaborador window = new CursosColaborador();
-                window.frame.setVisible(true);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
-    }
+   
 }
