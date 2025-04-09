@@ -24,6 +24,7 @@ public class Elemento extends JPanel {
     private ImageIcon fto;
     
     public Elemento(Curso c) {
+    	System.out.println("Creando elemento....");
     	this.autor = c.getAutor().getNombre();
     	this.Nombre = c.getNombre();
     	this.descripcion = c.getDescripcion();
@@ -43,6 +44,11 @@ public class Elemento extends JPanel {
     			ImageIcon uk = new ImageIcon(getClass().getResource("/United-Kingdom.png"));
     		    Image ukScalar = imagenCircular(uk.getImage());
     		    this.fto = new ImageIcon(ukScalar);
+    			break;
+    		default:
+    			ImageIcon uks = new ImageIcon(getClass().getResource("/United-Kingdom.png"));
+    			Image ukScalars = imagenCircular(uks.getImage());
+    			this.fto = new ImageIcon(ukScalars);
     			break;
     	}
     	
