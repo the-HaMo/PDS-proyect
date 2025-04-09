@@ -2,6 +2,9 @@ package Vistas;
 
 import java.awt.*;
 import java.io.File;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.swing.*;
 
@@ -163,14 +166,15 @@ public class CursosColaborador {
             if (curso != null) {
                 if (!modeloPrivado.contains(curso)) {
                     modeloPrivado.addElement(curso);
+                  //Controlador.INSTANCE.reconstruirRelacionesCurso(curso);
+                    Controlador.INSTANCE.importarCurso(curso);
                 } else {
                     JOptionPane.showMessageDialog(frame, "Este curso ya ha sido importado.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
             } else {
                 JOptionPane.showMessageDialog(frame, "No se pudo importar el curso.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            Controlador.INSTANCE.reconstruirRelacionesCurso(curso);
-            Controlador.INSTANCE.importarCurso(curso);
+            
         }
 
     }
@@ -181,14 +185,15 @@ public class CursosColaborador {
         if (cursoSeleccionado != null) {
             if (!modeloGeneral.contains(cursoSeleccionado)) {
                 modeloGeneral.addElement(cursoSeleccionado);
+                Controlador.INSTANCE.publicarCurso(cursoSeleccionado);
+                cargarCursos(); // Actualiza la lista de cursos
             } else {
                 JOptionPane.showMessageDialog(frame, "Este curso ya está en la Biblioteca General.", "Aviso", JOptionPane.WARNING_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(frame, "Seleccione un curso para compartir.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        Controlador.INSTANCE.publicarCurso(cursoSeleccionado);
-        cargarCursos(); // Actualiza la lista de cursos
+        
     }
 
 
@@ -213,18 +218,29 @@ public class CursosColaborador {
         };
     }
     
-	public void cargarCursos() {
-		modeloPrivado.clear();
-		modeloGeneral.clear();
+    public void cargarCursos() {
+        modeloPrivado.clear();
+        modeloGeneral.clear();
 
-		for (Curso curso : Controlador.INSTANCE.getCursosPrivadosAutor()) {
-			modeloPrivado.addElement(curso);
-		}
+        List<Curso> privados = Controlador.INSTANCE.getCursosPrivadosAutor();
+        List<Curso> publicados = Controlador.INSTANCE.getCursosPublicadosAutor();
 
-		for (Curso curso : Controlador.INSTANCE.getCursosPublicadosAutor()) {
-			modeloGeneral.addElement(curso);
-		}
-	}
+        Set<Integer> idsPublicados = publicados.stream()
+            .map(Curso::getId)
+            .collect(Collectors.toSet());
+
+        for (Curso curso : privados) {
+            // ❌ No lo cargues si ya se ha publicado (por si se mezcló)
+            if (!idsPublicados.contains(curso.getId())) {
+                modeloPrivado.addElement(curso);
+            }
+        }
+
+        for (Curso curso : publicados) {
+            modeloGeneral.addElement(curso);
+        }
+    }
+
 
 
     

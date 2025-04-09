@@ -29,7 +29,8 @@ public class Curso {
 	private boolean esPublico;
 	
 	@JsonProperty("bloques_contenidos")
-	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "curso_id")
 	private List<BloqueContenido> bloques_contenidos;
 	
 	public Curso() {

@@ -14,14 +14,13 @@ public class BloqueContenido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 	
-	@ManyToOne
-    @JoinColumn(name = "curso_id")
-    private Curso curso;
 	
     @JsonProperty("nombreBloque")
     private String nombreBloque;
     
-    @OneToMany(mappedBy = "bloqueContenido", cascade = CascadeType.ALL)
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "bloque_contenido_id")
     private List<Pregunta> preguntas;
 
     public BloqueContenido() {
@@ -61,10 +60,6 @@ public class BloqueContenido {
             pregunta.setBloqueContenido(this);
         }
     }
-    
-	public void setCurso(Curso curso) {
-		this.curso = curso;
-	}
     
     public String toString() {
     	       return ("Bloque de contenido: " + this.nombreBloque + "\nPreguntas: " + this.preguntas.toString());
