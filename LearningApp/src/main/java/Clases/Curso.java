@@ -115,7 +115,6 @@ public class Curso {
 	public void addBloque(BloqueContenido bloque) {
 	    if (!bloques_contenidos.contains(bloque)) {
 	        bloques_contenidos.add(bloque);
-	        bloque.setCurso(this); 
 	    }
 	}
 	

@@ -164,7 +164,6 @@ public class CursosColaborador {
             if (curso != null) {
                 if (!modeloPrivado.contains(curso)) {
                     modeloPrivado.addElement(curso);
-                  //Controlador.INSTANCE.reconstruirRelacionesCurso(curso);
                     Controlador.INSTANCE.importarCurso(curso);
                 } else {
                     JOptionPane.showMessageDialog(frame, "Este curso ya ha sido importado.", "Aviso", JOptionPane.WARNING_MESSAGE);

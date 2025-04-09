@@ -55,22 +55,13 @@ public enum Controlador {
 	public void cerrarSesion() {
 		usuarioActual = null;
 	}
-	
-	public void reconstruirRelacionesCurso(Curso curso) {
-        for (BloqueContenido bloque : curso.getBloquesContenidos()) {
-            bloque.setCurso(curso);
-            for (Pregunta pregunta : bloque.getPreguntas()) {
-                pregunta.setBloqueContenido(bloque); // relación inversa obligatoria
-            }
-        }
-    }
+
 	
 	public void importarCurso(Curso curso) {
 	if(usuarioActual instanceof Colaborador) {
 		curso.setAutor((Colaborador) usuarioActual);
-	}
-	reconstruirRelacionesCurso(curso);
-	repositorioCursos.guardarCurso(curso);
+		repositorioCursos.guardarCurso(curso);
+		}
 	}
 	
 	public void publicarCurso(Curso curso) {

@@ -45,14 +45,6 @@ public abstract class Pregunta {
         return id;
     }
     
-    public BloqueContenido getBloqueContenido() {
-        return bloqueContenido;
-    }
-    
-    public void setBloqueContenido(BloqueContenido bloqueContenido) {
-        this.bloqueContenido = bloqueContenido;
-    }
-    
     public abstract String getRespuesta();
 
 	public abstract String toString();
