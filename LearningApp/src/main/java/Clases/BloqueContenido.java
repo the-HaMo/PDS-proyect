@@ -57,7 +57,6 @@ public class BloqueContenido {
     public void addPregunta(Pregunta pregunta) {
         if (!preguntas.contains(pregunta)) {
             preguntas.add(pregunta);
-            pregunta.setBloqueContenido(this);
         }
     }
     
