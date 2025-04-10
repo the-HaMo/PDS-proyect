@@ -46,7 +46,7 @@ public class CursosColaborador {
         frame.getContentPane().add(panelBibliotecas, BorderLayout.CENTER);
 
         // -------------------- Panel General (CursosOnline) --------------------
-        modeloGeneral = new DefaultListModel<>();
+        modeloGeneral = new DefaultListModel<Curso>();	//Cambiar a Elemento !!
         listaGeneral = new JList<>(modeloGeneral);
         
         listaGeneral.setCellRenderer(new ElementoListRenderer());
@@ -76,7 +76,7 @@ public class CursosColaborador {
         panelBibliotecas.add(panelGeneral, BorderLayout.WEST);
 
         // -------------------- Panel Privado (MisCursos) --------------------
-        modeloPrivado = new DefaultListModel<>();
+        modeloPrivado = new DefaultListModel<Curso>(); //Cambiar a Elemento !!
         listaPrivado = new JList<>(modeloPrivado);
         listaPrivado.setCellRenderer(new ElementoListRenderer());
         
@@ -163,8 +163,8 @@ public class CursosColaborador {
             
             if (curso != null) {
                 if (!modeloPrivado.contains(curso)) {
-                    modeloPrivado.addElement(curso);
                     Controlador.INSTANCE.importarCurso(curso);
+                    modeloPrivado.addElement(curso);
                 } else {
                     JOptionPane.showMessageDialog(frame, "Este curso ya ha sido importado.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
@@ -182,9 +182,10 @@ public class CursosColaborador {
         
         if (cursoSeleccionado != null) {
             if (!modeloGeneral.contains(cursoSeleccionado)) {
+            	modeloPrivado.removeElement(cursoSeleccionado);
                 modeloGeneral.addElement(cursoSeleccionado);
                 Controlador.INSTANCE.publicarCurso(cursoSeleccionado);
-                cargarCursos(); // Actualiza la lista de cursos
+                //cargarCursos(); // Actualiza la lista de cursos
             } else {
                 JOptionPane.showMessageDialog(frame, "Este curso ya está en la Biblioteca General.", "Aviso", JOptionPane.WARNING_MESSAGE);
             }
@@ -204,23 +205,17 @@ public class CursosColaborador {
         modeloPrivado.clear();
         modeloGeneral.clear();
 
-        List<Curso> privados = Controlador.INSTANCE.getCursosPrivadosAutor();
-        List<Curso> publicados = Controlador.INSTANCE.getCursosPublicadosAutor();
+        
+        List<Curso> cursos = Controlador.INSTANCE.getCursosColaborador();
+        
+		for (Curso curso : cursos) {
+			if (curso.esPublico()) {
+				modeloGeneral.addElement(curso);
+			}else {
+				modeloPrivado.addElement(curso);
+			}
+		}
 
-        Set<Integer> idsPublicados = publicados.stream()
-            .map(Curso::getId)
-            .collect(Collectors.toSet());
-
-        for (Curso curso : privados) {
-            // ❌ No lo cargues si ya se ha publicado (por si se mezcló)
-            if (!idsPublicados.contains(curso.getId())) {
-                modeloPrivado.addElement(curso);
-            }
-        }
-
-        for (Curso curso : publicados) {
-            modeloGeneral.addElement(curso);
-        }
     }
 
 

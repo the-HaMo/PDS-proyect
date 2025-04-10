@@ -130,21 +130,13 @@ public class Curso {
 				
 	}
 	
+	public boolean esPublico() {
+		return this.esPublico;
+	}
+	
 	@Override
 	public String toString() {
 	    return String.format("%s - %s (%s)", nombre, idioma, autor != null ? autor.getNombre() : "Sin autor");
 	}
 	
-	@Override
-	public boolean equals(Object o) {
-	    if (this == o) return true;
-	    if (o == null || getClass() != o.getClass()) return false;
-	    Curso curso = (Curso) o;
-	    return Objects.equals(id, curso.id);
-	}
-	
-	@Override
-	public int hashCode() {
-	    return Objects.hash(id);
-	}
 }

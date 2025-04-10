@@ -73,8 +73,12 @@ public enum Controlador {
 		return repositorioCursos.obtenerCursosPublicados();
 	}
 	
-	public List<Curso> getCursosPublicadosAutor() {
+	public List<Curso> getCursosColaborador() {
 		return repositorioCursos.obtenerCursosPorAutor(usuarioActual.getId());
+	}
+	
+	public List<Curso> getCursosPublicadosAutor() {
+		return repositorioCursos.obtenerCursosPorAutorYPublicados(usuarioActual.getId());
 	}
 	
 	public List<Curso> getCursosPrivadosAutor() {
