@@ -1,16 +1,21 @@
 package Vistas;
 
 import java.awt.*;
+import java.util.List;
 import javax.swing.*;
 import Controlador.Controlador;
+import Modelo.Curso;
 
 public class CursosEstudiante {
 
     private JFrame frame;
+    private DefaultListModel<Curso> modeloGeneral, modeloPrivado;
+    private JList<Curso> listaGeneral, listaPrivado;
 
     public CursosEstudiante() {
         initialize();
         this.frame.setVisible(true);
+        
     }
 
     private void initialize() {
@@ -35,8 +40,9 @@ public class CursosEstudiante {
         frame.getContentPane().add(panelBibliotecas, BorderLayout.CENTER);
 
         // -------------------- Panel General (CursosOnline) --------------------
-        DefaultListModel<String> modeloGeneral = new DefaultListModel<>();
-        JList<String> listaGeneral = new JList<>(modeloGeneral);
+        modeloGeneral = new DefaultListModel<Curso>();
+        listaGeneral = new JList<>(modeloGeneral);
+        listaGeneral.setCellRenderer(new ElementoListRenderer());
 
         JPanel panelGeneral = new JPanel(new BorderLayout());
         panelGeneral.setPreferredSize(new Dimension(370, 300));
@@ -70,9 +76,10 @@ public class CursosEstudiante {
         panelBibliotecas.add(panelGeneral, BorderLayout.WEST);
 
         // -------------------- Panel Privado (MisCursos) --------------------
-        DefaultListModel<String> modeloPrivado = new DefaultListModel<>();
-        JList<String> listaPrivado = new JList<>(modeloPrivado);
-
+        modeloPrivado = new DefaultListModel<Curso>();
+        listaPrivado = new JList<>(modeloPrivado);
+        listaPrivado.setCellRenderer(new ElementoListRenderer());
+        
         JPanel panelPrivado = new JPanel(new BorderLayout());
         panelPrivado.setPreferredSize(new Dimension(370, 300));
         panelPrivado.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "MisCursos"));
@@ -132,9 +139,23 @@ public class CursosEstudiante {
         JPanel panelEste = new JPanel();
         panelEste.setBackground(new Color(128, 255, 128));
         frame.getContentPane().add(panelEste, BorderLayout.EAST);
+        
+        cargarCursos();
     }
     
     public void Mostrar() {
     	frame.setVisible(true);
+    }
+    
+    public void cargarCursos() {
+    	modeloGeneral.clear();
+    	modeloPrivado.clear();
+    	
+    	List<Curso> cursosOnline = Controlador.INSTANCE.getCursosPublicados();
+		for (Curso curso : cursosOnline) {
+			modeloGeneral.addElement(curso);
+		}
+    	
+    	
     }
 }
