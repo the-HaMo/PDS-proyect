@@ -9,8 +9,8 @@ import Modelo.Curso;
 public class CursosEstudiante {
 
     private JFrame frame;
-    private DefaultListModel<Curso> modeloGeneral, modeloPrivado;
-    private JList<Curso> listaGeneral, listaPrivado;
+    private DefaultListModel<Elemento> modeloGeneral, modeloPrivado;
+    private JList<Elemento> listaGeneral, listaPrivado;
 
     public CursosEstudiante() {
         initialize();
@@ -40,7 +40,7 @@ public class CursosEstudiante {
         frame.getContentPane().add(panelBibliotecas, BorderLayout.CENTER);
 
         // -------------------- Panel General (CursosOnline) --------------------
-        modeloGeneral = new DefaultListModel<Curso>();
+        modeloGeneral = new DefaultListModel<Elemento>();
         listaGeneral = new JList<>(modeloGeneral);
         listaGeneral.setCellRenderer(new ElementoListRenderer());
 
@@ -76,7 +76,7 @@ public class CursosEstudiante {
         panelBibliotecas.add(panelGeneral, BorderLayout.WEST);
 
         // -------------------- Panel Privado (MisCursos) --------------------
-        modeloPrivado = new DefaultListModel<Curso>();
+        modeloPrivado = new DefaultListModel<Elemento>();
         listaPrivado = new JList<>(modeloPrivado);
         listaPrivado.setCellRenderer(new ElementoListRenderer());
         
@@ -153,7 +153,8 @@ public class CursosEstudiante {
     	
     	List<Curso> cursosOnline = Controlador.INSTANCE.getCursosPublicados();
 		for (Curso curso : cursosOnline) {
-			modeloGeneral.addElement(curso);
+			Elemento elem=new Elemento(curso);
+			modeloGeneral.addElement(elem);
 		}
     	
     	

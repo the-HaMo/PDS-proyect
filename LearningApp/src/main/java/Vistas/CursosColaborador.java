@@ -15,8 +15,8 @@ import Utilidades.LectorCurso;
 public class CursosColaborador {
 
     private JFrame frame;
-    private DefaultListModel<Curso> modeloGeneral, modeloPrivado;
-    private JList<Curso> listaGeneral, listaPrivado;
+    private DefaultListModel<Elemento> modeloGeneral, modeloPrivado;
+    private JList<Elemento> listaGeneral, listaPrivado;
     private JPanel panelBotones;
 
     public CursosColaborador() {
@@ -46,7 +46,7 @@ public class CursosColaborador {
         frame.getContentPane().add(panelBibliotecas, BorderLayout.CENTER);
 
         // -------------------- Panel General (CursosOnline) --------------------
-        modeloGeneral = new DefaultListModel<Curso>();	//Cambiar a Elemento !!
+        modeloGeneral = new DefaultListModel<Elemento>();	//Cambiar a Elemento !!
         listaGeneral = new JList<>(modeloGeneral);
         
         listaGeneral.setCellRenderer(new ElementoListRenderer());
@@ -76,7 +76,7 @@ public class CursosColaborador {
         panelBibliotecas.add(panelGeneral, BorderLayout.WEST);
 
         // -------------------- Panel Privado (MisCursos) --------------------
-        modeloPrivado = new DefaultListModel<Curso>(); //Cambiar a Elemento !!
+        modeloPrivado = new DefaultListModel<Elemento>(); //Cambiar a Elemento !!
         listaPrivado = new JList<>(modeloPrivado);
         listaPrivado.setCellRenderer(new ElementoListRenderer());
         
@@ -152,47 +152,41 @@ public class CursosColaborador {
     // Funcionalidad de los botones 
     
     private void importarCurso() {
-        
-    	JFileChooser fileChooser = new JFileChooser();
-    	int result = fileChooser.showOpenDialog(frame);
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(frame);
 
-    	if (result == JFileChooser.APPROVE_OPTION) {
+        if (result == JFileChooser.APPROVE_OPTION) {
             File archivoSeleccionado = fileChooser.getSelectedFile();
             Curso curso = LectorCurso.leerCursoDesdeJSON(archivoSeleccionado);
 
-            
             if (curso != null) {
-                if (!modeloPrivado.contains(curso)) {
+                Elemento nuevoElemento = new Elemento(curso);
+                if (!modeloPrivado.contains(nuevoElemento)) {
                     Controlador.INSTANCE.importarCurso(curso);
-                    modeloPrivado.addElement(curso);
+                    modeloPrivado.addElement(nuevoElemento);
                 } else {
                     JOptionPane.showMessageDialog(frame, "Este curso ya ha sido importado.", "Aviso", JOptionPane.WARNING_MESSAGE);
                 }
-
             } else {
                 JOptionPane.showMessageDialog(frame, "No se pudo importar el curso.", "Error", JOptionPane.ERROR_MESSAGE);
             }
-            
         }
-
     }
 
     private void compartirCurso() {
-        Curso cursoSeleccionado = listaPrivado.getSelectedValue();
-        
-        if (cursoSeleccionado != null) {
-            if (!modeloGeneral.contains(cursoSeleccionado)) {
-            	modeloPrivado.removeElement(cursoSeleccionado);
-                modeloGeneral.addElement(cursoSeleccionado);
-                Controlador.INSTANCE.publicarCurso(cursoSeleccionado);
-                //cargarCursos(); // Actualiza la lista de cursos
+        Elemento elementoSeleccionado = listaPrivado.getSelectedValue();
+
+        if (elementoSeleccionado != null) {
+            if (!modeloGeneral.contains(elementoSeleccionado)) {
+                modeloPrivado.removeElement(elementoSeleccionado);
+                modeloGeneral.addElement(elementoSeleccionado);
+                Controlador.INSTANCE.publicarCurso(elementoSeleccionado.getCurso());
             } else {
                 JOptionPane.showMessageDialog(frame, "Este curso ya está en la Biblioteca General.", "Aviso", JOptionPane.WARNING_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(frame, "Seleccione un curso para compartir.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
     }
 
 
@@ -205,17 +199,16 @@ public class CursosColaborador {
         modeloPrivado.clear();
         modeloGeneral.clear();
 
-        
         List<Curso> cursos = Controlador.INSTANCE.getCursosColaborador();
-        
-		for (Curso curso : cursos) {
-			if (curso.esPublico()) {
-				modeloGeneral.addElement(curso);
-			}else {
-				modeloPrivado.addElement(curso);
-			}
-		}
 
+        for (Curso curso : cursos) {
+            Elemento elem = new Elemento(curso);
+            if (curso.esPublico()) {
+                modeloGeneral.addElement(elem);
+            } else {
+                modeloPrivado.addElement(elem);
+            }
+        }
     }
 
 
