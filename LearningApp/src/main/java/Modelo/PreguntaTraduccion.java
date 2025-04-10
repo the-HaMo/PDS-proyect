@@ -1,4 +1,4 @@
-package Clases;
+package Modelo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

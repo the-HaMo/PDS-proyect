@@ -2,11 +2,10 @@ package Repositorio;
 
 import java.util.List;
 
-import Clases.Pregunta;
-import Clases.PreguntaRellenarHuecos;
-import Clases.PreguntaTest;
-import Clases.PreguntaTraduccion;
-
+import Modelo.Pregunta;
+import Modelo.PreguntaRellenarHuecos;
+import Modelo.PreguntaTest;
+import Modelo.PreguntaTraduccion;
 import jakarta.persistence.*;
 
 public class RepositorioPregunta {

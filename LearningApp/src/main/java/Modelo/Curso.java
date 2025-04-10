@@ -1,10 +1,11 @@
-package Clases;
+package Modelo;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.*;
 
 @Entity

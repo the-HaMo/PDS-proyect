@@ -1,4 +1,4 @@
-package Clases;
+package Modelo;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -42,6 +42,7 @@ public abstract class Pregunta {
     public Integer getId() {
         return id;
     }
+ 
     
     public abstract String getRespuesta();
 

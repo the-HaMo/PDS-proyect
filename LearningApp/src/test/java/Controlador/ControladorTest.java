@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import Clases.BloqueContenido;
-import Clases.Curso;
+import Modelo.Curso;
 
 
 class ControladorTest {

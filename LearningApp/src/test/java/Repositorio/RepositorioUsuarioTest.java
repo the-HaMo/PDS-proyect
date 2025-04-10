@@ -1,9 +1,9 @@
 package Repositorio;
 
-import Clases.Estudiante;
-import Clases.Usuario;
 import org.junit.jupiter.api.*;
 
+import Modelo.Estudiante;
+import Modelo.Usuario;
 
 import static org.junit.jupiter.api.Assertions.*;
 

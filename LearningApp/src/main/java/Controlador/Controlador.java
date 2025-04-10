@@ -3,7 +3,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import Clases.*;
+import Modelo.*;
 import Repositorio.*;
 
 public enum Controlador {

@@ -24,9 +24,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import Clases.Colaborador;
-import Clases.Estudiante;
 import Controlador.Controlador;
+import Modelo.Colaborador;
+import Modelo.Estudiante;
 
 public class Login {
 	private 	JFrame frame;

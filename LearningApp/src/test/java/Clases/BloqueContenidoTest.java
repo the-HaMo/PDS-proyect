@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import Modelo.PreguntaRellenarHuecos;
+import Modelo.PreguntaTest;
+import Modelo.PreguntaTraduccion;
+
 class BloqueContenidoTest {
 
 	@Test

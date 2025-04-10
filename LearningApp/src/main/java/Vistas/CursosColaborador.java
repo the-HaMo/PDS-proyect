@@ -8,8 +8,8 @@ import java.util.stream.Collectors;
 
 import javax.swing.*;
 
-import Clases.Curso;
 import Controlador.Controlador;
+import Modelo.Curso;
 import Utilidades.LectorCurso;
 
 public class CursosColaborador {

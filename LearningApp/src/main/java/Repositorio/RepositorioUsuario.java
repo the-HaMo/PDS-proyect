@@ -1,8 +1,6 @@
 package Repositorio;
 
-import Clases.Colaborador;
-import Clases.Curso;
-import Clases.Usuario;
+import Modelo.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;

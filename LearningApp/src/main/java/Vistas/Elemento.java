@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
-import Clases.Curso;
+import Modelo.Curso;
 
 public class Elemento extends JPanel {
 

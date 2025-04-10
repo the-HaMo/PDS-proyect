@@ -1,4 +1,4 @@
-package Clases;
+package Modelo;
 
 import java.awt.Color;
 import java.awt.Dimension;

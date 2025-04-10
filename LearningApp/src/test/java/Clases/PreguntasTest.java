@@ -7,6 +7,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import Modelo.PreguntaRellenarHuecos;
+import Modelo.PreguntaTest;
+import Modelo.PreguntaTraduccion;
+
 class PreguntasTest {
 
 	@Test

@@ -1,11 +1,12 @@
 package Repositorio;
 
-import Clases.Curso;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 import java.util.List;
+
+import Modelo.Curso;
 
 public class RepositorioCurso {
 

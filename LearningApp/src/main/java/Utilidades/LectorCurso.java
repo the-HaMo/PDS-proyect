@@ -1,7 +1,8 @@
 package Utilidades;
 
-import Clases.Curso;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import Modelo.Curso;
 
 import java.io.File;
 
