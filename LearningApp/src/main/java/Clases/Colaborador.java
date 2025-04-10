@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 @DiscriminatorValue("COLABORADOR")
 public class Colaborador extends Usuario {
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "autor_id")
 	private List<Curso> cursos_Creados;
 	

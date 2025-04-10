@@ -29,9 +29,9 @@ public class Curso {
 	private boolean esPublico;
 	
 	@JsonProperty("bloques_contenidos")
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "curso_id")
-	private List<BloqueContenido> bloques_contenidos;
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "curso_id")
+    private List<BloqueContenido> bloques_contenidos;
 	
 	public Curso() {
 		this.bloques_contenidos = new LinkedList<BloqueContenido>();

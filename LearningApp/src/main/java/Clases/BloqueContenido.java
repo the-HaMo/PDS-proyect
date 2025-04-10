@@ -19,8 +19,8 @@ public class BloqueContenido {
     private String nombreBloque;
     
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "bloque_contenido_id")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "bloque_contenido_id")
     private List<Pregunta> preguntas;
 
     public BloqueContenido() {

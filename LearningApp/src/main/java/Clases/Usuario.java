@@ -3,7 +3,7 @@ package Clases;
 import jakarta.persistence.*;
 @Entity
 @Table(name = "Usuarios")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)  // Cambio de TABLE_PER_CLASS a JOINED
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)  // Cambio de TABLE_PER_CLASS
 @DiscriminatorColumn(name = "tipo_usuario", discriminatorType = DiscriminatorType.STRING)
 public abstract class Usuario {
 

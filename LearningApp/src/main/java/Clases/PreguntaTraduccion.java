@@ -6,7 +6,6 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("TRADUCCION")
 public class PreguntaTraduccion extends Pregunta {
     
 	@JsonProperty("respuestaCorrecta")
