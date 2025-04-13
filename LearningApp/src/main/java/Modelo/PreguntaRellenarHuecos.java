@@ -40,4 +40,9 @@ public class PreguntaRellenarHuecos extends Pregunta {
 		return ("Pregunta de rellenar huecos: " + this.enunciado + "\nTexto con huecos: "
 				+ this.textoConHuecos + "\nRespuesta: " + this.respuesta);
 	}
+	@Override
+	public String getTipo() {
+	    return "Rellenar Huecos";
+	}
+
 }

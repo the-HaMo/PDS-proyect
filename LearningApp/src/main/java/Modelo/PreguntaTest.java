@@ -42,4 +42,10 @@ public class PreguntaTest extends Pregunta {
 		return ("Pregunta de test: " + this.enunciado + "\nOpciones: " + this.opciones.toString() + "\nRespuesta: "
 				+ this.respuestaCorrecta);
 	}
+	
+	@Override
+	public String getTipo() {
+	    return "Test";
+	}
+
 }

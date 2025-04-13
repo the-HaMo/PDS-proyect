@@ -6,7 +6,6 @@ import java.util.List;
 import javax.swing.*;
 import Controlador.Controlador;
 import Modelo.Curso;
-import Vistas.EleccionBloqueContenido;
 
 public class CursosEstudiante {
 
@@ -209,13 +208,15 @@ public class CursosEstudiante {
 	            if (evt.getClickCount() == 2) {
 	                Elemento elem = lista.getSelectedValue();
 	                if (elem != null) {
-	                    new EleccionBloqueContenido().mostrar();
-	                    frame.dispose();
+	                    Curso cursoSeleccionado = elem.getCurso();
+	                    new EleccionBloqueContenido(cursoSeleccionado).mostrar();
+	                    frame.dispose(); // Opcional: solo si quieres cerrar esta ventana
 	                }
 	            }
 	        }
 	    });
 	}
+
 
 	
 }

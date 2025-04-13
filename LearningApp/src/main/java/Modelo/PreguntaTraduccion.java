@@ -30,4 +30,10 @@ public class PreguntaTraduccion extends Pregunta {
 	public String toString() {
 		return ("Pregunta de traducción: " + this.enunciado + "\nRespuesta: " + this.respuestaCorrecta);
 	}
+	
+	@Override
+	public String getTipo() {
+	    return "Traducción";
+	}
+
 }

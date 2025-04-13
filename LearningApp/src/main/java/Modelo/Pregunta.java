@@ -22,6 +22,7 @@ public abstract class Pregunta {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+	public abstract String getTipo();  // nuevo método abstracto
 
     protected String enunciado;
     
