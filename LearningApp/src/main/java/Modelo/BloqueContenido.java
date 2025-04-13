@@ -18,7 +18,9 @@ public class BloqueContenido {
     @JsonProperty("nombreBloque")
     private String nombreBloque;
     
-
+    @Enumerated(EnumType.STRING)
+    private Dificultad dificultad;
+    
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "bloque_contenido_id")
     private List<Pregunta> preguntas;
@@ -42,6 +44,14 @@ public class BloqueContenido {
 
     public void setNombreBloque(String nombreBloque) {
         this.nombreBloque = nombreBloque;
+    }
+    
+    public Dificultad getDificultad() {
+        return dificultad;
+    }
+
+    public void setDificultad(Dificultad dificultad) {
+        this.dificultad = dificultad;
     }
 
     public List<Pregunta> getPreguntas() {
