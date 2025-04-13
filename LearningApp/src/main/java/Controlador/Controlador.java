@@ -69,6 +69,15 @@ public enum Controlador {
 		repositorioCursos.actualizarCurso(curso);
 	}
 	
+	public void exportarCurso(Curso c) {
+		if (usuarioActual instanceof Estudiante) {
+			c.addNumDescargas();
+			usuarioActual.addCurso(c);
+			repositorioCursos.actualizarCurso(c);
+			repositorioUsuarios.actualizarUsuario(usuarioActual);
+		}
+	}
+	
 	public List<Curso> getCursosPublicados() {
 		return repositorioCursos.obtenerCursosPublicados();
 	}

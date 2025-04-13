@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 @Entity
 @Table(name = "Usuarios")
@@ -33,4 +35,5 @@ public abstract class Usuario {
     }
     
     public abstract void addCurso(Curso curso);
+    public abstract List<Curso> getCursos();
 }

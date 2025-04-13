@@ -18,14 +18,15 @@ public class Colaborador extends Usuario {
 		super(nombre, contraseña);
 	}
 
-	
-	public List<Curso> getCursosCreados() {
-		return this.cursos_Creados;
-	}
 
 	@Override
 	public void addCurso(Curso curso) {
 	cursos_Creados.add(curso);	
+	}
+
+	@Override
+	public List<Curso> getCursos() {
+		return this.cursos_Creados;
 	}
 
 }

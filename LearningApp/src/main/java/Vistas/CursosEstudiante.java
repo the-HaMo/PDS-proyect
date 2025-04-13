@@ -1,6 +1,7 @@
 package Vistas;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 import Controlador.Controlador;
@@ -60,12 +61,31 @@ public class CursosEstudiante {
         btnCompartir.setFocusPainted(false);
         btnCompartir.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
         
+		btnCompartir.addActionListener(e -> {
+			Elemento elem = listaGeneral.getSelectedValue();
+			if (elem != null) {
+				if (!Controlador.INSTANCE.getUsuarioActual().getCursos().contains(elem.getCurso())) {
+					Controlador.INSTANCE.exportarCurso(elem.getCurso());
+					cargarCursos();
+				} else {
+					JOptionPane.showMessageDialog(frame, "El curso ya ha sido exportado.", "Error",	JOptionPane.ERROR_MESSAGE);	
+				}
+			} else {
+				JOptionPane.showMessageDialog(frame, "Por favor, selecciona un curso para exportar.", "Error",
+						JOptionPane.ERROR_MESSAGE);
+			}
+		});
+        
         JButton btnTendencias = new JButton("Tendencias");
         btnTendencias.setFont(new Font("Sans-Serif", Font.BOLD, 12));
         btnTendencias.setForeground(Color.WHITE);
         btnTendencias.setBackground(Color.decode("#4CAF50"));
         btnTendencias.setFocusPainted(false);
         btnTendencias.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+        
+		btnTendencias.addActionListener(e -> {
+			ordenarCursosPorTendencias();
+		});
        
         JPanel panelBotonCompartir = new JPanel();
         panelBotonCompartir.setBackground(Color.WHITE);
@@ -143,20 +163,40 @@ public class CursosEstudiante {
         cargarCursos();
     }
     
-    public void Mostrar() {
+    private void ordenarCursosPorTendencias() {
+    	 List<Curso> cursosOnline = new ArrayList<>();
+		    
+		    for (int i = 0; i < modeloGeneral.size(); i++) {
+		    	cursosOnline.add(modeloGeneral.getElementAt(i).getCurso());
+		    }
+
+		    List<Curso> cursosOrdenados = Controlador.INSTANCE.getCursosEnOrdenLikes(cursosOnline);
+		    modeloGeneral.clear();
+
+		    for (Curso c : cursosOrdenados) {
+		    	Elemento elem = new Elemento(c);
+		        modeloGeneral.addElement(elem);
+		    }
+	}
+
+	public void Mostrar() {
     	frame.setVisible(true);
     }
     
-    public void cargarCursos() {
+	public void cargarCursos() {
     	modeloGeneral.clear();
     	modeloPrivado.clear();
     	
     	List<Curso> cursosOnline = Controlador.INSTANCE.getCursosPublicados();
+    	List<Curso> cursosPrivados = Controlador.INSTANCE.getUsuarioActual().getCursos();
 		for (Curso curso : cursosOnline) {
 			Elemento elem=new Elemento(curso);
 			modeloGeneral.addElement(elem);
 		}
-    	
+    	for (Curso curso : cursosPrivados) {
+    		Elemento elem=new Elemento(curso);
+    		modeloPrivado.addElement(elem);
+    	}
     	
     }
 }
