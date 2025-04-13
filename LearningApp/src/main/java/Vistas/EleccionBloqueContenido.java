@@ -80,7 +80,11 @@ public class EleccionBloqueContenido {
         btnVolver.setFocusPainted(false);
         btnVolver.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
 
-        btnVolver.addActionListener(e -> frame.dispose());
+        btnVolver.addActionListener(e -> {
+	        CursosEstudiante window = new CursosEstudiante();
+			window.Mostrar();
+        	frame.dispose();
+        });
         panelInferior.add(btnVolver);
         frame.getContentPane().add(panelInferior, BorderLayout.SOUTH);
     }
