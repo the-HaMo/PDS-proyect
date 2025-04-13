@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.*;
 import Controlador.Controlador;
 import Modelo.Curso;
+import Vistas.EleccionBloqueContenido;
 
 public class CursosEstudiante {
 
@@ -44,7 +45,8 @@ public class CursosEstudiante {
         modeloGeneral = new DefaultListModel<Elemento>();
         listaGeneral = new JList<>(modeloGeneral);
         listaGeneral.setCellRenderer(new ElementoListRenderer());
-
+        agregarDobleClickListener(listaGeneral);
+        
         JPanel panelGeneral = new JPanel(new BorderLayout());
         panelGeneral.setPreferredSize(new Dimension(370, 300));
         panelGeneral.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "CursosOnline"));
@@ -99,6 +101,7 @@ public class CursosEstudiante {
         modeloPrivado = new DefaultListModel<Elemento>();
         listaPrivado = new JList<>(modeloPrivado);
         listaPrivado.setCellRenderer(new ElementoListRenderer());
+        agregarDobleClickListener(listaPrivado);
         
         JPanel panelPrivado = new JPanel(new BorderLayout());
         panelPrivado.setPreferredSize(new Dimension(370, 300));
@@ -199,4 +202,20 @@ public class CursosEstudiante {
     	}
     	
     }
+	
+	private void agregarDobleClickListener(JList<Elemento> lista) {
+	    lista.addMouseListener(new java.awt.event.MouseAdapter() {
+	        public void mouseClicked(java.awt.event.MouseEvent evt) {
+	            if (evt.getClickCount() == 2) {
+	                Elemento elem = lista.getSelectedValue();
+	                if (elem != null) {
+	                    new EleccionBloqueContenido().mostrar();
+	                    frame.dispose();
+	                }
+	            }
+	        }
+	    });
+	}
+
+	
 }

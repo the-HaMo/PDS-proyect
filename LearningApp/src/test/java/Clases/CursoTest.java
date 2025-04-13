@@ -1,3 +1,4 @@
+
 package Clases;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,6 +8,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import Modelo.BloqueContenido;
 import Modelo.Curso;
 import Modelo.Pregunta;
 import Modelo.PreguntaRellenarHuecos;

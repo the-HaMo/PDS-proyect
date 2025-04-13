@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import Modelo.BloqueContenido;
 import Modelo.PreguntaRellenarHuecos;
 import Modelo.PreguntaTest;
 import Modelo.PreguntaTraduccion;
