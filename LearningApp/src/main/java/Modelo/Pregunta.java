@@ -24,6 +24,9 @@ public abstract class Pregunta {
     private Integer id;
 	public abstract String getTipo();  // nuevo método abstracto
 
+	@Enumerated(EnumType.STRING)
+	private Dificultad dificultad;
+	
     protected String enunciado;
     
     public Pregunta() {}
@@ -42,6 +45,14 @@ public abstract class Pregunta {
     
     public Integer getId() {
         return id;
+    }
+    
+    public Dificultad getDificultad() {
+        return dificultad;
+    }
+
+    public void setDificultad(Dificultad dificultad) {
+        this.dificultad = dificultad;
     }
  
     

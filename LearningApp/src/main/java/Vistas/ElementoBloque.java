@@ -25,12 +25,6 @@ public class ElementoBloque extends JPanel {
         JLabel lblTitulo = new JLabel(bloque.getNombreBloque());
         lblTitulo.setFont(new Font("Sans-Serif", Font.BOLD, 14));
         lblTitulo.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-
-        //Dificultad del Bloque
-        JLabel lblDificultad = new JLabel("Dificultad: " + bloque.getDificultad());
-        lblDificultad.setFont(new Font("Sans-Serif", Font.ITALIC, 12));
-        lblDificultad.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 5));
-        lblDificultad.setForeground(Color.GRAY);
         
         // Número de preguntas
         JLabel lblPreguntas = new JLabel("Preguntas: " + bloque.getPreguntas().size());
@@ -43,7 +37,6 @@ public class ElementoBloque extends JPanel {
         contenido.setLayout(new BoxLayout(contenido, BoxLayout.Y_AXIS));
         contenido.setOpaque(false); // Para mantener el fondo blanco del panel padre
         contenido.add(lblTitulo);
-        contenido.add(lblDificultad);
         contenido.add(lblPreguntas);
 
         this.add(contenido, BorderLayout.CENTER);
