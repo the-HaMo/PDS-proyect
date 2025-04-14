@@ -99,4 +99,18 @@ public class RepositorioCurso {
             em.close();
         }
     }
+    
+    public void eliminarCurso(Integer id) {
+		EntityManager em = emf.createEntityManager();
+		try {
+			em.getTransaction().begin();
+			Curso curso = em.find(Curso.class, id);
+			if (curso != null) {
+				em.remove(curso);
+			}
+			em.getTransaction().commit();
+		} finally {
+			em.close();
+		}
+    }
 }

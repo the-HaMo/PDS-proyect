@@ -34,6 +34,11 @@ public abstract class Usuario {
         return id;
     }
     
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+    
     public abstract void addCurso(Curso curso);
     public abstract List<Curso> getCursos();
 }

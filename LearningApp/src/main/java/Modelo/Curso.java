@@ -65,12 +65,20 @@ public class Curso {
 		return this.nombre;
 	}
 	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
 	public Integer getId() {
 		return this.id;
 	}
 	
 	public String getDescripcion() {
 		return this.descripcion;
+	}
+	
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	
 
