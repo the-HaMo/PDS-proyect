@@ -11,12 +11,14 @@ public enum Controlador {
 	private Usuario usuarioActual;
 	private RepositorioUsuario repositorioUsuarios;
 	private RepositorioCurso repositorioCursos;
+	private RepositorioLike repositorioLikes;
 	
 	private Controlador() {
 		// TODO Auto-generated constructor stub
 		usuarioActual = null;
 		repositorioUsuarios = new RepositorioUsuario();
 		repositorioCursos = new RepositorioCurso();
+		repositorioLikes = new RepositorioLike();
 		
 	}
 	
@@ -92,6 +94,26 @@ public enum Controlador {
 	
 	public List<Curso> getCursosPrivadosAutor() {
 		return repositorioCursos.obtenerCursosPorAutorPrivados(usuarioActual.getId());
+	}
+	
+	private boolean yaDioLike(Curso curso) {
+		return usuarioActual.getLikes().stream()
+				.anyMatch(like -> like.getCurso().equals(curso));
+	}
+	
+	public boolean darLike(Curso curso) {
+	    if (usuarioActual == null || yaDioLike(curso)) {
+	        return false;
+	    }
+
+	    curso.AddNumMeGustas();
+	    Like nuevoLike = new Like(usuarioActual, curso);
+	    usuarioActual.addLike(nuevoLike);
+	    repositorioLikes.guardarLike(nuevoLike);
+	    repositorioCursos.actualizarCurso(curso);
+	    repositorioUsuarios.actualizarUsuario(usuarioActual);
+
+	    return true;
 	}
 	
 	public Usuario getUsuarioActual() {

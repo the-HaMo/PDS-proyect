@@ -1,6 +1,8 @@
 package Modelo;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.*;
 @Entity
@@ -14,8 +16,12 @@ public abstract class Usuario {
     private Integer id;
     private String nombre;
     private String contrasena;
-
-    public Usuario() {}
+    @OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Like> likes;
+    
+    public Usuario() {
+    	this.likes = new HashSet<Like>();
+    }
 
     public Usuario(String nombre, String contrasena) {
         this.nombre = nombre;
@@ -37,8 +43,16 @@ public abstract class Usuario {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
     
-    public abstract void addCurso(Curso curso);
+    public Set<Like> getLikes() {
+		return likes;
+	}
+
+    
+    public void addLike(Like like) {
+    	likes.add(like);
+    }
+    
+	public abstract void addCurso(Curso curso);
     public abstract List<Curso> getCursos();
 }

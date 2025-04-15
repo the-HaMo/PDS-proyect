@@ -178,7 +178,6 @@ public class CursosColaborador {
 
         if (elementoSeleccionado != null) {
             if (!modeloGeneral.contains(elementoSeleccionado)) {
-                modeloPrivado.removeElement(elementoSeleccionado);
                 modeloGeneral.addElement(elementoSeleccionado);
                 Controlador.INSTANCE.publicarCurso(elementoSeleccionado.getCurso());
             } else {

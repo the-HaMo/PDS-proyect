@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.*;
 import Controlador.Controlador;
 import Modelo.Curso;
+import Modelo.Like;
 
 public class CursosEstudiante {
 
@@ -55,6 +56,72 @@ public class CursosEstudiante {
         scrollGeneral.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
         panelGeneral.add(scrollGeneral, BorderLayout.CENTER);
 
+        JButton btnLike = new JButton("Dar Like");
+        btnLike.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+        btnLike.setForeground(Color.WHITE);
+        btnLike.setBackground(Color.decode("#4CAF50"));
+        btnLike.setFocusPainted(false);
+        btnLike.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+        
+		btnLike.addActionListener(e -> {
+			Elemento elem = listaGeneral.getSelectedValue();
+			if (elem != null) {
+				Curso curso = elem.getCurso();
+				boolean DarLike = Controlador.INSTANCE.darLike(curso);
+				if (DarLike) {
+					elem.actualizarLikes();
+					int index = listaGeneral.getSelectedIndex();
+					modeloGeneral.set(index, elem);
+				} else {
+					System.out.println("Ya dio like");
+				}
+				
+			}});
+        
+        JButton btnTendencias = new JButton("Tendencias");
+        btnTendencias.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+        btnTendencias.setForeground(Color.WHITE);
+        btnTendencias.setBackground(Color.decode("#4CAF50"));
+        btnTendencias.setFocusPainted(false);
+        btnTendencias.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+        
+		btnTendencias.addActionListener(e -> {
+			ordenarCursosPorTendencias();
+		});
+       
+        JPanel panelBotonCompartir = new JPanel();
+        panelBotonCompartir.setBackground(Color.WHITE);
+        panelBotonCompartir.add(btnLike);
+        panelBotonCompartir.add(btnTendencias);
+        panelGeneral.add(panelBotonCompartir, BorderLayout.SOUTH);
+
+        panelBibliotecas.add(panelGeneral, BorderLayout.WEST);
+
+        // -------------------- Panel Privado (MisCursos) --------------------
+        modeloPrivado = new DefaultListModel<Elemento>();
+        listaPrivado = new JList<>(modeloPrivado);
+        listaPrivado.setCellRenderer(new ElementoListRenderer());
+        agregarDobleClickListener(listaPrivado);
+        
+        JPanel panelPrivado = new JPanel(new BorderLayout());
+        panelPrivado.setPreferredSize(new Dimension(370, 300));
+        panelPrivado.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "MisCursos"));
+        panelPrivado.setBackground(Color.WHITE);
+
+        JScrollPane scrollPrivado = new JScrollPane(listaPrivado);
+        scrollPrivado.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
+        panelPrivado.add(scrollPrivado, BorderLayout.CENTER);
+
+        JButton btnDetalles = new JButton("Ver detalles");
+        btnDetalles.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+        btnDetalles.setForeground(Color.WHITE);
+        btnDetalles.setBackground(Color.decode("#4CAF50"));
+        btnDetalles.setFocusPainted(false);
+        btnDetalles.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+        btnDetalles.addActionListener( e -> {
+        	
+        });
+        
         JButton btnCompartir = new JButton("Exportar Curso");
         btnCompartir.setFont(new Font("Sans-Serif", Font.BOLD, 12));
         btnCompartir.setForeground(Color.WHITE);
@@ -76,51 +143,11 @@ public class CursosEstudiante {
 						JOptionPane.ERROR_MESSAGE);
 			}
 		});
-        
-        JButton btnTendencias = new JButton("Tendencias");
-        btnTendencias.setFont(new Font("Sans-Serif", Font.BOLD, 12));
-        btnTendencias.setForeground(Color.WHITE);
-        btnTendencias.setBackground(Color.decode("#4CAF50"));
-        btnTendencias.setFocusPainted(false);
-        btnTendencias.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
-        
-		btnTendencias.addActionListener(e -> {
-			ordenarCursosPorTendencias();
-		});
-       
-        JPanel panelBotonCompartir = new JPanel();
-        panelBotonCompartir.setBackground(Color.WHITE);
-        panelBotonCompartir.add(btnCompartir);
-        panelBotonCompartir.add(btnTendencias);
-        panelGeneral.add(panelBotonCompartir, BorderLayout.SOUTH);
-
-        panelBibliotecas.add(panelGeneral, BorderLayout.WEST);
-
-        // -------------------- Panel Privado (MisCursos) --------------------
-        modeloPrivado = new DefaultListModel<Elemento>();
-        listaPrivado = new JList<>(modeloPrivado);
-        listaPrivado.setCellRenderer(new ElementoListRenderer());
-        agregarDobleClickListener(listaPrivado);
-        
-        JPanel panelPrivado = new JPanel(new BorderLayout());
-        panelPrivado.setPreferredSize(new Dimension(370, 300));
-        panelPrivado.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "MisCursos"));
-        panelPrivado.setBackground(Color.WHITE);
-
-        JScrollPane scrollPrivado = new JScrollPane(listaPrivado);
-        scrollPrivado.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
-        panelPrivado.add(scrollPrivado, BorderLayout.CENTER);
-
-        JButton btnImportar = new JButton("Ver detalles");
-        btnImportar.setFont(new Font("Sans-Serif", Font.BOLD, 12));
-        btnImportar.setForeground(Color.WHITE);
-        btnImportar.setBackground(Color.decode("#4CAF50"));
-        btnImportar.setFocusPainted(false);
-        btnImportar.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
        
         JPanel panelBotonImportar = new JPanel();
         panelBotonImportar.setBackground(Color.WHITE);
-        panelBotonImportar.add(btnImportar);
+        panelBotonImportar.add(btnDetalles);
+        panelBotonImportar.add(btnCompartir);
         panelPrivado.add(panelBotonImportar, BorderLayout.SOUTH);
 
         panelBibliotecas.add(panelPrivado, BorderLayout.EAST);
