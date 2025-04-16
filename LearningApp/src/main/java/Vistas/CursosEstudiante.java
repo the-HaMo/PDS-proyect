@@ -235,8 +235,9 @@ public class CursosEstudiante {
 	        public void mouseClicked(java.awt.event.MouseEvent evt) {
 	            if (evt.getClickCount() == 2) {
 	                Elemento elem = lista.getSelectedValue();
-	                if (elem != null) {
-	                    Curso cursoSeleccionado = elem.getCurso(); 
+	                if (elem != null) { // Si el curso seleccionado no tiene estrategia
+	                    Curso cursoSeleccionado = elem.getCurso();
+	                    if (!cursoSeleccionado.isEstrategia()) {
 	                    String[] estrategias = {"Aleatoria", "Secuencial", "Repetición Espaciada"};
 	                    String seleccion = (String) JOptionPane.showInputDialog(
 	                        frame,
@@ -263,6 +264,7 @@ public class CursosEstudiante {
 							default:
 								throw new IllegalArgumentException("Unexpected value: " + seleccion);
 							}
+	                    	}
 	                    }
 	                    new EleccionBloqueContenido(cursoSeleccionado).mostrar();
 	                    frame.dispose(); // Opcional: solo si quieres cerrar esta ventana

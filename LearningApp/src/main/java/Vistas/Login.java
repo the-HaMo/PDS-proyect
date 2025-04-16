@@ -47,21 +47,23 @@ public class Login {
 		frame.getContentPane().setLayout(new BorderLayout());
 
 		JPanel mainPanel = new JPanel(new BorderLayout());
-		mainPanel.setBackground(SystemColor.inactiveCaption);
+		mainPanel.setBackground(new Color(0, 255, 64));
 		mainPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
 		frame.getContentPane().add(mainPanel);
 
 		JLabel titleLabel = new JLabel("LearningApp", SwingConstants.CENTER);
 		titleLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 26));
-		titleLabel.setForeground(new Color(70, 130, 180));
+		titleLabel.setForeground(new Color(0, 0, 0));
 		titleLabel.setBorder(new EmptyBorder(10, 0, 10, 0));
 		mainPanel.add(titleLabel, BorderLayout.NORTH);
 
 		JPanel centerPanel = new JPanel(new BorderLayout());
+		centerPanel.setBackground(new Color(128, 255, 128));
 		centerPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
 		mainPanel.add(centerPanel, BorderLayout.CENTER);
 
 		JPanel logoPanel = new JPanel(new BorderLayout());
+		logoPanel.setBackground(new Color(128, 255, 128));
 		logoPanel.setPreferredSize(new Dimension(0, 200));
 		centerPanel.add(logoPanel, BorderLayout.NORTH);
 
@@ -82,12 +84,14 @@ public class Login {
 		});
 
 		JPanel fieldsPanel = new JPanel(new GridLayout(2, 1, 10, 10));
+		fieldsPanel.setBackground(new Color(128, 255, 128));
 		fieldsPanel.setBorder(new EmptyBorder(30, 50, 20, 50)); // Padding
 		centerPanel.add(fieldsPanel, BorderLayout.SOUTH);
 
 		JPanel usernamePanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // Centrado
+		usernamePanel.setBackground(new Color(128, 255, 128));
 		JLabel usernameLabel = new JLabel("Username:");
-		usernameLabel.setForeground(new Color(0, 0, 128));
+		usernameLabel.setForeground(new Color(0, 0, 0));
 		usernameLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		usernamePanel.add(usernameLabel);
 
@@ -97,8 +101,9 @@ public class Login {
 		usernamePanel.add(usernameField);
 
 		JPanel passwordPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // Centrado
+		passwordPanel.setBackground(new Color(128, 255, 128));
 		JLabel passwordLabel = new JLabel("Password:");
-		passwordLabel.setForeground(new Color(0, 0, 128));
+		passwordLabel.setForeground(new Color(0, 0, 0));
 		passwordLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		passwordPanel.add(passwordLabel);
 
@@ -111,12 +116,13 @@ public class Login {
 		fieldsPanel.add(passwordPanel);
 
 		JPanel buttonsPanel = new JPanel();
+		buttonsPanel.setBackground(new Color(128, 255, 128));
 		buttonsPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
 		mainPanel.add(buttonsPanel, BorderLayout.SOUTH);
 
 		JButton loginButton = new JButton("Login");
 		loginButton.setFont(new Font("Arial", Font.BOLD, 14));
-		loginButton.setBackground(new Color(70, 130, 180));
+		loginButton.setBackground(new Color(0, 128, 0));
 		loginButton.setForeground(Color.WHITE);
 		loginButton.setPreferredSize(new Dimension(120, 40));
 		buttonsPanel.add(loginButton);
@@ -143,7 +149,7 @@ public class Login {
 
 		JButton registerButton = new JButton("Register");
 		registerButton.setFont(new Font("Arial", Font.BOLD, 14));
-		registerButton.setBackground(new Color(70, 130, 180));
+		registerButton.setBackground(new Color(0, 128, 0));
 		registerButton.setForeground(Color.WHITE);
 		registerButton.setPreferredSize(new Dimension(120, 40));
 		buttonsPanel.add(registerButton);

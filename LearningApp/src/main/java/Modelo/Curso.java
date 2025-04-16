@@ -127,7 +127,11 @@ public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_co
 		return estrategia;
 	}
 
-
+	public boolean isEstrategia() {
+		return this.getEstrategia() != null;
+	}
+	
+	
 	public void setEstrategia(Estrategia estrategia) {
 		this.estrategia = estrategia;
 	}

@@ -23,19 +23,20 @@ public class Registro extends JFrame {
 
         
         JPanel panelPrincipal = new JPanel();
-        panelPrincipal.setBackground(new Color(210, 222, 239));
+        panelPrincipal.setBackground(new Color(0, 255, 0));
         panelPrincipal.setLayout(new BorderLayout());
 
         
         JLabel lblTitulo = new JLabel("Registrarse", SwingConstants.CENTER);
+        lblTitulo.setBackground(new Color(0, 255, 0));
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 24));
-        lblTitulo.setForeground(new Color(50, 80, 100));
+        lblTitulo.setForeground(new Color(0, 0, 0));
         lblTitulo.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
         panelPrincipal.add(lblTitulo, BorderLayout.NORTH);
 
         
         JPanel panelCampos = new JPanel(new GridLayout(4, 2, 10, 10));
-        panelCampos.setBackground(new Color(210, 222, 239));
+        panelCampos.setBackground(new Color(128, 255, 128));
         panelCampos.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         
@@ -70,10 +71,10 @@ public class Registro extends JFrame {
 
        
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
-        panelBotones.setBackground(new Color(210, 222, 239));
+        panelBotones.setBackground(new Color(128, 255, 128));
 
         btnCancelar = new JButton("Cancelar");
-        btnCancelar.setBackground(new Color(70, 130, 180));
+        btnCancelar.setBackground(Color.decode("#4CAF50"));
         btnCancelar.setForeground(Color.WHITE);
         
         
@@ -87,7 +88,7 @@ public class Registro extends JFrame {
         panelBotones.add(btnCancelar);
 
         btnAceptar = new JButton("Aceptar");
-        btnAceptar.setBackground(new Color(70, 130, 180));
+        btnAceptar.setBackground(Color.decode("#4CAF50"));
         btnAceptar.setForeground(Color.WHITE);
         btnAceptar.addActionListener(new ActionListener() {
             @Override
