@@ -27,6 +27,9 @@ public class Curso {
 	private int NumDescargas;
 	private int NumMeGustas;
 	
+	// HAY VERLO 
+	private Estrategia estrategia;
+	
 	private boolean esPublico;
 	
 	@JsonProperty("bloques_contenidos")
@@ -38,24 +41,28 @@ public class Curso {
 		this.bloques_contenidos = new LinkedList<BloqueContenido>();
 	}
 	
-	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos, int NumDescargas, int NumMeGustas, String idioma) {
+	
+public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos, int NumDescargas, int NumMeGustas, String idioma, Estrategia estrategia) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.bloques_contenidos = bloques_contenidos;
 		this.NumDescargas = NumDescargas;
 		this.NumMeGustas = NumMeGustas;
-		this.esPublico= false;
 		this.idioma = idioma;
+		this.estrategia = estrategia;
+	}
+	
+	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos, int NumDescargas, int NumMeGustas, String idioma) {
+		this(nombre, descripcion, bloques_contenidos, NumDescargas, NumMeGustas, idioma, Estrategia.ALEATORIA);
 	}
 	
 	public Curso(String nombre, String descripcion) {
-		this(nombre, descripcion, new LinkedList<BloqueContenido>(), 0, 0, "Español");
+		this(nombre, descripcion, new LinkedList<BloqueContenido>(), 0, 0, "Español", Estrategia.ALEATORIA);
 	}
 	
 	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos) {
-		this(nombre, descripcion, bloques_contenidos, 0, 0, "Español");
+		this(nombre, descripcion, bloques_contenidos, 0, 0, "Español", Estrategia.ALEATORIA);
 	}
-	
 	
 	public List<BloqueContenido> getBloquesContenidos() {
         return this.bloques_contenidos;
@@ -115,6 +122,17 @@ public class Curso {
 		this.idioma = idioma;
 	}
 	
+	
+	public Estrategia getEstrategia() {
+		return estrategia;
+	}
+
+
+	public void setEstrategia(Estrategia estrategia) {
+		this.estrategia = estrategia;
+	}
+
+
 	public void setBloquesContenidos(List<BloqueContenido> bloques_contenidos) {
 		for (BloqueContenido bloque : bloques_contenidos) {
 			addBloque(bloque);

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.*;
 import Controlador.Controlador;
 import Modelo.Curso;
+import Modelo.Estrategia;
 import Modelo.Like;
 
 public class CursosEstudiante {
@@ -235,7 +236,34 @@ public class CursosEstudiante {
 	            if (evt.getClickCount() == 2) {
 	                Elemento elem = lista.getSelectedValue();
 	                if (elem != null) {
-	                    Curso cursoSeleccionado = elem.getCurso();
+	                    Curso cursoSeleccionado = elem.getCurso(); 
+	                    String[] estrategias = {"Aleatoria", "Secuencial", "Repetición Espaciada"};
+	                    String seleccion = (String) JOptionPane.showInputDialog(
+	                        frame,
+	                        "Selecciona una estrategia para comenzar el curso:",
+	                        "Estrategia de Aprendizaje",
+	                        JOptionPane.QUESTION_MESSAGE,
+	                        null,
+	                        estrategias,
+	                        estrategias[0]
+	                    );
+	                    
+	                    /// SI EL CURSO YA SE HA INICIADO NO HACE FALTA LA ESTRATEGIA
+	                    if (seleccion != null) {
+	                    	switch (seleccion) {
+							case "Aleatoria": 
+									cursoSeleccionado.setEstrategia(Estrategia.ALEATORIA);
+									break;
+							case "Secuencial":
+									cursoSeleccionado.setEstrategia(Estrategia.SECUENCIAL);
+									break;
+							case "Repetición Espaciada":
+									cursoSeleccionado.setEstrategia(Estrategia.REPETICION_ESPACIADA);
+									break;
+							default:
+								throw new IllegalArgumentException("Unexpected value: " + seleccion);
+							}
+	                    }
 	                    new EleccionBloqueContenido(cursoSeleccionado).mostrar();
 	                    frame.dispose(); // Opcional: solo si quieres cerrar esta ventana
 	                }
