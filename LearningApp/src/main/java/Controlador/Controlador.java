@@ -120,4 +120,18 @@ public enum Controlador {
 		return usuarioActual;
 	}
 	
+	public List<Curso> getCursosEmpezados() {
+		if (usuarioActual instanceof Estudiante) {
+			return ((Estudiante) usuarioActual).getCursosEmpezados();
+		}
+		return null;
+	}
+	
+	public void empezarCurso(Curso curso) {
+		if (usuarioActual instanceof Estudiante) {
+			((Estudiante) usuarioActual).addCursoEmpezado(curso);
+			repositorioUsuarios.actualizarUsuario(usuarioActual);
+		}
+	}
+	
 }

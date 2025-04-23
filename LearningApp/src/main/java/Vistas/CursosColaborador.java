@@ -53,7 +53,7 @@ public class CursosColaborador {
         
         JPanel panelGeneral = new JPanel(new BorderLayout());
         panelGeneral.setPreferredSize(new Dimension(370, 300));
-        panelGeneral.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "CursosOnline"));
+        panelGeneral.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "Cursos Subidos"));
         panelGeneral.setBackground(Color.WHITE);
 
         JScrollPane scrollGeneral = new JScrollPane(listaGeneral);
@@ -76,13 +76,13 @@ public class CursosColaborador {
         panelBibliotecas.add(panelGeneral, BorderLayout.WEST);
 
         // -------------------- Panel Privado (MisCursos) --------------------
-        modeloPrivado = new DefaultListModel<Elemento>(); //Cambiar a Elemento !!
+        modeloPrivado = new DefaultListModel<Elemento>(); 
         listaPrivado = new JList<>(modeloPrivado);
         listaPrivado.setCellRenderer(new ElementoListRenderer());
         
         JPanel panelPrivado = new JPanel(new BorderLayout());
         panelPrivado.setPreferredSize(new Dimension(370, 300));
-        panelPrivado.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "MisCursos"));
+        panelPrivado.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "Cursos Privados"));
         panelPrivado.setBackground(Color.WHITE);
 
         JScrollPane scrollPrivado = new JScrollPane(listaPrivado);
@@ -204,11 +204,11 @@ public class CursosColaborador {
             Elemento elem = new Elemento(curso);
             if (curso.esPublico()) {
                 modeloGeneral.addElement(elem);
-            } else {
+            }
                 modeloPrivado.addElement(elem);
             }
         }
-    }
+    
 
 
 
