@@ -132,7 +132,9 @@ public class CursosEstudiante {
 
 		btnExportar.addActionListener(e -> {
 			Elemento elem = listaGeneral.getSelectedValue();
-			exportar(elem);
+			if(elem!=null) {
+				exportar(elem.getCurso());
+			}
 		});
 
 		JPanel panelBotonImportar = new JPanel();
@@ -182,20 +184,18 @@ public class CursosEstudiante {
 
 		cargarCursos();
 	}
-	
-	private void exportar(Elemento elem) {
-		if (elem != null) {
-			if (!Controlador.INSTANCE.getUsuarioActual().getCursos().contains(elem.getCurso())) {
-				Controlador.INSTANCE.exportarCurso(elem.getCurso());
-				cargarCursos();
-			} else {
-				JOptionPane.showMessageDialog(frame, "El curso ya ha sido exportado.", "Error",	JOptionPane.ERROR_MESSAGE);	
-			}
+
+	private void exportar(Curso c) {
+		List<Curso> cursos = Controlador.INSTANCE.getUsuarioActual().getCursos();
+		if (!cursos.contains(c)) {
+			Controlador.INSTANCE.exportarCurso(c);
+			cargarCursos();
 		} else {
-			JOptionPane.showMessageDialog(frame, "Por favor, selecciona un curso para exportar.", "Error",
-					JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(frame, "El curso ya ha sido exportado.", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+
+
 
 	private void ordenarCursosPorTendencias() {
 		List<Curso> cursosOnline = new ArrayList<>();
@@ -224,15 +224,14 @@ public class CursosEstudiante {
 		List<Curso> cursosOnline = Controlador.INSTANCE.getCursosPublicados();
 		List<Curso> cursosPrivados = Controlador.INSTANCE.getUsuarioActual().getCursos();
 		for (Curso curso : cursosOnline) {
-			Elemento elem=new Elemento(curso);
-			modeloGeneral.addElement(elem);
+			   modeloGeneral.addElement(new Elemento(curso));
 		}
 		for (Curso curso : cursosPrivados) {
-			Elemento elem=new Elemento(curso);
-			modeloPrivado.addElement(elem);
+			   modeloPrivado.addElement(new Elemento(curso));
 		}
 
 	}
+
 
 
 	private void agregarDobleClickListener(JList<Elemento> lista) {
@@ -242,8 +241,9 @@ public class CursosEstudiante {
 					Elemento elem = lista.getSelectedValue();
 					if (elem != null) {
 						Curso cursoSeleccionado = elem.getCurso();
+						List<Curso> cursosExportados = Controlador.INSTANCE.getUsuarioActual().getCursos();
 						List<Curso> cursosEmpezados = Controlador.INSTANCE.getCursosEmpezados();
-						
+
 						if (!cursosEmpezados.contains(cursoSeleccionado)) {
 							String[] estrategias = {"Aleatoria", "Secuencial", "Repetición Espaciada"};
 							String seleccion = (String) JOptionPane.showInputDialog(
@@ -255,7 +255,6 @@ public class CursosEstudiante {
 									estrategias,
 									estrategias[0]
 									);
-
 							if (seleccion != null) {
 								switch (seleccion) {
 								case "Aleatoria":
@@ -270,13 +269,14 @@ public class CursosEstudiante {
 								default:
 									throw new IllegalArgumentException("Estrategia no válida: " + seleccion);
 								}
-								exportar(elem);
+								cursoSeleccionado.aplicarEstrategias();
 								Controlador.INSTANCE.empezarCurso(cursoSeleccionado);
-								
 							}
 						}
+						if (!cursosExportados.contains(cursoSeleccionado)) {
+							exportar(cursoSeleccionado); //Aqui se guarda el curso actualizado
+						}
 						cargarCursos();
-						//cursoSeleccionado.aplicarEstrategias();
 						new EleccionBloqueContenido(cursoSeleccionado).mostrar();
 						frame.dispose();
 					}
@@ -284,7 +284,5 @@ public class CursosEstudiante {
 			}
 		});
 	}
-
-
 
 }

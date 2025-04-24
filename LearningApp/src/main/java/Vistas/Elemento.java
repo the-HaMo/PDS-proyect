@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
+import Controlador.Controlador;
 import Modelo.Curso;
 
 public class Elemento extends JPanel {
@@ -36,7 +37,7 @@ public class Elemento extends JPanel {
     	if(curso.getAutor()!=null) {
     		this.autor=curso.getAutor().getNombre();
     	}else {
-    		this.autor="";
+    		this.autor=Controlador.INSTANCE.getUsuarioActual().getNombre();
     	}
     	this.curso=curso;
         initializeComponent();
@@ -56,7 +57,7 @@ public class Elemento extends JPanel {
         InfoModelo nomb = new InfoModelo(nombre, 10, Color.BLACK);
         InfoModelo desc = new InfoModelo(descripcion, 10, Color.BLACK);
         InfoModelo creador = new InfoModelo("Autor:" + autor, 10, Color.BLACK);
-        likesLabel =  new InfoModelo(curso.getNumMeGustas() + " likes", 10, Color.BLACK);
+        likesLabel =  new InfoModelo("Likes: "+ curso.getNumMeGustas(), 10, Color.BLACK);
         
         JPanel info = new JPanel();
         info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));

@@ -33,22 +33,25 @@ public class Estudiante extends Usuario{
         this.cursosEmpezados=new ArrayList<Curso>();
     }
 	
-	public List<Curso> getCursos() {
+	public List<Curso> getCursos() {//Los que tengo importado
 		return cursosApuntados;
 	}
 
 	@Override
 	public void addCurso(Curso curso) {
-		this.cursosApuntados.add(curso);
-    
+		if(!cursosApuntados.contains(curso)) {
+			this.cursosApuntados.add(curso);
+		}
 	}
 
-	public List<Curso> getCursosEmpezados() {
+	public List<Curso> getCursosEmpezados() {//los empezados
 		return cursosEmpezados;
 	}
 
 	public void addCursoEmpezado(Curso curso) {
-		this.cursosEmpezados.add(curso);
+		if (!cursosEmpezados.contains(curso)) {
+			this.cursosEmpezados.add(curso);
+		}
 	}
 	
 	

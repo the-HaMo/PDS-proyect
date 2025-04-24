@@ -170,19 +170,6 @@ public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_co
 	    return String.format("%s - %s (%s)", nombre, idioma, autor != null ? autor.getNombre() : "Sin autor");
 	}
 	
-	@Override
-	public boolean equals(Object obj) {
-	    if (this == obj) return true;
-	    if (obj == null || getClass() != obj.getClass()) return false;
-	    Curso other = (Curso) obj;
-	    return id != null && id.equals(other.id);
-	}
-
-	@Override
-	public int hashCode() {
-	    return id != null ? id.hashCode() : 0;
-	}
-	
 	
 	public List<BloqueContenido> aplicarEstrategias() {
 		List<BloqueContenido> bloques = new LinkedList<>(this.bloques_contenidos);
@@ -238,6 +225,21 @@ public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_co
 	private boolean preguntaEsIncorrecta(Pregunta pregunta) {
 	    // Implementar la lógica para determinar si una pregunta fue respondida incorrectamente
 	    return false; 
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null || getClass() != obj.getClass())
+			return false;
+		Curso curso = (Curso) obj;
+		return (id != null && id.equals(curso.id));
+	}
+
+	@Override
+	public int hashCode() {
+		return id != null ? id.hashCode() : 0;
 	}
 	
 }
