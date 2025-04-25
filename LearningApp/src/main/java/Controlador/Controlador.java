@@ -129,6 +129,10 @@ public enum Controlador {
 		}
 		return null;
 	}
+	
+	public void actualizarCursosUsuario(List<Curso> cursosActualizados) {
+	    this.usuarioActual.setCursos(cursosActualizados);
+	}
 
 
 	public void empezarCurso(Curso curso) {

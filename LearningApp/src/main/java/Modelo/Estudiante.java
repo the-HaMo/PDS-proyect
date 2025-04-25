@@ -44,6 +44,11 @@ public class Estudiante extends Usuario{
 		}
 	}
 
+	public void setCursos(List<Curso> cursos) {
+	    this.cursosApuntados = cursos;
+	}
+
+	
 	public List<Curso> getCursosEmpezados() {//los empezados
 		return cursosEmpezados;
 	}

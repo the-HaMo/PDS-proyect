@@ -55,4 +55,5 @@ public abstract class Usuario {
     
 	public abstract void addCurso(Curso curso);
     public abstract List<Curso> getCursos();
+    public abstract void setCursos(List<Curso> cursos);
 }
