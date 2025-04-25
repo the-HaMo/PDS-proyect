@@ -187,12 +187,21 @@ public class CursosEstudiante {
 
 	private void exportar(Curso c) {
 		List<Curso> cursos = Controlador.INSTANCE.getUsuarioActual().getCursos();
-		if (!cursos.contains(c)) {
-			Controlador.INSTANCE.exportarCurso(c);
-			cargarCursos();
-		} else {
-			JOptionPane.showMessageDialog(frame, "El curso ya ha sido exportado.", "Error", JOptionPane.ERROR_MESSAGE);
+		boolean encontrado = false;
+		for (int i = 0; i < cursos.size(); i++) {
+		    Curso cursoExistente = cursos.get(i);
+		    if (cursoExistente.getNombre().equals(c.getNombre())) { // o por ID si quieres
+		        cursos.set(i, c); // reemplazar el viejo por el nuevo
+		        encontrado = true;
+		        break;
+		    }
 		}
+		if (!encontrado) {
+		    cursos.add(c);
+		}
+		Controlador.INSTANCE.actualizarCursosUsuario(cursos); // <<<<< Necesitarás este método en Controlador
+		cargarCursos();
+
 	}
 
 

@@ -28,5 +28,11 @@ public class Colaborador extends Usuario {
 	public List<Curso> getCursos() {
 		return this.cursos_Creados;
 	}
+	
+	@Override
+	public void setCursos(List<Curso> cursos) {
+	    this.cursos_Creados = cursos;
+	}
+
 
 }
