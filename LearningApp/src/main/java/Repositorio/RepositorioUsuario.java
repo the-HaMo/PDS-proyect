@@ -86,24 +86,12 @@ public class RepositorioUsuario {
     
     public void actualizarUsuario(Usuario usuario) {
         EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
         try {
-        	if (usuario.getId() == null) {
-        		em.persist(usuario);
-        	} else {
-        		em.merge(usuario);
-        	}
-            tx.commit();
-        } catch (Exception e) {
-        	if (tx.isActive()) {
-        		tx.rollback();
-        	}
-        	System.err.print(e.getMessage());
-			e.printStackTrace();
-        } finally {
-        	if (em != null && em.isOpen()) {
+        	em.getTransaction().begin();
+        	em.merge(usuario);
+        	em.getTransaction().commit();
+        	} finally {
 				em.close();
-			}
         }
     }
     
