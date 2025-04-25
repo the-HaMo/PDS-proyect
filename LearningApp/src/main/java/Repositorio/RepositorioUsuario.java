@@ -3,6 +3,7 @@ package Repositorio;
 import Modelo.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import java.util.List;
 
@@ -85,12 +86,24 @@ public class RepositorioUsuario {
     
     public void actualizarUsuario(Usuario usuario) {
         EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
         try {
-            em.getTransaction().begin();
-            em.merge(usuario);
-            em.getTransaction().commit();
+        	if (usuario.getId() == null) {
+        		em.persist(usuario);
+        	} else {
+        		em.merge(usuario);
+        	}
+            tx.commit();
+        } catch (Exception e) {
+        	if (tx.isActive()) {
+        		tx.rollback();
+        	}
+        	System.err.print(e.getMessage());
+			e.printStackTrace();
         } finally {
-            em.close();
+        	if (em != null && em.isOpen()) {
+				em.close();
+			}
         }
     }
     

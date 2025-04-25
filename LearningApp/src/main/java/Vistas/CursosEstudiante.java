@@ -273,9 +273,11 @@ public class CursosEstudiante {
 								Controlador.INSTANCE.empezarCurso(cursoSeleccionado);
 							}
 						}
+						/*
 						if (!cursosExportados.contains(cursoSeleccionado)) {
 							exportar(cursoSeleccionado); //Aqui se guarda el curso actualizado
 						}
+						*/
 						cargarCursos();
 						new EleccionBloqueContenido(cursoSeleccionado).mostrar();
 						frame.dispose();
