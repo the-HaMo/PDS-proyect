@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import Modelo.Curso;
+import Modelo.Estrategia;
 import Modelo.BloqueContenido;
 
 public class EleccionBloqueContenido {
@@ -13,7 +14,7 @@ public class EleccionBloqueContenido {
     private DefaultListModel<BloqueContenido> modeloBloques;
     private JList<BloqueContenido> listaBloques;
 
-    public EleccionBloqueContenido(Curso curso) {
+    public EleccionBloqueContenido(Curso curso, Estrategia estrategia) {
         this.curso = curso;
         initialize();
     }

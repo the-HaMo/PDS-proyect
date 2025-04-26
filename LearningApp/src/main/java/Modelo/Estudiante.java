@@ -1,6 +1,8 @@
 package Modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -17,24 +19,26 @@ public class Estudiante extends Usuario{
 	)
 	private List<Curso> cursosApuntados;
 	
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(
-	    name = "estudiante_curso_empezado",
-	    joinColumns = @JoinColumn(name = "estudiante_id"),
-	    inverseJoinColumns = @JoinColumn(name = "curso_id")
-	)
-	private List<Curso> cursosEmpezados;
+	@ElementCollection(fetch = FetchType.EAGER)
+	   @CollectionTable(
+	       name = "estudiante_cursos_empezados",
+	       joinColumns = @JoinColumn(name = "estudiante_id")
+	   )
+	   @MapKeyJoinColumn(name = "curso_id")
+	   @Column(name = "estrategia")
+	   @Enumerated(EnumType.STRING)
+	   private Map<Curso, Estrategia> cursosEmpezados;
 
 	public Estudiante() {}
 	
 	public Estudiante(String nombre, String contraseña) {
         super(nombre, contraseña);
         this.cursosApuntados=new ArrayList<Curso>();
-        this.cursosEmpezados=new ArrayList<Curso>();
+        this.cursosEmpezados= new HashMap<Curso, Estrategia>();
     }
 	
 	public List<Curso> getCursos() {//Los que tengo importado
-		return cursosApuntados;
+		return this.cursosApuntados;
 	}
 
 	@Override
@@ -49,15 +53,16 @@ public class Estudiante extends Usuario{
 	}
 
 	
-	public List<Curso> getCursosEmpezados() {//los empezados
+	public Map<Curso, Estrategia> getCursosEmpezados() {//los empezados
 		return cursosEmpezados;
 	}
 
-	public void addCursoEmpezado(Curso curso) {
-		if (!cursosEmpezados.contains(curso)) {
-			this.cursosEmpezados.add(curso);
-		}
+	public void addCursoEmpezado(Curso curso, Estrategia estrategia) {
+		if (!cursosEmpezados.containsKey(curso)) {
+	        cursosEmpezados.put(curso, estrategia);
+	    }
 	}
 	
-	
 }
+	
+

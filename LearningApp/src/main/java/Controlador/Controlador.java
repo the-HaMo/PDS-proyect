@@ -1,6 +1,8 @@
 package Controlador;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import Modelo.*;
@@ -123,7 +125,7 @@ public enum Controlador {
 		return usuarioActual;
 	}
 
-	public List<Curso> getCursosEmpezados() {
+	public Map<Curso, Estrategia> getCursosEmpezados() {
 		if (usuarioActual instanceof Estudiante) {
 			return ((Estudiante) usuarioActual).getCursosEmpezados();
 		}
@@ -132,14 +134,15 @@ public enum Controlador {
 	
 	public void actualizarCursosUsuario(List<Curso> cursosActualizados) {
 	    this.usuarioActual.setCursos(cursosActualizados);
+	    repositorioUsuarios.actualizarUsuario(usuarioActual);
 	}
 
 
-	public void empezarCurso(Curso curso) {
+	public void empezarCurso(Curso curso, Estrategia estrategia) {
 		if (usuarioActual instanceof Estudiante) {
-			List<Curso> cursosEmpezados = ((Estudiante) usuarioActual).getCursosEmpezados();
-			if (!cursosEmpezados.contains(curso)) { // Verificar duplicados
-				((Estudiante) usuarioActual).addCursoEmpezado(curso);
+			Map<Curso,Estrategia> cursosEmpezados = ((Estudiante) usuarioActual).getCursosEmpezados();
+			if (!cursosEmpezados.containsKey(curso)) { // Verificar duplicados
+				((Estudiante) usuarioActual).addCursoEmpezado(curso, estrategia);
 				repositorioUsuarios.actualizarUsuario(usuarioActual);
 			}
 		}

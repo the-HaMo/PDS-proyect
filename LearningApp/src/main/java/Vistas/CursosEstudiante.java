@@ -2,7 +2,10 @@ package Vistas;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.swing.*;
 import Controlador.Controlador;
 import Modelo.Curso;
@@ -70,9 +73,10 @@ public class CursosEstudiante {
 				Curso curso = elem.getCurso();
 				boolean DarLike = Controlador.INSTANCE.darLike(curso);
 				if (DarLike) {
-					elem.actualizarLikes();
-					int index = listaGeneral.getSelectedIndex();
-					modeloGeneral.set(index, elem);
+					//elem.actualizarLikes();
+					//int index = listaGeneral.getSelectedIndex();
+					//modeloGeneral.set(index, elem);
+					cargarCursos();
 				} else {
 					System.out.println("Ya dio like");
 				}
@@ -190,7 +194,7 @@ public class CursosEstudiante {
 		boolean encontrado = false;
 		for (int i = 0; i < cursos.size(); i++) {
 		    Curso cursoExistente = cursos.get(i);
-		    if (cursoExistente.getNombre().equals(c.getNombre())) { // o por ID si quieres
+		    if (cursoExistente.getId().equals(c.getId())) { // o por ID si quieres
 		        cursos.set(i, c); // reemplazar el viejo por el nuevo
 		        encontrado = true;
 		        break;
@@ -199,7 +203,7 @@ public class CursosEstudiante {
 		if (!encontrado) {
 		    cursos.add(c);
 		}
-		Controlador.INSTANCE.actualizarCursosUsuario(cursos); // <<<<< Necesitarás este método en Controlador
+		Controlador.INSTANCE.actualizarCursosUsuario(cursos);
 		cargarCursos();
 
 	}
@@ -251,9 +255,12 @@ public class CursosEstudiante {
 					if (elem != null) {
 						Curso cursoSeleccionado = elem.getCurso();
 						List<Curso> cursosExportados = Controlador.INSTANCE.getUsuarioActual().getCursos();
-						List<Curso> cursosEmpezados = Controlador.INSTANCE.getCursosEmpezados();
-
-						if (!cursosEmpezados.contains(cursoSeleccionado)) {
+						Map<Curso, Estrategia> cursosEmpezados = Controlador.INSTANCE.getCursosEmpezados();
+						Estrategia estrategia=null;
+						if (!cursosExportados.contains(cursoSeleccionado)) {
+							exportar(cursoSeleccionado); //Aqui se guarda el curso actualizado
+						}
+						if (!cursosEmpezados.containsKey(cursoSeleccionado)) {	//si no lo he empezado
 							String[] estrategias = {"Aleatoria", "Secuencial", "Repetición Espaciada"};
 							String seleccion = (String) JOptionPane.showInputDialog(
 									frame,
@@ -267,28 +274,26 @@ public class CursosEstudiante {
 							if (seleccion != null) {
 								switch (seleccion) {
 								case "Aleatoria":
-									cursoSeleccionado.setEstrategia(Estrategia.ALEATORIA);
+									//cursoSeleccionado.setEstrategia(Estrategia.ALEATORIA);
+									estrategia = Estrategia.ALEATORIA;
 									break;
 								case "Secuencial":
-									cursoSeleccionado.setEstrategia(Estrategia.SECUENCIAL);
+									//cursoSeleccionado.setEstrategia(Estrategia.SECUENCIAL);
+									estrategia = Estrategia.SECUENCIAL;
 									break;
 								case "Repetición Espaciada":
-									cursoSeleccionado.setEstrategia(Estrategia.REPETICION_ESPACIADA);
+									//cursoSeleccionado.setEstrategia(Estrategia.REPETICION_ESPACIADA);
+									estrategia = Estrategia.REPETICION_ESPACIADA;
 									break;
 								default:
 									throw new IllegalArgumentException("Estrategia no válida: " + seleccion);
 								}
-								cursoSeleccionado.aplicarEstrategias();
-								Controlador.INSTANCE.empezarCurso(cursoSeleccionado);
+								//cursoSeleccionado.aplicarEstrategias();
+								Controlador.INSTANCE.empezarCurso(cursoSeleccionado, estrategia);
 							}
 						}
-						
-						if (!cursosExportados.contains(cursoSeleccionado)) {
-							exportar(cursoSeleccionado); //Aqui se guarda el curso actualizado
-						}
-						
 						cargarCursos();
-						new EleccionBloqueContenido(cursoSeleccionado).mostrar();
+						new EleccionBloqueContenido(cursoSeleccionado, estrategia).mostrar();
 						frame.dispose();
 					}
 				}
