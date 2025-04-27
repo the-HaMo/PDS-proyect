@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
@@ -11,7 +12,7 @@ import jakarta.persistence.*;
 @DiscriminatorValue("ESTUDIANTE")
 public class Estudiante extends Usuario{
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 	    name = "estudiante_curso",
 	    joinColumns = @JoinColumn(name = "estudiante_id"),
@@ -38,7 +39,7 @@ public class Estudiante extends Usuario{
     }
 	
 	public List<Curso> getCursos() {//Los que tengo importado
-		return this.cursosApuntados;
+		return new ArrayList<Curso>(this.cursosApuntados);
 	}
 
 	@Override
