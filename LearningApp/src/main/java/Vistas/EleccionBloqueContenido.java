@@ -86,6 +86,23 @@ public class EleccionBloqueContenido {
 			window.Mostrar();
         	frame.dispose();
         });
+        
+        JButton btnExamen = new JButton("Examinarse");
+        btnExamen.setForeground(Color.WHITE);
+        btnExamen.setFont(new Font("Dialog", Font.BOLD, 12));
+        btnExamen.setFocusPainted(false);
+        btnExamen.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+        btnExamen.setBackground(new Color(76, 175, 80));
+        panelInferior.add(btnExamen);
+        btnExamen.addActionListener(e -> {
+        	//Curso examen = aplicarEstrategia(curso, estrategia);
+        	new PreguntasCurso(curso).mostrar();
+        	this.frame.dispose();
+        });
+        
+        Component horizontalStrut = Box.createHorizontalStrut(20);
+        horizontalStrut.setPreferredSize(new Dimension(400, 0));
+        panelInferior.add(horizontalStrut);
         panelInferior.add(btnVolver);
         frame.getContentPane().add(panelInferior, BorderLayout.SOUTH);
     }
