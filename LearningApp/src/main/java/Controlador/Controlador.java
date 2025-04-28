@@ -147,6 +147,10 @@ public enum Controlador {
 			}
 		}
 	}
+	
+	public void actualizarCurso(Curso curso) {
+		repositorioCursos.actualizarCurso(curso);
+	}
 
 
 }

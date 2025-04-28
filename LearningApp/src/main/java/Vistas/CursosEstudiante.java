@@ -76,7 +76,7 @@ public class CursosEstudiante {
 					//elem.actualizarLikes();
 					//int index = listaGeneral.getSelectedIndex();
 					//modeloGeneral.set(index, elem);
-					exportar(curso);
+					//exportar(curso);
 					cargarCursos();
 				} else {
 					System.out.println("Ya dio like");
@@ -205,6 +205,8 @@ public class CursosEstudiante {
 		    cursos.add(c);
 		}
 		Controlador.INSTANCE.actualizarCursosUsuario(cursos);
+		c.addNumDescargas();
+		Controlador.INSTANCE.actualizarCurso(c);
 		cargarCursos();
 
 	}
