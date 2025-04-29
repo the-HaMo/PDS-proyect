@@ -137,7 +137,16 @@ public class CursosEstudiante {
 		btnDescargar.addActionListener(e -> {
 			Elemento elem = listaGeneral.getSelectedValue();
 			if(elem!=null) {
-				exportar(elem.getCurso());
+				Curso curso = elem.getCurso();
+				List<Curso> cursosExportados = Controlador.INSTANCE.getUsuarioActual().getCursos();
+				boolean yaExportado = cursosExportados.stream()
+						.anyMatch(c -> c.getId().equals(curso.getId()));
+				if (!yaExportado) {
+					exportar(curso);
+				} else {
+					JOptionPane.showMessageDialog(frame, "Este curso ya ha sido descargado.", "Información", JOptionPane.INFORMATION_MESSAGE);
+				}
+	
 			}
 		});
 
