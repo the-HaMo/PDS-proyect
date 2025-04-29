@@ -79,6 +79,7 @@ public class EleccionBloqueContenido {
                 	if (elementoSeleccionado != null) {
                 	    BloqueContenido bloqueSeleccionado = elementoSeleccionado.getBloque();
                 	    new PreguntasBloque(bloqueSeleccionado).mostrar();
+                	    frame.dispose();
                 	}
                 }
             }

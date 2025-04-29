@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
 import Controlador.Controlador;
+import Modelo.Colaborador;
 import Modelo.Curso;
 
 public class Elemento extends JPanel {
@@ -22,6 +23,8 @@ public class Elemento extends JPanel {
     private ImageIcon icono;
     private Curso curso;
     private InfoModelo likesLabel;
+    private InfoModelo downloadLabel;
+
 
     public Elemento(Curso curso) {
     	this.nombre=curso.getNombre();
@@ -56,17 +59,27 @@ public class Elemento extends JPanel {
         
         InfoModelo nomb = new InfoModelo(nombre, 10, Color.BLACK);
         InfoModelo desc = new InfoModelo(descripcion, 10, Color.BLACK);
-        InfoModelo creador = new InfoModelo("Autor:" + autor, 10, Color.BLACK);
+        InfoModelo creador = new InfoModelo("Autor: " + autor, 10, Color.BLACK);
         likesLabel =  new InfoModelo("Likes: "+ curso.getNumMeGustas(), 10, Color.BLACK);
+        downloadLabel = new InfoModelo("Downloads: "+ curso.getNumDescargas(), 10, Color.BLACK);
         
         JPanel info = new JPanel();
         info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));
         fixSize(info, 200, 75);
         info.setOpaque(false);
-        info.add(nomb);
-        info.add(desc);
-        info.add(creador);
-        info.add(likesLabel);
+        
+        if (Controlador.INSTANCE.getUsuarioActual() instanceof Colaborador) {
+        	info.add(nomb);
+        	info.add(creador);
+        	info.add(likesLabel); 
+        	info.add(downloadLabel);
+        } else {
+        	info.add(nomb);
+            info.add(desc);
+            info.add(creador);
+            info.add(likesLabel); 
+        }
+        
 
         this.add(lblimagen);
         this.add(Box.createRigidArea(new Dimension(10, 0)));

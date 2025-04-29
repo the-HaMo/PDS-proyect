@@ -2,7 +2,6 @@ package Vistas;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -118,24 +117,24 @@ public class CursosEstudiante {
 		scrollPrivado.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
 		panelPrivado.add(scrollPrivado, BorderLayout.CENTER);
 
-		JButton btnDetalles = new JButton("Ver detalles");
-		btnDetalles.setFont(new Font("Sans-Serif", Font.BOLD, 12));
-		btnDetalles.setForeground(Color.WHITE);
-		btnDetalles.setBackground(Color.decode("#4CAF50"));
-		btnDetalles.setFocusPainted(false);
-		btnDetalles.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
-		btnDetalles.addActionListener( e -> {
+		JButton btnEliminar = new JButton("Eliminar curso");
+		btnEliminar.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+		btnEliminar.setForeground(Color.WHITE);
+		btnEliminar.setBackground(Color.decode("#4CAF50"));
+		btnEliminar.setFocusPainted(false);
+		btnEliminar.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+		btnEliminar.addActionListener( e -> {
 
 		});
 
-		JButton btnExportar = new JButton("Exportar Curso");
-		btnExportar.setFont(new Font("Sans-Serif", Font.BOLD, 12));
-		btnExportar.setForeground(Color.WHITE);
-		btnExportar.setBackground(Color.decode("#4CAF50"));
-		btnExportar.setFocusPainted(false);
-		btnExportar.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+		JButton btnDescargar = new JButton("Descargar Curso");
+		btnDescargar.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+		btnDescargar.setForeground(Color.WHITE);
+		btnDescargar.setBackground(Color.decode("#4CAF50"));
+		btnDescargar.setFocusPainted(false);
+		btnDescargar.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
 
-		btnExportar.addActionListener(e -> {
+		btnDescargar.addActionListener(e -> {
 			Elemento elem = listaGeneral.getSelectedValue();
 			if(elem!=null) {
 				exportar(elem.getCurso());
@@ -144,8 +143,8 @@ public class CursosEstudiante {
 
 		JPanel panelBotonImportar = new JPanel();
 		panelBotonImportar.setBackground(Color.WHITE);
-		panelBotonImportar.add(btnDetalles);
-		panelBotonImportar.add(btnExportar);
+		panelBotonImportar.add(btnEliminar);
+		panelBotonImportar.add(btnDescargar);
 		panelPrivado.add(panelBotonImportar, BorderLayout.SOUTH);
 
 		panelBibliotecas.add(panelPrivado, BorderLayout.EAST);

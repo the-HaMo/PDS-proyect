@@ -53,7 +53,7 @@ public class CursosColaborador {
         
         JPanel panelGeneral = new JPanel(new BorderLayout());
         panelGeneral.setPreferredSize(new Dimension(370, 300));
-        panelGeneral.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "Cursos Subidos"));
+        panelGeneral.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "Cursos Online"));
         panelGeneral.setBackground(Color.WHITE);
 
         JScrollPane scrollGeneral = new JScrollPane(listaGeneral);
@@ -82,7 +82,7 @@ public class CursosColaborador {
         
         JPanel panelPrivado = new JPanel(new BorderLayout());
         panelPrivado.setPreferredSize(new Dimension(370, 300));
-        panelPrivado.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "Cursos Privados"));
+        panelPrivado.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3), "Cursos Subidos"));
         panelPrivado.setBackground(Color.WHITE);
 
         JScrollPane scrollPrivado = new JScrollPane(listaPrivado);
@@ -96,10 +96,19 @@ public class CursosColaborador {
         btnImportar.setFocusPainted(false);
         btnImportar.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
         btnImportar.addActionListener(e -> importarCurso());
-
+        
+        JButton btnEliminar = new JButton("Eliminar Curso");
+        btnEliminar.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+        btnEliminar.setForeground(Color.WHITE);
+        btnEliminar.setBackground(Color.decode("#4CAF50"));
+        btnEliminar.setFocusPainted(false);
+        btnEliminar.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+        btnEliminar.addActionListener(e -> {});
+        
         JPanel panelBotonImportar = new JPanel();
         panelBotonImportar.setBackground(Color.WHITE);
         panelBotonImportar.add(btnImportar);
+        panelBotonImportar.add(btnEliminar);
         panelPrivado.add(panelBotonImportar, BorderLayout.SOUTH);
 
         panelBibliotecas.add(panelPrivado, BorderLayout.EAST);
@@ -176,7 +185,7 @@ public class CursosColaborador {
     private void compartirCurso() {
         Elemento elementoSeleccionado = listaPrivado.getSelectedValue();
 
-        if (elementoSeleccionado != null) {
+        if (elementoSeleccionado != null && !elementoSeleccionado.getCurso().esPublico()) {
             if (!modeloGeneral.contains(elementoSeleccionado)) {
                 modeloGeneral.addElement(elementoSeleccionado);
                 Controlador.INSTANCE.publicarCurso(elementoSeleccionado.getCurso());
@@ -184,7 +193,7 @@ public class CursosColaborador {
                 JOptionPane.showMessageDialog(frame, "Este curso ya está en la Biblioteca General.", "Aviso", JOptionPane.WARNING_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(frame, "Seleccione un curso para compartir.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(frame, "Seleccione un curso para compartir o el curso ya se ha compartido.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -199,13 +208,16 @@ public class CursosColaborador {
         modeloGeneral.clear();
 
         List<Curso> cursos = Controlador.INSTANCE.getCursosColaborador();
-
+        List<Curso> cursosOnline = Controlador.INSTANCE.getCursosPublicados();
+        
+        for (Curso c : cursosOnline) {
+        	Elemento el = new Elemento(c);
+        	modeloGeneral.addElement(el);
+        }
+        
         for (Curso curso : cursos) {
             Elemento elem = new Elemento(curso);
-            if (curso.esPublico()) {
-                modeloGeneral.addElement(elem);
-            }
-                modeloPrivado.addElement(elem);
+            modeloPrivado.addElement(elem);
             }
         }
     
