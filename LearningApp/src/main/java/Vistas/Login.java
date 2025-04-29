@@ -47,34 +47,28 @@ public class Login {
 		frame.getContentPane().setLayout(new BorderLayout());
 
 		JPanel mainPanel = new JPanel(new BorderLayout());
-		mainPanel.setBackground(new Color(0, 255, 64));
+		mainPanel.setBackground(new Color(54, 137, 67));
 		mainPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
 		frame.getContentPane().add(mainPanel);
 
-		JLabel titleLabel = new JLabel("LearningApp", SwingConstants.CENTER);
-		titleLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 26));
-		titleLabel.setForeground(new Color(0, 0, 0));
-		titleLabel.setBorder(new EmptyBorder(10, 0, 10, 0));
-		mainPanel.add(titleLabel, BorderLayout.NORTH);
-
 		JPanel centerPanel = new JPanel(new BorderLayout());
-		centerPanel.setBackground(new Color(128, 255, 128));
+		centerPanel.setBackground(new Color(54, 137, 67));
 		centerPanel.setBorder(new EmptyBorder(10, 20, 10, 20));
 		mainPanel.add(centerPanel, BorderLayout.CENTER);
 
 		JPanel logoPanel = new JPanel(new BorderLayout());
-		logoPanel.setBackground(new Color(128, 255, 128));
-		logoPanel.setPreferredSize(new Dimension(0, 200));
-		centerPanel.add(logoPanel, BorderLayout.NORTH);
+		logoPanel.setBackground(new Color(54, 137, 67));
+		logoPanel.setPreferredSize(new Dimension(0, 300));
+		centerPanel.add(logoPanel, BorderLayout.CENTER);
 
-		originalIcon = new ImageIcon(getClass().getResource("/logo.png"));
+		originalIcon = new ImageIcon(getClass().getResource("/logo_.png"));
+		ImageIcon icono = new ImageIcon(getClass().getResource("/titulo.png"));	
+		frame.setIconImage(icono.getImage());
+		
 		logoLabel = new JLabel();
 		logoLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		logoLabel.setVerticalAlignment(SwingConstants.CENTER);
 		logoPanel.add(logoLabel, BorderLayout.CENTER);
-
-		Component verticalStrut = Box.createVerticalStrut(20);
-		logoPanel.add(verticalStrut, BorderLayout.SOUTH);
 
 		logoPanel.addComponentListener(new ComponentAdapter() {
 			@Override
@@ -84,14 +78,14 @@ public class Login {
 		});
 
 		JPanel fieldsPanel = new JPanel(new GridLayout(2, 1, 10, 10));
-		fieldsPanel.setBackground(new Color(128, 255, 128));
+		fieldsPanel.setBackground(new Color(54, 137, 67));
 		fieldsPanel.setBorder(new EmptyBorder(30, 50, 20, 50)); // Padding
 		centerPanel.add(fieldsPanel, BorderLayout.SOUTH);
 
 		JPanel usernamePanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // Centrado
-		usernamePanel.setBackground(new Color(128, 255, 128));
+		usernamePanel.setBackground(new Color(54, 137, 67));
 		JLabel usernameLabel = new JLabel("Username:");
-		usernameLabel.setForeground(new Color(0, 0, 0));
+		usernameLabel.setForeground(new Color(255, 255, 255));
 		usernameLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		usernamePanel.add(usernameLabel);
 
@@ -101,9 +95,9 @@ public class Login {
 		usernamePanel.add(usernameField);
 
 		JPanel passwordPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // Centrado
-		passwordPanel.setBackground(new Color(128, 255, 128));
+		passwordPanel.setBackground(new Color(54, 137, 67));
 		JLabel passwordLabel = new JLabel("Password:");
-		passwordLabel.setForeground(new Color(0, 0, 0));
+		passwordLabel.setForeground(new Color(255, 255, 255));
 		passwordLabel.setFont(new Font("Yu Gothic UI", Font.BOLD, 15));
 		passwordPanel.add(passwordLabel);
 
@@ -116,7 +110,7 @@ public class Login {
 		fieldsPanel.add(passwordPanel);
 
 		JPanel buttonsPanel = new JPanel();
-		buttonsPanel.setBackground(new Color(128, 255, 128));
+		buttonsPanel.setBackground(new Color(54, 137, 67));
 		buttonsPanel.setBorder(new EmptyBorder(10, 0, 10, 0));
 		mainPanel.add(buttonsPanel, BorderLayout.SOUTH);
 
