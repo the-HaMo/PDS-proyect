@@ -28,9 +28,11 @@ public class PreguntaRellenarHuecos extends Pregunta {
         return respuesta;
     }
     
-    public boolean isCorrecta(String res) {
-       return  res.toLowerCase().equals(respuesta);
+    public boolean isCorrecta(String respuestaUsuario) {
+        if (respuestaUsuario == null || respuesta == null) return false;
+        return respuestaUsuario.trim().equalsIgnoreCase(respuesta.trim());
     }
+
 
     public String getTextoConHuecos() {
         return textoConHuecos;

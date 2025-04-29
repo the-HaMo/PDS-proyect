@@ -26,9 +26,11 @@ public class PreguntaTest extends Pregunta {
         return respuestaCorrecta;
     }
     
-    public boolean isCorrecta(String respuesta) {
-        return respuesta.toLowerCase().equals(respuestaCorrecta);
+    public boolean isCorrecta(String respuestaUsuario) {
+        if (respuestaUsuario == null || respuestaCorrecta == null) return false;
+        return respuestaUsuario.trim().equalsIgnoreCase(respuestaCorrecta.trim());
     }
+
 
     public List<String> getOpciones() {
         return opciones;

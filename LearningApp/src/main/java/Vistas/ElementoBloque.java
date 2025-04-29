@@ -73,7 +73,7 @@ public class ElementoBloque extends JPanel {
             this.setBackground(new Color(198, 239, 206)); // verde claro
             lblEstado.setText("✅ Completado");
         } else {
-            this.setBackground(new Color(255, 204, 204)); // rojo claro
+            //this.setBackground(new Color(255, 204, 204)); // rojo claro
             lblEstado.setText("❌ No completado");
         }
 

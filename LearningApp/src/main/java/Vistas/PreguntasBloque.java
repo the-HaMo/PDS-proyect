@@ -2,6 +2,7 @@ package Vistas;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 import Modelo.*;
 import Controlador.*;
@@ -11,6 +12,8 @@ public class PreguntasBloque {
     private JFrame frame;
     private BloqueContenido bloque;
     private List<Pregunta> preguntas;
+    private List<Boolean> preguntasCorrectas;
+    private boolean[] respuestasCorrectas;
     private int indiceActual = 0;
 
     private JLabel lblTipo;
@@ -69,15 +72,22 @@ public class PreguntasBloque {
         abajo.add(btnAnterior);
 
         btnSiguiente = new JButton("Siguiente");
-        btnSiguiente.addActionListener(e -> mostrarPregunta(indiceActual + 1));
+        btnSiguiente.addActionListener(e -> {
+            if (preguntasCorrectas.get(indiceActual)) {
+                mostrarPregunta(indiceActual + 1);
+            } else {
+                JOptionPane.showMessageDialog(frame, "Debes acertar la pregunta antes de avanzar.", "Atención", JOptionPane.WARNING_MESSAGE);
+            }
+        });
         abajo.add(btnSiguiente);
+
 
         btnComprobar = new JButton("Comprobar respuesta");
         btnComprobar.addActionListener(e -> comprobarRespuestaActual());
         abajo.add(btnComprobar);
 
         btnFinalizar = new JButton("Finalizar bloque");
-        btnFinalizar.setEnabled(false);  // Solo activo en la última pregunta
+        btnFinalizar.setEnabled(false); 
         btnFinalizar.addActionListener(e -> finalizarBloque());
         abajo.add(btnFinalizar);
 
@@ -93,6 +103,13 @@ public class PreguntasBloque {
             btnComprobar.setEnabled(false);
             btnSiguiente.setEnabled(false);
         }
+        
+        this.preguntasCorrectas = new ArrayList<>();
+        for (int i = 0; i < preguntas.size(); i++) {
+            preguntasCorrectas.add(false); 
+        }
+        this.respuestasCorrectas = new boolean[preguntas.size()];
+        
     }
 
     private void mostrarPregunta(int index) {
@@ -104,8 +121,8 @@ public class PreguntasBloque {
         lblTipo.setText("Tipo: " + p.getTipo());
 
         btnAnterior.setEnabled(index > 0);
-        btnSiguiente.setEnabled(index < preguntas.size() - 1);
-        btnFinalizar.setEnabled(index == preguntas.size() - 1); // Solo al final
+        btnSiguiente.setEnabled(false); // Solo se habilita al acertar
+        btnFinalizar.setEnabled(false); // Solo si todas correctas
 
         panelRespuesta.removeAll();
 
@@ -142,14 +159,17 @@ public class PreguntasBloque {
         panelRespuesta.repaint();
     }
 
+
     private void comprobarRespuestaActual() {
         Pregunta p = preguntas.get(indiceActual);
+        boolean correcta = false;
 
         if (p instanceof PreguntaTest pt) {
             ButtonGroup grupo = (ButtonGroup) panelRespuesta.getClientProperty("grupo");
             if (grupo.getSelection() != null) {
                 String seleccionada = grupo.getSelection().getActionCommand();
                 if (pt.isCorrecta(seleccionada)) {
+                    correcta = true;
                     mostrarResultado("✅ ¡Correcto!");
                 } else {
                     mostrarResultado("❌ Incorrecto. Respuesta correcta: " + pt.getRespuesta());
@@ -164,6 +184,7 @@ public class PreguntasBloque {
             if (entrada.isEmpty()) {
                 mostrarResultado("Completa el campo.");
             } else if (prh.isCorrecta(entrada)) {
+                correcta = true;
                 mostrarResultado("✅ ¡Correcto!");
             } else {
                 mostrarResultado("❌ Incorrecto. Respuesta correcta: " + prh.getRespuesta());
@@ -175,12 +196,29 @@ public class PreguntasBloque {
             if (entrada.isEmpty()) {
                 mostrarResultado("Escribe tu traducción.");
             } else if (pt.isCorrecta(entrada)) {
+                correcta = true;
                 mostrarResultado("✅ ¡Correcto!");
             } else {
                 mostrarResultado("❌ Incorrecto. Respuesta correcta: " + pt.getRespuesta());
             }
         }
+
+        // Guardar estado
+        preguntasCorrectas.set(indiceActual, correcta);
+
+        // Habilitar "Siguiente" si está bien
+        if (correcta && indiceActual < preguntas.size() - 1) {
+            btnSiguiente.setEnabled(true);
+        }
+
+        // Habilitar "Finalizar" si todas son correctas
+        boolean todasCorrectas = preguntasCorrectas.stream().allMatch(c -> c);
+        if (todasCorrectas) {
+            btnFinalizar.setEnabled(true);
+        }
     }
+
+
 
     private void finalizarBloque() {
         Estudiante estudianteActual = (Estudiante) Controlador.INSTANCE.getUsuarioActual();
@@ -195,6 +233,7 @@ public class PreguntasBloque {
         new EleccionBloqueContenido(cursoActual, null).mostrar();
     }
 
+    
     private void mostrarResultado(String mensaje) {
         JOptionPane.showMessageDialog(frame, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
     }
