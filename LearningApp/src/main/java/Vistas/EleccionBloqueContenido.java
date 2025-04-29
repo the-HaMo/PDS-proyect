@@ -1,18 +1,22 @@
 package Vistas;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import Modelo.Curso;
 import Modelo.Estrategia;
 import Modelo.BloqueContenido;
+import Modelo.Estudiante;
+import Repositorio.RepositorioProgresoBloque;
+import Controlador.*;
 
 public class EleccionBloqueContenido {
 
     private JFrame frame;
     private Curso curso;
-    private DefaultListModel<BloqueContenido> modeloBloques;
-    private JList<BloqueContenido> listaBloques;
+    private DefaultListModel<ElementoBloque> modeloBloques;
+    private JList<ElementoBloque> listaBloques;
 
     public EleccionBloqueContenido(Curso curso, Estrategia estrategia) {
         this.curso = curso;
@@ -48,9 +52,17 @@ public class EleccionBloqueContenido {
         listaBloques.setBackground(Color.WHITE);
 
 
+        Estudiante estudianteActual = (Estudiante) Controlador.INSTANCE.getUsuarioActual();
+
         for (BloqueContenido bloque : curso.getBloquesContenidos()) {
-            modeloBloques.addElement(bloque);
+            ElementoBloque elemento = new ElementoBloque(bloque);
+
+            boolean completado = RepositorioProgresoBloque.estaCompletado(estudianteActual, curso, bloque);
+            elemento.setCompletado(completado);
+
+            modeloBloques.addElement(elemento);
         }
+
 
         JScrollPane scrollPane = new JScrollPane(listaBloques,
                 JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
@@ -63,10 +75,11 @@ public class EleccionBloqueContenido {
         listaBloques.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evt) {
                 if (evt.getClickCount() == 2) {
-                    BloqueContenido seleccionado = listaBloques.getSelectedValue();
-                    if (seleccionado != null) {
-                        new PreguntasBloque(seleccionado).mostrar();
-                    }
+                	ElementoBloque elementoSeleccionado = listaBloques.getSelectedValue();
+                	if (elementoSeleccionado != null) {
+                	    BloqueContenido bloqueSeleccionado = elementoSeleccionado.getBloque();
+                	    new PreguntasBloque(bloqueSeleccionado).mostrar();
+                	}
                 }
             }
         });

@@ -1,32 +1,23 @@
 package Vistas;
 
 import javax.swing.*;
-
-import Modelo.BloqueContenido;
-
 import java.awt.*;
 
-public class BloqueListRenderer extends DefaultListCellRenderer {
-
-    private static final long serialVersionUID = 1L;
+public class BloqueListRenderer implements ListCellRenderer<ElementoBloque> {
 
     @Override
-    public Component getListCellRendererComponent(JList<?> list,
-                                                  Object value,
+    public Component getListCellRendererComponent(JList<? extends ElementoBloque> list,
+                                                  ElementoBloque value,
                                                   int index,
                                                   boolean isSelected,
                                                   boolean cellHasFocus) {
-
-        if (value instanceof BloqueContenido bloque) {
-            ElementoBloque panel = new ElementoBloque(bloque);
-            if (isSelected) {
-                panel.setBackground(new Color(182, 255, 149));
-            } else {
-                panel.setBackground(Color.WHITE);
-            }
-            return panel;
+        // Selección visual
+        if (isSelected) {
+            value.setBorder(BorderFactory.createLineBorder(Color.BLUE, 2));
+        } else {
+            value.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
         }
 
-        return super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        return value;
     }
 }

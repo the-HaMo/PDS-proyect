@@ -257,6 +257,7 @@ public class CursosEstudiante {
 					Elemento elem = lista.getSelectedValue();
 					if (elem != null) {
 						Curso cursoSeleccionado = elem.getCurso();
+						Controlador.INSTANCE.setCursoActual(cursoSeleccionado);
 						List<Curso> cursosExportados = Controlador.INSTANCE.getUsuarioActual().getCursos();
 						Map<Curso, Estrategia> cursosEmpezados = Controlador.INSTANCE.getCursosEmpezados();
 						Estrategia estrategia=null;

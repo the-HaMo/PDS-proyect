@@ -1,10 +1,10 @@
 package Vistas;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.util.List;
 import Modelo.*;
+import Controlador.*;
 
 public class PreguntasBloque {
 
@@ -16,8 +16,7 @@ public class PreguntasBloque {
     private JLabel lblTipo;
     private JTextArea txtPregunta;
     private JPanel panelRespuesta;
-    private JButton btnAnterior, btnSiguiente;
-    private JButton btnComprobar;
+    private JButton btnAnterior, btnSiguiente, btnComprobar, btnFinalizar;
 
     public PreguntasBloque(BloqueContenido bloque) {
         this.bloque = bloque;
@@ -60,7 +59,7 @@ public class PreguntasBloque {
         panelRespuesta.setBorder(BorderFactory.createTitledBorder("Tu respuesta"));
         centro.add(panelRespuesta, BorderLayout.SOUTH);
 
-        // Botones abajo
+        // Botones
         JPanel abajo = new JPanel(new FlowLayout(FlowLayout.CENTER));
         abajo.setBackground(new Color(128, 255, 128));
         frame.add(abajo, BorderLayout.SOUTH);
@@ -77,6 +76,11 @@ public class PreguntasBloque {
         btnComprobar.addActionListener(e -> comprobarRespuestaActual());
         abajo.add(btnComprobar);
 
+        btnFinalizar = new JButton("Finalizar bloque");
+        btnFinalizar.setEnabled(false);  // Solo activo en la última pregunta
+        btnFinalizar.addActionListener(e -> finalizarBloque());
+        abajo.add(btnFinalizar);
+
         JButton btnCerrar = new JButton("Cerrar");
         btnCerrar.addActionListener(e -> frame.dispose());
         abajo.add(btnCerrar);
@@ -87,6 +91,7 @@ public class PreguntasBloque {
             txtPregunta.setText("Este bloque no contiene preguntas.");
             lblTipo.setText("");
             btnComprobar.setEnabled(false);
+            btnSiguiente.setEnabled(false);
         }
     }
 
@@ -100,6 +105,7 @@ public class PreguntasBloque {
 
         btnAnterior.setEnabled(index > 0);
         btnSiguiente.setEnabled(index < preguntas.size() - 1);
+        btnFinalizar.setEnabled(index == preguntas.size() - 1); // Solo al final
 
         panelRespuesta.removeAll();
 
@@ -174,6 +180,19 @@ public class PreguntasBloque {
                 mostrarResultado("❌ Incorrecto. Respuesta correcta: " + pt.getRespuesta());
             }
         }
+    }
+
+    private void finalizarBloque() {
+        Estudiante estudianteActual = (Estudiante) Controlador.INSTANCE.getUsuarioActual();
+        Curso cursoActual = Controlador.INSTANCE.getCursoActual();
+        BloqueContenido bloqueActual = this.bloque;
+
+        System.out.println("✅ Finalizando bloque: " + bloqueActual.getNombreBloque());
+        Controlador.INSTANCE.marcarBloqueCompletado(estudianteActual, cursoActual, bloqueActual);
+
+        JOptionPane.showMessageDialog(frame, "¡Has completado el bloque!", "Bloque completado", JOptionPane.INFORMATION_MESSAGE);
+        frame.dispose();
+        new EleccionBloqueContenido(cursoActual, null).mostrar();
     }
 
     private void mostrarResultado(String mensaje) {

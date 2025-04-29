@@ -14,6 +14,8 @@ public enum Controlador {
 	private RepositorioUsuario repositorioUsuarios;
 	private RepositorioCurso repositorioCursos;
 	private RepositorioLike repositorioLikes;
+	private Curso cursoActual;
+
 
 	private Controlador() {
 		// TODO Auto-generated constructor stub
@@ -21,7 +23,7 @@ public enum Controlador {
 		repositorioUsuarios = new RepositorioUsuario();
 		repositorioCursos = new RepositorioCurso();
 		repositorioLikes = new RepositorioLike();
-
+		
 	}
 
 	public boolean crearUsuario(String nombre, String contraseña, String rol) {
@@ -136,7 +138,14 @@ public enum Controlador {
 	    this.usuarioActual.setCursos(cursosActualizados);
 	    repositorioUsuarios.actualizarUsuario(usuarioActual);
 	}
+	
+	public Curso getCursoActual() {
+	    return cursoActual;
+	}
 
+	public void setCursoActual(Curso curso) {
+	    this.cursoActual = curso;
+	}
 
 	public void empezarCurso(Curso curso, Estrategia estrategia) {
 		if (usuarioActual instanceof Estudiante) {
@@ -152,5 +161,9 @@ public enum Controlador {
 		repositorioCursos.actualizarCurso(curso);
 	}
 
-
+	
+	public void marcarBloqueCompletado(Estudiante estudiante, Curso curso, BloqueContenido bloque) {
+	    ProgresoBloque progreso = new ProgresoBloque(estudiante, curso, bloque);
+	    RepositorioProgresoBloque.guardar(progreso);
+	}
 }
