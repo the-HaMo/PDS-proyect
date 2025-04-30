@@ -71,7 +71,7 @@ Como funcionalidad adicional, hemos añadido la clase **EstadísticaCurso**, que
 
 ### Modelo
 
-![Mdominio.V1-0](https://github.com/the-HaMo/PDS-proyect/blob/main/info/diagrama.jpg)
+![Mdominio.V1-0](https://github.com/the-HaMo/PDS-proyect/blob/main/info/diagramaV3.jpg)
 
 ### Diseño de Vistas
 
