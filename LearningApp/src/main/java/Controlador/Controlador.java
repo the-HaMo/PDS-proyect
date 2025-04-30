@@ -46,6 +46,15 @@ public enum Controlador {
 			Usuario u=repositorioUsuarios.iniciarSesion(nombre, contraseña);
 			if(u!=null) {
 				usuarioActual = u;
+				if (u instanceof Estudiante) {
+					Estudiante estudiante = (Estudiante) u;
+					if (estudiante.getStats() == null) {
+						EstadisticaUsuario nuevaStats = new EstadisticaUsuario(estudiante);
+						estudiante.setStats(nuevaStats);
+						repositorioUsuarios.actualizarUsuario(estudiante);
+					}
+					estudiante.getStats().iniciarTiempo();
+				}
 				return true;
 			}
 		}
@@ -59,6 +68,15 @@ public enum Controlador {
 	}
 
 	public void cerrarSesion() {
+		if (usuarioActual instanceof Estudiante) {
+			Estudiante est = (Estudiante) usuarioActual;
+			EstadisticaUsuario stats = est.getStats();
+			if (stats != null) {
+				stats.finalizarTiempo();
+				System.out.println("Tiempo de uso del Estudiante: " + stats.getTiempoUso());
+				repositorioUsuarios.actualizarUsuario(est);
+			}
+		}
 		usuarioActual = null;
 	}
 
@@ -126,6 +144,13 @@ public enum Controlador {
 	public Usuario getUsuarioActual() {
 		return usuarioActual;
 	}
+	
+	public EstadisticaUsuario getStats() {
+		if (usuarioActual instanceof Estudiante student) {
+			return student.getStats();
+		}
+		return null;
+	}
 
 	public Map<Curso, Estrategia> getCursosEmpezados() {
 		if (usuarioActual instanceof Estudiante) {
@@ -169,9 +194,8 @@ public enum Controlador {
 		repositorioCursos.actualizarCurso(curso);
 	}
 
-	
 	public void marcarBloqueCompletado(Estudiante estudiante, Curso curso, BloqueContenido bloque) {
-	    ProgresoBloque progreso = new ProgresoBloque(estudiante, curso, bloque);
-	    RepositorioProgresoBloque.guardar(progreso);
+	    ProgresoCurso progreso = new ProgresoCurso(estudiante, curso, bloque);
+	    RepositorioProgresoCurso.guardar(progreso);
 	}
 }

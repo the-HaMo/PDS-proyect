@@ -72,6 +72,15 @@ public class CursosColaborador {
         panelBotonCompartir.setBackground(Color.WHITE);
         panelBotonCompartir.add(btnCompartir);
         panelGeneral.add(panelBotonCompartir, BorderLayout.SOUTH);
+        
+        JButton btnDescargaTend = new JButton("TOP descargas");
+        btnDescargaTend.setActionCommand("TOP descargas");
+        btnDescargaTend.setForeground(Color.WHITE);
+        btnDescargaTend.setFont(new Font("Dialog", Font.BOLD, 12));
+        btnDescargaTend.setFocusPainted(false);
+        btnDescargaTend.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+        btnDescargaTend.setBackground(new Color(76, 175, 80));
+        panelBotonCompartir.add(btnDescargaTend);
 
         panelBibliotecas.add(panelGeneral, BorderLayout.WEST);
 
@@ -97,18 +106,9 @@ public class CursosColaborador {
         btnImportar.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
         btnImportar.addActionListener(e -> importarCurso());
         
-        JButton btnEliminar = new JButton("Eliminar Curso");
-        btnEliminar.setFont(new Font("Sans-Serif", Font.BOLD, 12));
-        btnEliminar.setForeground(Color.WHITE);
-        btnEliminar.setBackground(Color.decode("#4CAF50"));
-        btnEliminar.setFocusPainted(false);
-        btnEliminar.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
-        btnEliminar.addActionListener(e -> {});
-        
         JPanel panelBotonImportar = new JPanel();
         panelBotonImportar.setBackground(Color.WHITE);
         panelBotonImportar.add(btnImportar);
-        panelBotonImportar.add(btnEliminar);
         panelPrivado.add(panelBotonImportar, BorderLayout.SOUTH);
 
         panelBibliotecas.add(panelPrivado, BorderLayout.EAST);

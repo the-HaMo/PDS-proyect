@@ -3,8 +3,7 @@ package Repositorio;
 import Modelo.BloqueContenido;
 import Modelo.Curso;
 import Modelo.Estudiante;
-import Modelo.ProgresoBloque;
-
+import Modelo.ProgresoCurso;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -12,11 +11,11 @@ import jakarta.persistence.Persistence;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepositorioProgresoBloque {
+public class RepositorioProgresoCurso {
 
     private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("ejemplo");
 
-    public static void guardar(ProgresoBloque progreso) {
+    public static void guardar(ProgresoCurso progreso) {
         EntityManager em = emf.createEntityManager();
         try {
 	        em.getTransaction().begin();
@@ -27,12 +26,12 @@ public class RepositorioProgresoBloque {
         }
     }
 
-    public static List<ProgresoBloque> buscarPorEstudianteYCurso(Estudiante estudiante, Curso curso) {
+    public static List<ProgresoCurso> buscarPorEstudianteYCurso(Estudiante estudiante, Curso curso) {
         EntityManager em = emf.createEntityManager();
-        List<ProgresoBloque> progresos = new ArrayList<>();
+        List<ProgresoCurso> progresos = new ArrayList<>();
         try {
             progresos = em.createQuery(
-            "SELECT p FROM ProgresoBloque p WHERE p.estudiante.id = :estudianteId AND p.curso.id = :cursoId", ProgresoBloque.class)
+            "SELECT p FROM ProgresoCurso p WHERE p.estudiante.id = :estudianteId AND p.curso.id = :cursoId", ProgresoCurso.class)
             .setParameter("estudianteId", estudiante.getId())
             .setParameter("cursoId", curso.getId())
             .getResultList();
@@ -47,7 +46,7 @@ public class RepositorioProgresoBloque {
         Long count;
         try {
         	count = em.createQuery(
-            "SELECT COUNT(p) FROM ProgresoBloque p " +
+            "SELECT COUNT(p) FROM ProgresoCurso p " +
             "WHERE p.estudiante.id = :estudianteId " +
             "AND p.curso.id = :cursoId " +
             "AND p.bloque.id = :bloqueId", Long.class)

@@ -1,6 +1,5 @@
 package Modelo;
 
-import java.util.Collections;
 import java.util.LinkedList;
 
 import java.util.List;
@@ -29,7 +28,7 @@ public class Curso {
 	private int NumMeGustas;
 	
 	// HAY VERLO 
-	private Estrategia estrategia;
+	//private Estrategia estrategia;
 	
 	private boolean esPublico;
 	
@@ -43,26 +42,23 @@ public class Curso {
 	}
 	
 	
-public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos, int NumDescargas, int NumMeGustas, String idioma, Estrategia estrategia) {
+public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos, int NumDescargas, int NumMeGustas, String idioma) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.bloques_contenidos = bloques_contenidos;
 		this.NumDescargas = NumDescargas;
 		this.NumMeGustas = NumMeGustas;
 		this.idioma = idioma;
-		this.estrategia = estrategia;
+		//this.estrategia = estrategia;
 	}
-	
-	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos, int NumDescargas, int NumMeGustas, String idioma) {
-		this(nombre, descripcion, bloques_contenidos, NumDescargas, NumMeGustas, idioma, Estrategia.ALEATORIA);
-	}
+
 	
 	public Curso(String nombre, String descripcion) {
-		this(nombre, descripcion, new LinkedList<BloqueContenido>(), 0, 0, "Español", Estrategia.ALEATORIA);
+		this(nombre, descripcion, new LinkedList<BloqueContenido>(), 0, 0, "Español");
 	}
 	
 	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos) {
-		this(nombre, descripcion, bloques_contenidos, 0, 0, "Español", Estrategia.ALEATORIA);
+		this(nombre, descripcion, bloques_contenidos, 0, 0, "Español");
 	}
 	
 	public List<BloqueContenido> getBloquesContenidos() {
@@ -123,20 +119,23 @@ public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_co
 		this.idioma = idioma;
 	}
 	
-	
+	/*
 	public Estrategia getEstrategia() {
 		return estrategia;
 	}
-
+	*/
+	
+	/*
 	public boolean isEstrategia() {
 		return this.getEstrategia() != null;
 	}
+	*/
 	
-	
+	/*
 	public void setEstrategia(Estrategia estrategia) {
 		this.estrategia = estrategia;
 	}
-
+	*/
 
 	public void setBloquesContenidos(List<BloqueContenido> bloques_contenidos) {
 		for (BloqueContenido bloque : bloques_contenidos) {

@@ -15,7 +15,7 @@ import Modelo.Estrategia;
 import Modelo.BloqueContenido;
 import Modelo.Estudiante;
 import Modelo.Pregunta;
-import Repositorio.RepositorioProgresoBloque;
+import Repositorio.RepositorioProgresoCurso;
 import Controlador.*;
 
 public class EleccionBloqueContenido {
@@ -66,7 +66,7 @@ public class EleccionBloqueContenido {
         for (BloqueContenido bloque : curso.getBloquesContenidos()) {
             ElementoBloque elemento = new ElementoBloque(bloque);
 
-            boolean completado = RepositorioProgresoBloque.estaCompletado(estudianteActual, curso, bloque);
+            boolean completado = RepositorioProgresoCurso.estaCompletado(estudianteActual, curso, bloque);
             elemento.setCompletado(completado);
 
             modeloBloques.addElement(elemento);

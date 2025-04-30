@@ -117,16 +117,6 @@ public class CursosEstudiante {
 		scrollPrivado.setBorder(BorderFactory.createLineBorder(Color.GRAY, 3));
 		panelPrivado.add(scrollPrivado, BorderLayout.CENTER);
 
-		JButton btnEliminar = new JButton("Eliminar curso");
-		btnEliminar.setFont(new Font("Sans-Serif", Font.BOLD, 12));
-		btnEliminar.setForeground(Color.WHITE);
-		btnEliminar.setBackground(Color.decode("#4CAF50"));
-		btnEliminar.setFocusPainted(false);
-		btnEliminar.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
-		btnEliminar.addActionListener( e -> {
-
-		});
-
 		JButton btnDescargar = new JButton("Descargar Curso");
 		btnDescargar.setFont(new Font("Sans-Serif", Font.BOLD, 12));
 		btnDescargar.setForeground(Color.WHITE);
@@ -152,7 +142,6 @@ public class CursosEstudiante {
 
 		JPanel panelBotonImportar = new JPanel();
 		panelBotonImportar.setBackground(Color.WHITE);
-		panelBotonImportar.add(btnEliminar);
 		panelBotonImportar.add(btnDescargar);
 		panelPrivado.add(panelBotonImportar, BorderLayout.SOUTH);
 
@@ -161,15 +150,33 @@ public class CursosEstudiante {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(128, 255, 128));
 		panelBibliotecas.add(panel, BorderLayout.NORTH);
-		panel.setLayout(new BorderLayout(0, 0));
-
+		panel.setLayout(new BorderLayout());
+		
+		JLabel lblNewLabel = new JLabel("Hola "+ Controlador.INSTANCE.getUsuarioActual().getNombre() + "!");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
+		panel.add(lblNewLabel, BorderLayout.WEST);
+		
+		JPanel botonesPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		botonesPanel.setBackground(new Color(128, 255, 128));
+		
+		JButton btnStats = new JButton("Stats");
+		btnStats.setFont(new Font("Sans-Serif", Font.BOLD, 12));
+		btnStats.setForeground(Color.WHITE);
+		btnStats.setBackground(Color.decode("#4CAF50"));
+		btnStats.setFocusPainted(false);
+		btnStats.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
+		panel.add(btnStats);
+		btnStats.addActionListener(e -> {
+			new VistasEstadisticas(Controlador.INSTANCE.getStats()).setVisible(true);
+		});
+		
 		JButton btnlogout = new JButton("Logout");
 		btnlogout.setFont(new Font("Sans-Serif", Font.BOLD, 12));
 		btnlogout.setForeground(Color.WHITE);
 		btnlogout.setBackground(Color.decode("#4CAF50"));
 		btnlogout.setFocusPainted(false);
 		btnlogout.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
-		panel.add(btnlogout, BorderLayout.EAST);
+		panel.add(btnlogout);
 		btnlogout.addActionListener(e -> {
 			// GUARDAR EL ESTADO ACTUAL 
 			Controlador.INSTANCE.cerrarSesion();
@@ -178,10 +185,10 @@ public class CursosEstudiante {
 			login.show();
 		});
 
-		JLabel lblNewLabel = new JLabel("Hola "+ Controlador.INSTANCE.getUsuarioActual().getNombre() + "!");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
-		panel.add(lblNewLabel, BorderLayout.WEST);
-
+		botonesPanel.add(btnStats);
+		botonesPanel.add(btnlogout);
+		panel.add(botonesPanel, BorderLayout.EAST);
+		
 		JPanel panelSur = new JPanel();
 		panelSur.setBackground(new Color(128, 255, 128));
 		panelSur.setPreferredSize(new Dimension(10, 30));
