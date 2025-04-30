@@ -24,7 +24,8 @@ public class PreguntaTraduccion extends Pregunta {
     }
     
     public boolean isCorrecta(String respuesta) {
-        return respuesta.equals(respuestaCorrecta);
+    	if (respuesta == null || respuestaCorrecta == null) {return false;}
+        return respuesta.trim().equalsIgnoreCase(respuestaCorrecta.trim());
     }
     
 	public String toString() {
