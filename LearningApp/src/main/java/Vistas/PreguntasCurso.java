@@ -181,6 +181,7 @@ public class PreguntasCurso {
         }
     }
 
+    
     private void mostrarResultado(String mensaje) {
         JOptionPane.showMessageDialog(frame, mensaje, "Resultado", JOptionPane.INFORMATION_MESSAGE);
     }
