@@ -132,7 +132,7 @@ public class PreguntasCurso {
         panelRespuesta.repaint();
 
         btnAnterior.setEnabled(preguntaActual > 0);
-        btnSiguiente.setEnabled(preguntaActual < preguntasExamen.size() - 1);
+        btnSiguiente.setEnabled(preguntaActual < preguntasExamen.size() - 1); //creo q mal
     }
 
     private void comprobarRespuestaActual() {
@@ -143,10 +143,9 @@ public class PreguntasCurso {
             if (grupo.getSelection() != null) {
                 String seleccionada = grupo.getSelection().getActionCommand();
                 if (pt.isCorrecta(seleccionada)) {
-                    mostrarResultado("✅ ¡Correcto!");
                     Controlador.INSTANCE.getStats().respuestaCorrecta();
                 } else {
-                    mostrarResultado("❌ Incorrecto. Respuesta correcta: " + pt.getRespuesta());
+                   mostrarResultado("❌ Incorrecto. Respuesta correcta: " + pt.getRespuesta());
                     Controlador.INSTANCE.getStats().respuestaIncorrecta();
                 }
             } else {
