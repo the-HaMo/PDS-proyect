@@ -180,4 +180,3 @@ public class PreguntasCurso {
         frame.setVisible(true);
     }
 }
-
