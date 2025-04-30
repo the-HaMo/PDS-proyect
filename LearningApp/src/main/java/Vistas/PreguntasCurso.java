@@ -20,6 +20,7 @@ public class PreguntasCurso {
     private JButton btnSiguiente;
     private JButton btnAnterior;
     private JLabel lblTipo;
+    private Integer aciertos = 0;
 
     public PreguntasCurso(Curso curso, List<Pregunta> preguntasExamen) {
         this.curso=curso;
@@ -67,9 +68,6 @@ public class PreguntasCurso {
         abajo.setBackground(new Color(128, 255, 128));
         frame.getContentPane().add(abajo, BorderLayout.SOUTH);
 
-        btnAnterior = new JButton("Anterior");
-        btnAnterior.addActionListener(e -> mostrarPregunta(preguntaActual - 1));
-        abajo.add(btnAnterior);
 
         btnSiguiente = new JButton("Siguiente");
         btnSiguiente.addActionListener(e -> {
@@ -86,17 +84,18 @@ public class PreguntasCurso {
     }
 
     private void mostrarPregunta(int index) {
-        if (index < 0 || index >= preguntasExamen.size()-1) {
-        	new CursosEstudiante().Mostrar();
-        	this.frame.dispose();
-        	return;
-        }
+    	if (index < 0 || index >= preguntasExamen.size()) {
+    	    JOptionPane.showMessageDialog(frame, aciertos + "/" + preguntasExamen.size() + " Correctas", "Fin del Examen", JOptionPane.INFORMATION_MESSAGE);
+    	    new CursosEstudiante().Mostrar();
+    	    this.frame.dispose();
+    	    return;
+    	}
 
         preguntaActual = index;
         Pregunta p = preguntasExamen.get(index);
 
         txtPregunta.setText(p.getEnunciado());
-
+        lblTipo.setText("Tipo: " + p.getTipo());
         panelRespuesta.removeAll();
 
         if (p instanceof PreguntaTest pt) {
@@ -131,8 +130,7 @@ public class PreguntasCurso {
         panelRespuesta.revalidate();
         panelRespuesta.repaint();
 
-        btnAnterior.setEnabled(preguntaActual > 0);
-        btnSiguiente.setEnabled(preguntaActual < preguntasExamen.size() - 1); //creo q mal
+        btnSiguiente.setEnabled(preguntaActual < preguntasExamen.size());
     }
 
     private void comprobarRespuestaActual() {
@@ -143,9 +141,9 @@ public class PreguntasCurso {
             if (grupo.getSelection() != null) {
                 String seleccionada = grupo.getSelection().getActionCommand();
                 if (pt.isCorrecta(seleccionada)) {
+                	aciertos++;
                     Controlador.INSTANCE.getStats().respuestaCorrecta();
                 } else {
-                   mostrarResultado("❌ Incorrecto. Respuesta correcta: " + pt.getRespuesta());
                     Controlador.INSTANCE.getStats().respuestaIncorrecta();
                 }
             } else {
@@ -158,10 +156,9 @@ public class PreguntasCurso {
             if (entrada.isEmpty()) {
                 mostrarResultado("Completa el campo.");
             } else if (prh.isCorrecta(entrada)) {
-                mostrarResultado("✅ ¡Correcto!");
+                aciertos++;
                 Controlador.INSTANCE.getStats().respuestaCorrecta();
             } else {
-                mostrarResultado("❌ Incorrecto. Respuesta correcta: " + prh.getRespuesta());
                 Controlador.INSTANCE.getStats().respuestaIncorrecta();
             }
 
@@ -171,10 +168,9 @@ public class PreguntasCurso {
             if (entrada.isEmpty()) {
                 mostrarResultado("Escribe tu traducción.");
             } else if (pt.isCorrecta(entrada)) {
-                mostrarResultado("✅ ¡Correcto!");
+            	aciertos++;
                 Controlador.INSTANCE.getStats().respuestaCorrecta();
             } else {
-                mostrarResultado("❌ Incorrecto. Respuesta correcta: " + pt.getRespuesta());
                 Controlador.INSTANCE.getStats().respuestaIncorrecta();
             }
         }
