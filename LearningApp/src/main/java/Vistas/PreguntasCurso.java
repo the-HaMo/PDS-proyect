@@ -2,6 +2,9 @@
 package Vistas;
 
 import javax.swing.*;
+
+import Controlador.Controlador;
+
 import java.awt.*;
 import java.util.List;
 import Modelo.*;
@@ -141,8 +144,10 @@ public class PreguntasCurso {
                 String seleccionada = grupo.getSelection().getActionCommand();
                 if (pt.isCorrecta(seleccionada)) {
                     mostrarResultado("✅ ¡Correcto!");
+                    Controlador.INSTANCE.getStats().respuestaCorrecta();
                 } else {
                     mostrarResultado("❌ Incorrecto. Respuesta correcta: " + pt.getRespuesta());
+                    Controlador.INSTANCE.getStats().respuestaIncorrecta();
                 }
             } else {
                 mostrarResultado("Selecciona una opción.");
@@ -155,8 +160,10 @@ public class PreguntasCurso {
                 mostrarResultado("Completa el campo.");
             } else if (prh.isCorrecta(entrada)) {
                 mostrarResultado("✅ ¡Correcto!");
+                Controlador.INSTANCE.getStats().respuestaCorrecta();
             } else {
                 mostrarResultado("❌ Incorrecto. Respuesta correcta: " + prh.getRespuesta());
+                Controlador.INSTANCE.getStats().respuestaIncorrecta();
             }
 
         } else if (p instanceof PreguntaTraduccion pt) {
@@ -166,8 +173,10 @@ public class PreguntasCurso {
                 mostrarResultado("Escribe tu traducción.");
             } else if (pt.isCorrecta(entrada)) {
                 mostrarResultado("✅ ¡Correcto!");
+                Controlador.INSTANCE.getStats().respuestaCorrecta();
             } else {
                 mostrarResultado("❌ Incorrecto. Respuesta correcta: " + pt.getRespuesta());
+                Controlador.INSTANCE.getStats().respuestaIncorrecta();
             }
         }
     }

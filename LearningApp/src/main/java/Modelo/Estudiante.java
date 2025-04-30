@@ -29,13 +29,17 @@ public class Estudiante extends Usuario{
 	   @Column(name = "estrategia")
 	   @Enumerated(EnumType.STRING)
 	   private Map<Curso, Estrategia> cursosEmpezados;
-
+	
+	@OneToOne(mappedBy = "estudiante", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private EstadisticaUsuario stats;
+	
 	public Estudiante() {}
 	
 	public Estudiante(String nombre, String contraseña) {
         super(nombre, contraseña);
         this.cursosApuntados=new ArrayList<Curso>();
         this.cursosEmpezados= new HashMap<Curso, Estrategia>();
+        this.stats = new EstadisticaUsuario(this);
     }
 	
 	public List<Curso> getCursos() {//Los que tengo importado
@@ -60,6 +64,14 @@ public class Estudiante extends Usuario{
 	
 	public Estrategia getEstrategia(Curso curso) {
 		return cursosEmpezados.get(curso);
+	}
+
+	public EstadisticaUsuario getStats() {
+		return stats;
+	}
+
+	public void setStats(EstadisticaUsuario stats) {
+		this.stats = stats;
 	}
 
 	public void addCursoEmpezado(Curso curso, Estrategia estrategia) {

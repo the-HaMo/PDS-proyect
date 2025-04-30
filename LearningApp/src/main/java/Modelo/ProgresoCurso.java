@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "progreso_bloques")
-public class ProgresoBloque {
+public class ProgresoCurso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,13 +18,22 @@ public class ProgresoBloque {
 
     @ManyToOne
     private BloqueContenido bloque;
+    
+    private Estrategia estrategia;
 
-    public ProgresoBloque() {}
+    public ProgresoCurso() {}
 
-    public ProgresoBloque(Estudiante estudiante, Curso curso, BloqueContenido bloque) {
+    public ProgresoCurso(Estudiante estudiante, Curso curso, BloqueContenido bloque) {
         this.estudiante = estudiante;
         this.curso = curso;
         this.bloque = bloque;
+    }
+    
+    public ProgresoCurso(Estudiante estudiante, Curso curso, BloqueContenido bloque, Estrategia estrategia) {
+    	 this.estudiante = estudiante;
+         this.curso = curso;
+         this.bloque = bloque;
+         this.estrategia = estrategia;
     }
 
     // Getters y setters
@@ -55,4 +64,17 @@ public class ProgresoBloque {
     public void setBloque(BloqueContenido bloque) {
         this.bloque = bloque;
     }
+    
+	public Estrategia getEstrategia() {
+		return estrategia;
+	}
+	
+	public boolean isEstrategia() {
+		return this.getEstrategia() != null;
+	}
+	
+	public void setEstrategia(Estrategia estrategia) {
+		this.estrategia = estrategia;
+	}
+	
 }

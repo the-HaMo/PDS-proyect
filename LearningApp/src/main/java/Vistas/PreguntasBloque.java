@@ -143,8 +143,10 @@ public class PreguntasBloque {
                 if (pt.isCorrecta(seleccionada)) {
                     correcta = true;
                     mostrarResultado("✅ ¡Correcto!");
+                    Controlador.INSTANCE.getStats().respuestaCorrecta();
                 } else {
                     mostrarResultado("❌ Incorrecto. Respuesta correcta: " + pt.getRespuesta());
+                    Controlador.INSTANCE.getStats().respuestaIncorrecta();
                 }
             } else {
                 mostrarResultado("Selecciona una opción.");
@@ -160,8 +162,10 @@ public class PreguntasBloque {
             } else if (prh.isCorrecta(entrada)) {
                 correcta = true;
                 mostrarResultado("✅ ¡Correcto!");
+                Controlador.INSTANCE.getStats().respuestaCorrecta();
             } else {
                 mostrarResultado("❌ Incorrecto. Respuesta correcta: " + prh.getRespuesta());
+                Controlador.INSTANCE.getStats().respuestaIncorrecta();
             }
 
         } else if (p instanceof PreguntaTraduccion pt) {
@@ -173,8 +177,10 @@ public class PreguntasBloque {
             } else if (pt.isCorrecta(entrada)) {
                 correcta = true;
                 mostrarResultado("✅ ¡Correcto!");
+                Controlador.INSTANCE.getStats().respuestaCorrecta();
             } else {
                 mostrarResultado("❌ Incorrecto. Respuesta correcta: " + pt.getRespuesta());
+                Controlador.INSTANCE.getStats().respuestaIncorrecta();
             }
         }
 
