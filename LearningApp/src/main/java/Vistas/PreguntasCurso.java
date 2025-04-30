@@ -9,21 +9,18 @@ import Modelo.*;
 public class PreguntasCurso {
 
     private JFrame frame;
+    private List<Pregunta> preguntasExamen;
     private Curso curso;
-    private List<BloqueContenido> bloques;
-    private int bloqueActual = 0;
     private int preguntaActual = 0;
-
-    private JLabel lblBloque;
-    private JLabel lblTipo;
     private JTextArea txtPregunta;
     private JPanel panelRespuesta;
-    private JButton btnAnterior, btnSiguiente;
-    private JButton btnComprobar;
+    private JButton btnSiguiente;
+    private JButton btnAnterior;
+    private JLabel lblTipo;
 
-    public PreguntasCurso(Curso curso) {
-        this.curso = curso;
-        this.bloques = curso.getBloquesContenidos();
+    public PreguntasCurso(Curso curso, List<Pregunta> preguntasExamen) {
+        this.curso=curso;
+        this.preguntasExamen=preguntasExamen;
         initialize();
     }
 
@@ -31,27 +28,18 @@ public class PreguntasCurso {
         frame = new JFrame("Preguntas del Curso: " + curso.getNombre());
         frame.setBounds(200, 200, 650, 500);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setLayout(new BorderLayout());
+        frame.getContentPane().setLayout(new BorderLayout());
 
         JLabel lblTitulo = new JLabel("Preguntas del curso: " + curso.getNombre(), SwingConstants.CENTER);
         lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 16));
         lblTitulo.setOpaque(true);
         lblTitulo.setBackground(new Color(0, 255, 0));
         lblTitulo.setPreferredSize(new Dimension(10, 50));
-        frame.add(lblTitulo, BorderLayout.NORTH);
+        frame.getContentPane().add(lblTitulo, BorderLayout.NORTH);
 
         JPanel centro = new JPanel(new BorderLayout());
         centro.setBackground(Color.WHITE);
-        frame.add(centro, BorderLayout.CENTER);
-
-        lblBloque = new JLabel("", SwingConstants.CENTER);
-        lblBloque.setFont(new Font("SansSerif", Font.BOLD, 14));
-        centro.add(lblBloque, BorderLayout.NORTH);
-
-        
-        lblTipo = new JLabel("", SwingConstants.CENTER);
-        lblTipo.setFont(new Font("SansSerif", Font.PLAIN, 12));
-        centro.add(lblTipo, BorderLayout.SOUTH);
+        frame.getContentPane().add(centro, BorderLayout.CENTER);
         
         txtPregunta = new JTextArea();
         txtPregunta.setFont(new Font("SansSerif", Font.PLAIN, 14));
@@ -66,70 +54,45 @@ public class PreguntasCurso {
         panelRespuesta.setLayout(new BoxLayout(panelRespuesta, BoxLayout.Y_AXIS));
         panelRespuesta.setBorder(BorderFactory.createTitledBorder("Tu respuesta"));
         centro.add(panelRespuesta, BorderLayout.SOUTH);
+        
+        lblTipo = new JLabel("Tipo: <dynamic>", SwingConstants.CENTER);
+        lblTipo.setFont(new Font("SansSerif", Font.BOLD, 14));
+        centro.add(lblTipo, BorderLayout.NORTH);
 
         // Botones abajo
         JPanel abajo = new JPanel(new FlowLayout(FlowLayout.CENTER));
         abajo.setBackground(new Color(128, 255, 128));
-        frame.add(abajo, BorderLayout.SOUTH);
+        frame.getContentPane().add(abajo, BorderLayout.SOUTH);
 
-        /*btnAnterior = new JButton("Anterior");
-        btnAnterior.addActionListener(e -> mostrarPregunta(bloqueActual, preguntaActual - 1));
+        btnAnterior = new JButton("Anterior");
+        btnAnterior.addActionListener(e -> mostrarPregunta(preguntaActual - 1));
         abajo.add(btnAnterior);
-*/
+
         btnSiguiente = new JButton("Siguiente");
         btnSiguiente.addActionListener(e -> {
-        	comprobarRespuestaActual();
-        	mostrarPregunta(bloqueActual, preguntaActual + 1);
-        	}
-        );
+            comprobarRespuestaActual();
+            mostrarPregunta(preguntaActual + 1);
+        });
         abajo.add(btnSiguiente);
-
-        /*btnComprobar = new JButton("Comprobar respuesta");
-        btnComprobar.addActionListener(e -> comprobarRespuestaActual());
-        abajo.add(btnComprobar);*/
 
         JButton btnCerrar = new JButton("Cerrar");
         btnCerrar.addActionListener(e -> frame.dispose());
         abajo.add(btnCerrar);
+        mostrarPregunta(0);
 
-        if (!bloques.isEmpty() && !bloques.get(0).getPreguntas().isEmpty()) {
-            mostrarPregunta(0, 0);
-        } else {
-            txtPregunta.setText("Este curso no contiene preguntas.");
-            lblBloque.setText("");
-            btnComprobar.setEnabled(false);
-        }
     }
 
-    private void mostrarPregunta(int bloqueIndex, int preguntaIndex) {
-        if (bloqueIndex < 0 || bloqueIndex >= bloques.size()) return;
-
-        BloqueContenido bloque = bloques.get(bloqueIndex);
-        List<Pregunta> preguntas = bloque.getPreguntas();
-
-        if (preguntaIndex < 0) {
-            if (bloqueIndex > 0) {
-                mostrarPregunta(bloqueIndex - 1, bloques.get(bloqueIndex - 1).getPreguntas().size() - 1);
-            }
-            return;
+    private void mostrarPregunta(int index) {
+        if (index < 0 || index >= preguntasExamen.size()-1) {
+        	new CursosEstudiante().Mostrar();
+        	this.frame.dispose();
+        	return;
         }
 
-        if (preguntaIndex >= preguntas.size()) {
-            if (bloqueIndex < bloques.size() - 1) {
-                mostrarPregunta(bloqueIndex + 1, 0);
-            }
-            return;
-        }
+        preguntaActual = index;
+        Pregunta p = preguntasExamen.get(index);
 
-        bloqueActual = bloqueIndex;
-        preguntaActual = preguntaIndex;
-
-        Pregunta p = preguntas.get(preguntaIndex);
-        lblBloque.setText("Bloque: " + bloque.getNombreBloque());
         txtPregunta.setText(p.getEnunciado());
-        lblTipo.setText("Tipo: " + p.getTipo());
-
-        btnSiguiente.setEnabled(!(bloqueIndex == bloques.size() - 1 && preguntaIndex == preguntas.size() - 1));
 
         panelRespuesta.removeAll();
 
@@ -164,11 +127,13 @@ public class PreguntasCurso {
 
         panelRespuesta.revalidate();
         panelRespuesta.repaint();
+
+        btnAnterior.setEnabled(preguntaActual > 0);
+        btnSiguiente.setEnabled(preguntaActual < preguntasExamen.size() - 1);
     }
 
     private void comprobarRespuestaActual() {
-        BloqueContenido bloque = bloques.get(bloqueActual);
-        Pregunta p = bloque.getPreguntas().get(preguntaActual);
+        Pregunta p = preguntasExamen.get(preguntaActual);
 
         if (p instanceof PreguntaTest pt) {
             ButtonGroup grupo = (ButtonGroup) panelRespuesta.getClientProperty("grupo");

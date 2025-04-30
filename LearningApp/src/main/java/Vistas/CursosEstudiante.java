@@ -305,7 +305,7 @@ public class CursosEstudiante {
 							}
 						}
 						cargarCursos();
-						new EleccionBloqueContenido(cursoSeleccionado, estrategia).mostrar();
+						new EleccionBloqueContenido(cursoSeleccionado, Controlador.INSTANCE.getEstrategiaCurso(cursoSeleccionado)).mostrar();
 						frame.dispose();
 					}
 				}

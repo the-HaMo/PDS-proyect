@@ -4,10 +4,17 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 import Modelo.Curso;
 import Modelo.Estrategia;
 import Modelo.BloqueContenido;
 import Modelo.Estudiante;
+import Modelo.Pregunta;
 import Repositorio.RepositorioProgresoBloque;
 import Controlador.*;
 
@@ -15,11 +22,13 @@ public class EleccionBloqueContenido {
 
     private JFrame frame;
     private Curso curso;
+    private Estrategia estrategia;
     private DefaultListModel<ElementoBloque> modeloBloques;
     private JList<ElementoBloque> listaBloques;
 
     public EleccionBloqueContenido(Curso curso, Estrategia estrategia) {
         this.curso = curso;
+        this.estrategia = estrategia;
         initialize();
     }
 
@@ -109,8 +118,8 @@ public class EleccionBloqueContenido {
         btnExamen.setBackground(new Color(76, 175, 80));
         panelInferior.add(btnExamen);
         btnExamen.addActionListener(e -> {
-        	//Curso examen = aplicarEstrategia(curso, estrategia);
-        	new PreguntasCurso(curso).mostrar();
+        	List<Pregunta> examen = aplicarEstrategia(curso, estrategia);
+        	new PreguntasCurso(curso,examen).mostrar();
         	this.frame.dispose();
         });
         
@@ -119,6 +128,43 @@ public class EleccionBloqueContenido {
         panelInferior.add(horizontalStrut);
         panelInferior.add(btnVolver);
         frame.getContentPane().add(panelInferior, BorderLayout.SOUTH);
+    }
+    
+    public List<Pregunta> aplicarEstrategia(Curso curso, Estrategia estrategia) {
+    	List<Pregunta> examen = new ArrayList<>();
+    	switch (estrategia) {
+		case SECUENCIAL:
+			examen = curso.getBloquesContenidos().stream()
+										.flatMap(b -> b.getPreguntas().stream())
+										.collect(Collectors.toList());
+			break;
+		case ALEATORIA:
+			examen = curso.getBloquesContenidos().stream()
+										.flatMap(b -> b.getPreguntas().stream())
+										.collect(Collectors.toList());
+			Collections.shuffle(examen);
+		case REPETICION_ESPACIADA:
+			List<Pregunta> original = curso.getBloquesContenidos().stream()
+					.flatMap(b -> b.getPreguntas().stream())
+					.collect(Collectors.toList());
+			
+
+			Random rand = new Random();
+			int intervalos = rand.nextInt(4) + 2; 
+
+			for (int i = 0; i < original.size(); i++) {
+                Pregunta p = original.get(i);
+                examen.add(p);
+                if ((i + 1) % intervalos == 0) {
+                    examen.addAll(original.subList(0, i + 1));
+                }
+            }
+			break;
+    	}
+		for (Pregunta p : examen) {
+			System.out.println(p.toString());
+		}
+    	return examen;
     }
 
     public void mostrar() {

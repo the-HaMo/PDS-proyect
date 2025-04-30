@@ -134,6 +134,14 @@ public enum Controlador {
 		return null;
 	}
 	
+	
+	public Estrategia getEstrategiaCurso(Curso curso) {
+		if (usuarioActual instanceof Estudiante) {
+			return ((Estudiante) usuarioActual).getEstrategia(curso);
+		}
+		return null;
+	}
+	
 	public void actualizarCursosUsuario(List<Curso> cursosActualizados) {
 	    this.usuarioActual.setCursos(cursosActualizados);
 	    repositorioUsuarios.actualizarUsuario(usuarioActual);

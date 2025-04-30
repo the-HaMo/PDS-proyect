@@ -57,6 +57,10 @@ public class Estudiante extends Usuario{
 	public Map<Curso, Estrategia> getCursosEmpezados() {//los empezados
 		return cursosEmpezados;
 	}
+	
+	public Estrategia getEstrategia(Curso curso) {
+		return cursosEmpezados.get(curso);
+	}
 
 	public void addCursoEmpezado(Curso curso, Estrategia estrategia) {
 		if (!cursosEmpezados.containsKey(curso)) {
