@@ -66,6 +66,12 @@ public enum Controlador {
 				.sorted(Comparator.comparing(Curso::getNumMeGustas).reversed())
 				.collect(Collectors.toList());
 	}
+	
+	public List<Curso> getCursosEnOrdenDescargas(List<Curso> cursosOnline){
+		return cursosOnline.stream()
+				.sorted(Comparator.comparing(Curso::getNumDescargas).reversed())
+				.collect(Collectors.toList());
+	}
 
 	public void cerrarSesion() {
 		if (usuarioActual instanceof Estudiante) {

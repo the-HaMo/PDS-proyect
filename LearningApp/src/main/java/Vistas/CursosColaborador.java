@@ -2,9 +2,8 @@ package Vistas;
 
 import java.awt.*;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 import javax.swing.*;
 
@@ -80,6 +79,7 @@ public class CursosColaborador {
         btnDescargaTend.setFocusPainted(false);
         btnDescargaTend.setBorder(BorderFactory.createEmptyBorder(8, 15, 8, 15));
         btnDescargaTend.setBackground(new Color(76, 175, 80));
+        btnDescargaTend.addActionListener(e -> ordenarCursosPorDescargas());
         panelBotonCompartir.add(btnDescargaTend);
 
         panelBibliotecas.add(panelGeneral, BorderLayout.WEST);
@@ -221,7 +221,21 @@ public class CursosColaborador {
             }
         }
     
+	private void ordenarCursosPorDescargas() {
+		List<Curso> cursosOnline = new ArrayList<>();
 
+		for (int i = 0; i < modeloGeneral.size(); i++) {
+			cursosOnline.add(modeloGeneral.getElementAt(i).getCurso());
+		}
+
+		List<Curso> cursosOrdenados = Controlador.INSTANCE.getCursosEnOrdenDescargas(cursosOnline);
+		modeloGeneral.clear();
+
+		for (Curso c : cursosOrdenados) {
+			Elemento elem = new Elemento(c);
+			modeloGeneral.addElement(elem);
+		}
+	}
 
 
     
