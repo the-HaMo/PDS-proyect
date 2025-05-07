@@ -1,13 +1,8 @@
-package Clases;
+package Modelo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
-import Modelo.BloqueContenido;
-import Modelo.PreguntaRellenarHuecos;
-import Modelo.PreguntaTest;
-import Modelo.PreguntaTraduccion;
 
 class BloqueContenidoTest {
 
@@ -38,6 +33,5 @@ class BloqueContenidoTest {
 		b1.addPregunta(p5);
 		assertTrue(b1.getPreguntas().size() == 5);
 	}
-	
 
 }

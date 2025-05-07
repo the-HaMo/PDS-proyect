@@ -1,5 +1,4 @@
-
-package Clases;
+package Modelo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,13 +6,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-
-import Modelo.BloqueContenido;
-import Modelo.Curso;
-import Modelo.Pregunta;
-import Modelo.PreguntaRellenarHuecos;
-import Modelo.PreguntaTest;
-import Modelo.PreguntaTraduccion;
 
 class CursoTest {
 
@@ -81,5 +73,4 @@ class CursoTest {
 		curso.addBloque(b3);
 		assertTrue(curso.getBloquesContenidos().size() == 3);
 	}
-
 }
