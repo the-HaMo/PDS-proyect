@@ -24,11 +24,14 @@ public class CursosEstudiante {
 	}
 
 	private void initialize() {
-		frame = new JFrame("Cursos Colaborador");
+		frame = new JFrame("Curso Estudiante");
 		frame.setBounds(100, 100, 800, 600); // Tamaño aumentado
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout());
-
+		
+		ImageIcon icono = new ImageIcon(getClass().getResource("/titulo.png"));	
+		frame.setIconImage(icono.getImage());
+        
 		// Panel del título
 		JPanel panelTitulo = new JPanel(new BorderLayout());
 		panelTitulo.setBackground(new Color(0, 255, 0));
@@ -78,7 +81,7 @@ public class CursosEstudiante {
 					//exportar(curso);
 					cargarCursos();
 				} else {
-					System.out.println("Ya dio like");
+					JOptionPane.showMessageDialog(null, "Ya dio like", "Advertencia", JOptionPane.ERROR_MESSAGE);
 				}
 
 			}});

@@ -33,6 +33,9 @@ public class PreguntasBloque {
         frame.setBounds(200, 200, 650, 500);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLayout(new BorderLayout());
+        
+        ImageIcon icono = new ImageIcon(getClass().getResource("/titulo.png"));	
+		frame.setIconImage(icono.getImage());
 
         JLabel lblTitulo = new JLabel("Preguntas del bloque: " + bloque.getNombreBloque(), SwingConstants.CENTER);
         lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -76,7 +79,11 @@ public class PreguntasBloque {
         abajo.add(btnSiguiente);
 
         JButton btnCerrar = new JButton("Cerrar");
-        btnCerrar.addActionListener(e -> frame.dispose());
+        btnCerrar.addActionListener(e -> {
+        	frame.dispose();
+        	Curso c = Controlador.INSTANCE.getCursoActual();
+        	new EleccionBloqueContenido(c, Controlador.INSTANCE.getEstrategiaCurso(c)).mostrar();
+        });
         abajo.add(btnCerrar);
 
         if (!preguntas.isEmpty()) {

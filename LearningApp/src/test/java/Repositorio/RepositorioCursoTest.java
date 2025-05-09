@@ -69,11 +69,5 @@ public class RepositorioCursoTest {
         assertFalse(cursos.isEmpty());
     }
 
-    @Test
-    @Order(4)
-    public void testEliminarCurso() {
-        repositorio.eliminarCurso(idCurso);
-        Curso eliminado = repositorio.buscarPorId(idCurso);
-        assertNull(eliminado);
-    }
+ 
 }

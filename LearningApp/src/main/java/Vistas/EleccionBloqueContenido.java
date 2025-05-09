@@ -37,6 +37,9 @@ public class EleccionBloqueContenido {
         frame.setBounds(150, 150, 600, 500);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(new BorderLayout());
+        
+        ImageIcon icono = new ImageIcon(getClass().getResource("/titulo.png"));	
+		frame.setIconImage(icono.getImage());
 
         // Panel superior
         JPanel panelTitulo = new JPanel(new BorderLayout());

@@ -24,11 +24,11 @@ public class CursosColaborador {
     }
 
     private void initialize() {
-        frame = new JFrame("Cursos Colaborador");
+        frame = new JFrame("Curso Colaborador");
         frame.setBounds(100, 100, 800, 600); // Tamaño aumentado
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(new BorderLayout());
-
+       
         // Panel del título
         JPanel panelTitulo = new JPanel(new BorderLayout());
         panelTitulo.setBackground(new Color(0, 255, 0));
@@ -38,7 +38,10 @@ public class CursosColaborador {
         JLabel lblApp = new JLabel("LearningApp Colaborador", SwingConstants.CENTER);
         lblApp.setFont(new Font("Tahoma", Font.BOLD, 16));
         panelTitulo.add(lblApp, BorderLayout.CENTER);
-
+        
+        ImageIcon icono = new ImageIcon(getClass().getResource("/titulo.png"));	
+		frame.setIconImage(icono.getImage());
+        
         // Panel de bibliotecas
         JPanel panelBibliotecas = new JPanel(new BorderLayout());
         panelBibliotecas.setBackground(new Color(128, 255, 128));

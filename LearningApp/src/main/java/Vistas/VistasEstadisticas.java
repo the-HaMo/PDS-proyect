@@ -16,6 +16,8 @@ public class VistasEstadisticas extends JFrame {
         setSize(300, 200);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        ImageIcon icono = new ImageIcon(getClass().getResource("/titulo.png"));	
+        this.setIconImage(icono.getImage());
 
         // Panel principal
         JPanel panel = new JPanel();
@@ -25,7 +27,7 @@ public class VistasEstadisticas extends JFrame {
         // Etiquetas con la información
         JLabel lblRacha = new JLabel("Racha actual de preguntas correctas: " + Controlador.INSTANCE.getStats().getRacha());
         JLabel lblMejorRacha = new JLabel("Mejor racha de preguntas correctas: " + Controlador.INSTANCE.getStats().getMejorRacha());
-        JLabel lblTiempo = new JLabel("Tiempo de uso: "+ Controlador.INSTANCE.getStats().getTiempoUso() + " segundos");
+        JLabel lblTiempo = new JLabel("Tiempo de uso ultima sesión: "+ Controlador.INSTANCE.getStats().getTiempoUso() + " segundos");
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         
         Component verticalStrut = Box.createVerticalStrut(20);

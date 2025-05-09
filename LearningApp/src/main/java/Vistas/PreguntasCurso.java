@@ -18,7 +18,6 @@ public class PreguntasCurso {
     private JTextArea txtPregunta;
     private JPanel panelRespuesta;
     private JButton btnSiguiente;
-    private JButton btnAnterior;
     private JLabel lblTipo;
     private Integer aciertos = 0;
 
@@ -33,6 +32,8 @@ public class PreguntasCurso {
         frame.setBounds(200, 200, 650, 500);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().setLayout(new BorderLayout());
+        ImageIcon icono = new ImageIcon(getClass().getResource("/titulo.png"));	
+		frame.setIconImage(icono.getImage());
 
         JLabel lblTitulo = new JLabel("Preguntas del curso: " + curso.getNombre(), SwingConstants.CENTER);
         lblTitulo.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -77,7 +78,11 @@ public class PreguntasCurso {
         abajo.add(btnSiguiente);
 
         JButton btnCerrar = new JButton("Cerrar");
-        btnCerrar.addActionListener(e -> frame.dispose());
+        btnCerrar.addActionListener(e -> {
+        	frame.dispose();
+        	Curso c = Controlador.INSTANCE.getCursoActual();
+        	new EleccionBloqueContenido(c, Controlador.INSTANCE.getEstrategiaCurso(c)).mostrar();
+        });
         abajo.add(btnCerrar);
         mostrarPregunta(0);
 
