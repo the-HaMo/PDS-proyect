@@ -56,7 +56,23 @@ public class Like {
 		this.curso = curso;
 	}
 	
-	
-	
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (o == null || getClass() != o.getClass()) return false;
+
+	    Like like = (Like) o;
+
+	    if (!usuario.equals(like.usuario)) return false;
+	    return curso.equals(like.curso);
+	}
+
+	@Override
+	public int hashCode() {
+	    int result = usuario.hashCode();
+	    result = 31 * result + curso.hashCode();
+	    return result;
+	}
+
 	
 }
