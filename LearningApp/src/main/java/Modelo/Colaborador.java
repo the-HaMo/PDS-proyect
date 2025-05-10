@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -16,12 +17,16 @@ public class Colaborador extends Usuario {
 	
 	public Colaborador(String nombre, String contraseña) {
 		super(nombre, contraseña);
+		this.cursos_Creados= new LinkedList<Curso>();
 	}
 
 
 	@Override
 	public void addCurso(Curso curso) {
-	cursos_Creados.add(curso);	
+		if (cursos_Creados.contains(curso)) {
+			return;
+		}
+		cursos_Creados.add(curso);	
 	}
 
 	@Override

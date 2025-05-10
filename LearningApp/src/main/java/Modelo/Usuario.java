@@ -35,6 +35,10 @@ public abstract class Usuario {
     public String getContraseña() {
         return contrasena;
     }
+    
+	public void setContraseña(String contrasena) {
+		this.contrasena = contrasena;
+	}
 
     public Integer getId() {
         return id;

@@ -106,8 +106,18 @@ public class RepositorioUsuario {
             em.close();
         }
     }
-
+    
+    
+    public void eliminarTodo(){
+    	    EntityManager em = emf.createEntityManager();
+    	    List<Usuario> usuarios = obtenerTodosLosUsuarios();
+    	    usuarios.stream()
+    	    .map(u -> u.getId())
+    	    .forEach(id -> eliminarUsuario(id));
+        
     }
+    }
+    
 
 
 
