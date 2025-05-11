@@ -1,8 +1,11 @@
 package Controlador;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import Modelo.*;
@@ -204,4 +207,34 @@ public enum Controlador {
 	    ProgresoCurso progreso = new ProgresoCurso(estudiante, curso, bloque);
 	    RepositorioProgresoCurso.guardar(progreso);
 	}
+	
+	private List<Pregunta> obtenerPreguntasSecuencial(Curso curso) {
+	    return curso.getBloquesContenidos().stream()
+	                .flatMap(b -> b.getPreguntas().stream())
+	                .collect(Collectors.toList());
+	}
+
+	public List<Pregunta> obtenerPreguntasAleatoria(Curso curso) {
+	    List<Pregunta> preguntas = obtenerPreguntasSecuencial(curso);
+	    Collections.shuffle(preguntas);
+	    return preguntas;
+	}
+
+	public List<Pregunta> obtenerPreguntasRepeticionEspaciada(Curso curso) {
+	    List<Pregunta> original = obtenerPreguntasSecuencial(curso);
+	    List<Pregunta> espaciadas = new ArrayList<>();
+	    Random rand = new Random();
+	    int intervalos = rand.nextInt(4) + 2;
+
+	    for (int i = 0; i < original.size(); i++) {
+	        Pregunta p = original.get(i);
+	        espaciadas.add(p);
+	        if ((i + 1) % intervalos == 0) {
+	            espaciadas.addAll(original.subList(0, i + 1));
+	        }
+	    }
+
+	    return espaciadas;
+	}
+	
 }

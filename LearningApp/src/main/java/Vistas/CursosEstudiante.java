@@ -312,6 +312,8 @@ public class CursosEstudiante {
 								}
 								//cursoSeleccionado.aplicarEstrategias();
 								Controlador.INSTANCE.empezarCurso(cursoSeleccionado, estrategia);
+							} else {
+								return;
 							}
 						}
 						cargarCursos();

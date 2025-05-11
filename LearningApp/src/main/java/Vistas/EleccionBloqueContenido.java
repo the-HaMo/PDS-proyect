@@ -137,31 +137,13 @@ public class EleccionBloqueContenido {
     	List<Pregunta> examen = new ArrayList<>();
     	switch (estrategia) {
 		case SECUENCIAL:
-			examen = curso.getBloquesContenidos().stream()
-										.flatMap(b -> b.getPreguntas().stream())
-										.collect(Collectors.toList());
+			examen = Controlador.INSTANCE.obtenerPreguntasAleatoria(curso);
 			break;
 		case ALEATORIA:
-			examen = curso.getBloquesContenidos().stream()
-										.flatMap(b -> b.getPreguntas().stream())
-										.collect(Collectors.toList());
-			Collections.shuffle(examen);
+			examen = Controlador.INSTANCE.obtenerPreguntasRepeticionEspaciada(curso); 
+			break;
 		case REPETICION_ESPACIADA:
-			List<Pregunta> original = curso.getBloquesContenidos().stream()
-					.flatMap(b -> b.getPreguntas().stream())
-					.collect(Collectors.toList());
-			
-
-			Random rand = new Random();
-			int intervalos = rand.nextInt(4) + 2; 
-
-			for (int i = 0; i < original.size(); i++) {
-                Pregunta p = original.get(i);
-                examen.add(p);
-                if ((i + 1) % intervalos == 0) {
-                    examen.addAll(original.subList(0, i + 1));
-                }
-            }
+			examen = Controlador.INSTANCE.obtenerPreguntasRepeticionEspaciada(curso);
 			break;
     	}
 		for (Pregunta p : examen) {

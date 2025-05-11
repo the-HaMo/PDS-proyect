@@ -2,17 +2,61 @@
 package Controlador;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
+import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import Modelo.BloqueContenido;
 import Modelo.Curso;
+import Modelo.Estudiante;
+import Repositorio.RepositorioCurso;
+import Repositorio.RepositorioLike;
+import Repositorio.RepositorioUsuario;
 
 
 class ControladorTest {
+	
+	private RepositorioUsuario repoUsuarioMock;
+	private RepositorioCurso repoCursoMock;
+	private RepositorioLike repoLikeMock;
+	private Controlador controlador;
+		
+//	@BeforeEach
+//	public void setUp() throws Exception {
+//		
+//		controlador = Controlador.INSTANCE;
+//		repoUsuarioMock = mock(RepositorioUsuario.class);
+//		repoCursoMock = mock(RepositorioCurso.class);
+//		repoLikeMock = mock(RepositorioLike.class); 
+//		
+//		injectMock(controlador, "repositorioUsuarios", repoUsuarioMock);
+//        injectMock(controlador, "repositorioCursos", repoCursoMock);
+//        injectMock(controlador, "repositorioLikes", repoLikeMock);
+//		
+//	}
+//	
+//	// Inyección por reflexión 
+//	 private void injectMock(Object target, String fieldName, Object mock) throws Exception {
+//	        Field field = target.getClass().getDeclaredField(fieldName);
+//	        field.setAccessible(true);
+//	        field.set(target, mock);
+//	    }
+//	
+//	@Test
+//	public void testCrearUsuarioNuevo() {
+//        when(repoUsuarioMock.obtenerUsuarioPorNombre("nuevo")).thenReturn(null);
+//        boolean result = controlador.crearUsuario("nuevo", "1234", "Estudiante");
+//        assertTrue(result);
+//        verify(repoUsuarioMock).guardarUsuario(any(Estudiante.class));
+//    }
 
 	@Test
 	void testCursosEnOrdenLikes() {
