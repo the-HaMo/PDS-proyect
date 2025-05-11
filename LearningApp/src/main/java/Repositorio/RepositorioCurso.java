@@ -7,6 +7,7 @@ import jakarta.persistence.Persistence;
 import java.util.List;
 
 import Modelo.Curso;
+import Modelo.Usuario;
 
 public class RepositorioCurso {
 
@@ -113,4 +114,20 @@ public class RepositorioCurso {
 			em.close();
 		}
     }
+    
+    public void eliminarTodo() {
+    	EntityManager em = emf.createEntityManager();
+    	try {
+    		em.getTransaction().begin();
+    		List<Curso> cursos = obtenerTodos();
+    		cursos.stream()
+    		.map(u -> u.getId())
+    		.forEach(id -> eliminarCurso(id));
+    		em.getTransaction().commit();
+    	} finally {
+    		em.close();
+    	}
+    }
+    
+
 }

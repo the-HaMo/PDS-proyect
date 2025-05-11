@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -57,22 +59,24 @@ public class Like {
 	}
 	
 	@Override
-	public boolean equals(Object o) {
-	    if (this == o) return true;
-	    if (o == null || getClass() != o.getClass()) return false;
-
-	    Like like = (Like) o;
-
-	    if (!usuario.equals(like.usuario)) return false;
-	    return curso.equals(like.curso);
+	public int hashCode() {
+		return Objects.hash(curso, id, usuario);
 	}
 
 	@Override
-	public int hashCode() {
-	    int result = usuario.hashCode();
-	    result = 31 * result + curso.hashCode();
-	    return result;
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Like other = (Like) obj;
+		return Objects.equals(curso, other.curso) && Objects.equals(id, other.id)
+				&& Objects.equals(usuario, other.usuario);
 	}
+
+	
 
 	
 }

@@ -10,10 +10,11 @@ public class RepositorioLike {
 
 	 private final EntityManagerFactory emf;
 
-	    public RepositorioLike() {
+	public RepositorioLike() {
 	        emf = Persistence.createEntityManagerFactory("ejemplo");
-	    }
-	    
+	}
+	
+	
     public void guardarLike(Like like) {
     	EntityManager em = emf.createEntityManager();
     	try {
