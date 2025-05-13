@@ -164,6 +164,15 @@ public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_co
 		return this.esPublico;
 	}
 	
+	public boolean getEsPublico() {
+	    return esPublico;
+	}
+
+	public void setEsPublico(boolean esPublico) {
+	    this.esPublico = esPublico;
+	}
+
+	
 	@Override
 	public String toString() {
 	    return String.format("%s - %s (%s)", nombre, idioma, autor != null ? autor.getNombre() : "Sin autor");

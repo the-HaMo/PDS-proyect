@@ -69,5 +69,60 @@ public class RepositorioCursoTest {
         assertFalse(cursos.isEmpty());
     }
 
- 
+    @Test
+    @Order(4)
+    public void testActualizarCurso() {
+        Curso curso = repositorio.buscarPorId(idCurso);
+        curso.setDescripcion("Descripción actualizada");
+
+        repositorio.actualizarCurso(curso);
+
+        Curso actualizado = repositorio.buscarPorId(idCurso);
+        assertEquals("Descripción actualizada", actualizado.getDescripcion());
+    }
+
+    @Test
+    @Order(5)
+    public void testObtenerCursosPorAutor() {
+        List<Curso> cursos = repositorio.obtenerCursosPorAutor(creadorDummy.getId());
+        assertFalse(cursos.isEmpty());
+        assertEquals(creadorDummy.getId(), cursos.get(0).getAutor().getId());
+    }
+
+    @Test
+    @Order(6)
+    public void testObtenerCursosPorAutorYPublicados() {
+        Curso curso = repositorio.buscarPorId(idCurso);
+        curso.setEsPublico(true);
+        repositorio.actualizarCurso(curso);
+
+        List<Curso> cursosPublicos = repositorio.obtenerCursosPorAutorYPublicados(creadorDummy.getId());
+        assertFalse(cursosPublicos.isEmpty());
+        assertTrue(cursosPublicos.stream().allMatch(Curso::getEsPublico));
+    }
+
+    @Test
+    @Order(7)
+    public void testObtenerCursosPorAutorPrivados() {
+        Curso curso = repositorio.buscarPorId(idCurso);
+        curso.setEsPublico(false);
+        repositorio.actualizarCurso(curso);
+
+        List<Curso> cursosPrivados = repositorio.obtenerCursosPorAutorPrivados(creadorDummy.getId());
+        assertFalse(cursosPrivados.isEmpty());
+        assertTrue(cursosPrivados.stream().noneMatch(Curso::getEsPublico));
+    }
+
+    @Test
+    @Order(8)
+    public void testObtenerCursosPublicados() {
+        Curso curso = repositorio.buscarPorId(idCurso);
+        curso.setEsPublico(true);
+        repositorio.actualizarCurso(curso);
+
+        List<Curso> publicados = repositorio.obtenerCursosPublicados();
+        assertFalse(publicados.isEmpty());
+        assertTrue(publicados.stream().anyMatch(c -> c.getId().equals(idCurso)));
+    }
+
 }
