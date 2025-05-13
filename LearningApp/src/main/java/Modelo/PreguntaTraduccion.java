@@ -1,8 +1,6 @@
 package Modelo;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 @Entity

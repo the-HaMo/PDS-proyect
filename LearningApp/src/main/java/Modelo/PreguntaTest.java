@@ -2,8 +2,6 @@ package Modelo;
 
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
 @Entity
