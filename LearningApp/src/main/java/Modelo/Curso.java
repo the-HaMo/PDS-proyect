@@ -27,9 +27,6 @@ public class Curso {
 	private int NumDescargas;
 	private int NumMeGustas;
 	
-	// HAY VERLO 
-	//private Estrategia estrategia;
-	
 	private boolean esPublico;
 	
 	@JsonProperty("bloques_contenidos")
