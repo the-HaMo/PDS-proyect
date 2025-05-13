@@ -81,7 +81,6 @@ public enum Controlador {
 			EstadisticaUsuario stats = est.getStats();
 			if (stats != null) {
 				stats.finalizarTiempo();
-				System.out.println("Tiempo de uso del Estudiante: " + stats.getTiempoUso());
 				repositorioUsuarios.actualizarUsuario(est);
 			}
 		}
@@ -187,6 +186,11 @@ public enum Controlador {
 	public void setCursoActual(Curso curso) {
 	    this.cursoActual = curso;
 	}
+	
+	// En Controlador.java
+	public Usuario obtenerUsuarioPorNombre(String nombre) {
+	    return repositorioUsuarios.obtenerUsuarioPorNombre(nombre);
+	}
 
 	public void empezarCurso(Curso curso, Estrategia estrategia) {
 		if (usuarioActual instanceof Estudiante) {
@@ -207,7 +211,7 @@ public enum Controlador {
 	    RepositorioProgresoCurso.guardar(progreso);
 	}
 	
-	private List<Pregunta> obtenerPreguntasSecuencial(Curso curso) {
+	public List<Pregunta> obtenerPreguntasSecuencial(Curso curso) {
 	    return curso.getBloquesContenidos().stream()
 	                .flatMap(b -> b.getPreguntas().stream())
 	                .collect(Collectors.toList());
@@ -235,5 +239,17 @@ public enum Controlador {
 
 	    return espaciadas;
 	}
+	
+	public void resetForTesting() {
+	    this.repositorioUsuarios = new RepositorioUsuario();
+	    this.repositorioCursos = new RepositorioCurso();
+	    this.repositorioLikes = new RepositorioLike();
+	    this.usuarioActual = null;
+	    this.cursoActual = null;
+	    repositorioUsuarios.eliminarTodo();
+	    repositorioCursos.eliminarTodo();
+	    repositorioLikes.LimpiarBaseDeDatos();
+	}
+	
 	
 }

@@ -2,6 +2,7 @@ package Controlador;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,6 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import Modelo.BloqueContenido;
 import Modelo.Curso;
+import Modelo.Pregunta;
+import Modelo.PreguntaTraduccion;
 
 class ControladorTestUnitarias {
 
@@ -59,5 +62,47 @@ class ControladorTestUnitarias {
 		assertTrue(c1.equals(ordenDescargas.get(1)));
 		assertTrue(c3.equals(ordenDescargas.get(2)));
 	}
+	
+	@Test
+	void obtenerPreguntasAleatoria() {
+	    Pregunta p1 = new PreguntaTraduccion("hola", "hello");
+	    Pregunta p2 = new PreguntaTraduccion("one", "uno");
+	    Pregunta p3 = new PreguntaTraduccion("two", "dos");
+	    BloqueContenido bloque = new BloqueContenido("Bloque 1", Arrays.asList(p1, p2, p3));
+	    Curso curso = new Curso("c1", "c1", Arrays.asList(bloque));
+	    List<Pregunta> aleatorias = Controlador.INSTANCE.obtenerPreguntasAleatoria(curso);
+	    
+	    assertNotNull(aleatorias);
+	    assertEquals(3, aleatorias.size());
+	    assertTrue(aleatorias.containsAll(List.of(p1, p2, p3)));
+	       
+	    }
 
+	    @Test
+	    void obtenerPreguntasRepeticionEspaciada() {
+		    Pregunta p1 = new PreguntaTraduccion("hola", "hello");
+		    Pregunta p2 = new PreguntaTraduccion("one", "uno");
+		    Pregunta p3 = new PreguntaTraduccion("two", "dos");
+		    BloqueContenido bloque = new BloqueContenido("Bloque 1", Arrays.asList(p1, p2, p3));
+		    Curso curso = new Curso("c1", "c1", Arrays.asList(bloque));
+		    List<Pregunta> resultado = Controlador.INSTANCE.obtenerPreguntasRepeticionEspaciada(curso);
+		    
+		    assertNotNull(resultado);
+		    assertTrue(resultado.size() >= 3);
+		    assertTrue(resultado.containsAll(List.of(p1, p2, p3)));
+	    }
+
+	    @Test
+	    void obtenerPreguntasSecuencial() {
+	    	Pregunta p1 = new PreguntaTraduccion("hola", "hello");
+		    Pregunta p2 = new PreguntaTraduccion("one", "uno");
+		    Pregunta p3 = new PreguntaTraduccion("two", "dos");
+		    BloqueContenido bloque = new BloqueContenido("Bloque 1", Arrays.asList(p1, p2, p3));
+		    Curso curso = new Curso("c1", "c1", Arrays.asList(bloque));
+		    List<Pregunta> secuencial = Controlador.INSTANCE.obtenerPreguntasSecuencial(curso);
+		    
+		    assertNotNull(secuencial);
+		    assertEquals(3, secuencial.size());
+		   	assertEquals(List.of(p1, p2, p3), secuencial);	       
+	    }
 }
