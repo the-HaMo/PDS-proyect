@@ -1,0 +1,95 @@
+{
+  "nombre": "LearningApp Español",
+  "idioma": "Español",
+  "descripcion": "Curso básico de español A1.",
+  "bloques_contenidos": [
+    {
+      "nombreBloque": "Saludos",
+      "preguntas": [
+        {
+          "tipo": "test",
+          "enunciado": "¿Cuál es un saludo informal en español?",
+          "opciones": ["Hola", "Adiós", "Gracias"],
+          "respuestaCorrecta": "Hola"
+        },
+        {
+          "tipo": "huecos",
+          "enunciado": "Completa: ___, ¿cómo estás?",
+          "textoConHuecos": "___, ¿cómo estás?",
+          "respuesta": "Hola"
+        },
+        {
+          "tipo": "traduccion",
+          "enunciado": "Translate: 'Good morning'",
+          "respuestaCorrecta": "Buenos días"
+        }
+      ]
+    },
+    {
+      "nombreBloque": "Verbos básicos",
+      "preguntas": [
+        {
+          "tipo": "test",
+          "enunciado": "¿Cuál de estos significa 'have'?",
+          "opciones": ["tener", "ser", "ir"],
+          "respuestaCorrecta": "tener"
+        },
+        {
+          "tipo": "huecos",
+          "enunciado": "Completa: Yo ___ un perro.",
+          "textoConHuecos": "Yo ___ un perro.",
+          "respuesta": "tengo"
+        },
+        {
+          "tipo": "traduccion",
+          "enunciado": "Translate: 'I am'",
+          "respuestaCorrecta": "Yo soy"
+        }
+      ]
+    },
+    {
+      "nombreBloque": "Colores",
+      "preguntas": [
+        {
+          "tipo": "test",
+          "enunciado": "¿Cuál es el color 'yellow' en español?",
+          "opciones": ["Amarillo", "Rojo", "Azul"],
+          "respuestaCorrecta": "Amarillo"
+        },
+        {
+          "tipo": "huecos",
+          "enunciado": "Completa: El sol es ___.",
+          "textoConHuecos": "El sol es ___.",
+          "respuesta": "amarillo"
+        },
+        {
+          "tipo": "traduccion",
+          "enunciado": "Translate: 'Green'",
+          "respuestaCorrecta": "Verde"
+        }
+      ]
+    },
+    {
+      "nombreBloque": "Números",
+      "preguntas": [
+        {
+          "tipo": "test",
+          "enunciado": "¿Cómo se dice 'three' en español?",
+          "opciones": ["Tres", "Cuatro", "Cinco"],
+          "respuestaCorrecta": "Tres"
+        },
+        {
+          "tipo": "huecos",
+          "enunciado": "Completa: Uno, dos, ___.",
+          "textoConHuecos": "Uno, dos, ___.",
+          "respuesta": "tres"
+        },
+        {
+          "tipo": "traduccion",
+          "enunciado": "Translate: 'Four'",
+          "respuestaCorrecta": "Cuatro"
+        }
+      ]
+    }
+  ]
+}

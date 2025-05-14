@@ -1,0 +1,95 @@
+{
+  "nombre": "LearningApp Francés",
+  "idioma": "Francés",
+  "descripcion": "Curso básico de francés A1.",
+  "bloques_contenidos": [
+    {
+      "nombreBloque": "Salutations",
+      "preguntas": [
+        {
+          "tipo": "test",
+          "enunciado": "¿Cómo se dice 'buenos días' en francés?",
+          "opciones": ["Bonjour", "Bonsoir", "Salut"],
+          "respuestaCorrecta": "Bonjour"
+        },
+        {
+          "tipo": "huecos",
+          "enunciado": "Complétez la phrase : ___, je m'appelle Marie.",
+          "textoConHuecos": "___, je m'appelle Marie.",
+          "respuesta": "Bonjour"
+        },
+        {
+          "tipo": "traduccion",
+          "enunciado": "Traduce: 'Hasta luego'",
+          "respuestaCorrecta": "À bientôt"
+        }
+      ]
+    },
+    {
+      "nombreBloque": "Verbes de base",
+      "preguntas": [
+        {
+          "tipo": "test",
+          "enunciado": "¿Cuál es el verbo 'ser/estar' en francés?",
+          "opciones": ["être", "avoir", "aller"],
+          "respuestaCorrecta": "être"
+        },
+        {
+          "tipo": "huecos",
+          "enunciado": "Complétez: Je ___ étudiant.",
+          "textoConHuecos": "Je ___ étudiant.",
+          "respuesta": "suis"
+        },
+        {
+          "tipo": "traduccion",
+          "enunciado": "Traduce: 'Yo tengo'",
+          "respuestaCorrecta": "J'ai"
+        }
+      ]
+    },
+    {
+      "nombreBloque": "Couleurs",
+      "preguntas": [
+        {
+          "tipo": "test",
+          "enunciado": "¿Cuál de estos es un color en francés?",
+          "opciones": ["rouge", "chat", "livre"],
+          "respuestaCorrecta": "rouge"
+        },
+        {
+          "tipo": "huecos",
+          "enunciado": "Complétez: La pomme est ___.",
+          "textoConHuecos": "La pomme est ___.",
+          "respuesta": "rouge"
+        },
+        {
+          "tipo": "traduccion",
+          "enunciado": "Traduce: 'Azul'",
+          "respuestaCorrecta": "Bleu"
+        }
+      ]
+    },
+    {
+      "nombreBloque": "Numeros",
+      "preguntas": [
+        {
+          "tipo": "test",
+          "enunciado": "¿Cómo se dice 'uno' en francés?",
+          "opciones": ["un", "une", "deux"],
+          "respuestaCorrecta": "un"
+        },
+        {
+          "tipo": "huecos",
+          "enunciado": "Complétez: Un, deux, ___.",
+          "textoConHuecos": "Un, deux, ___.",
+          "respuesta": "trois"
+        },
+        {
+          "tipo": "traduccion",
+          "enunciado": "Traduce: 'Cinco'",
+          "respuestaCorrecta": "Cinq"
+        }
+      ]
+    }
+  ]
+}

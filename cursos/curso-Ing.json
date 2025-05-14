@@ -1,0 +1,95 @@
+{
+  "nombre": "LearningApp Inglés",
+  "idioma": "Inglés",
+  "descripcion": "English A1.",
+  "bloques_contenidos": [
+    {
+      "nombreBloque": "Vocabulario Español-Inglés",
+      "preguntas": [
+        {
+          "tipo": "test",
+          "enunciado": "¿How would you say 'manzana' in english?",
+          "opciones": ["apple", "peach", "banana"],
+          "respuestaCorrecta": "apple"
+        },
+        {
+          "tipo": "huecos",
+          "enunciado": "Complete the sentence:",
+          "textoConHuecos": "The water ___ at 100 degrees",
+          "respuesta": "boils"
+        },
+        {
+          "tipo": "traduccion",
+          "enunciado": "Translate: 'Buenas noches'",
+          "respuestaCorrecta": "Good night"
+        }
+      ]
+    },
+    {
+      "nombreBloque": "Colores en Inglés",
+      "preguntas": [
+        {
+          "tipo": "test",
+          "enunciado": "¿Cuál es el color 'verde' en inglés?",
+          "opciones": ["Green", "Blue", "Red"],
+          "respuestaCorrecta": "Green"
+        },
+        {
+          "tipo": "huecos",
+          "enunciado": "Fill in the blank: 'The sky is ___'",
+          "textoConHuecos": "The sky is ___",
+          "respuesta": "blue"
+        },
+        {
+          "tipo": "traduccion",
+          "enunciado": "Translate: 'Amarillo'",
+          "respuestaCorrecta": "Yellow"
+        }
+      ]
+    },
+    {
+      "nombreBloque": "Números Básicos",
+      "preguntas": [
+        {
+          "tipo": "test",
+          "enunciado": "¿Cómo se dice 'cinco' en inglés?",
+          "opciones": ["five", "four", "six"],
+          "respuestaCorrecta": "five"
+        },
+        {
+          "tipo": "huecos",
+          "enunciado": "Complete: 'One, Two, ___'",
+          "textoConHuecos": "One, Two, ___",
+          "respuesta": "Three"
+        },
+        {
+          "tipo": "traduccion",
+          "enunciado": "Translate: 'Dos'",
+          "respuestaCorrecta": "Two"
+        }
+      ]
+    },
+    {
+      "nombreBloque": "Saludos y Despedidas",
+      "preguntas": [
+        {
+          "tipo": "test",
+          "enunciado": "¿Cómo se dice 'hola' en inglés?",
+          "opciones": ["Hello", "Goodbye", "Please"],
+          "respuestaCorrecta": "Hello"
+        },
+        {
+          "tipo": "huecos",
+          "enunciado": "Fill in the blank: '___, how are you?'",
+          "textoConHuecos": "___, how are you?",
+          "respuesta": "Hi"
+        },
+        {
+          "tipo": "traduccion",
+          "enunciado": "Translate: 'Adiós'",
+          "respuestaCorrecta": "Goodbye"
+        }
+      ]
+    }    
+  ]
+}
