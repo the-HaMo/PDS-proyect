@@ -20,16 +20,16 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 ***Caso de uso:*** Iniciar Sesion en la aplicacion ([Desarrollo-Caso2](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso2.md))\
 ***Actor:*** Estudiante y Colaborador 
 
-***Caso de uso:*** Cerrar Sesion\ ([Desarrollo-Caso3](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso3.md))\
+***Caso de uso:*** Cerrar Sesion ([Desarrollo-Caso3](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso3.md))\
 ***Actor:*** Estudiante y Colaborador 
 
-***Caso de uso:*** Elegir curso disponible\ ([Desarrollo-Caso4](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso4.md))\
+***Caso de uso:*** Elegir curso disponible ([Desarrollo-Caso4](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso4.md))\
 ***Actor:*** Estudiante 
 
-***Caso de uso:*** Mostrar ejercicios dentro de un curso elegido\
+***Caso de uso:*** Mostrar ejercicios dentro de un curso elegido ([Desarrollo-Caso5](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso5.md))\
 ***Actor:*** Estudiante
 
-***Caso de uso:*** Realizar ejercicio de un tema del curso\
+***Caso de uso:*** Realizar ejercicio de un tema del curso ([Desarrollo-Caso6](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso6.md))\
 ***Actor:*** Estudiante
 
 ***Caso de uso:*** Dentro de un curso, elige estrategia de aprendizaje\
