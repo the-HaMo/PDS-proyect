@@ -85,9 +85,9 @@ La aplicación ...
 
 ### Ejemplos de Cursos
 
-Los cursos diseñados por los colaboradores deben tener la extensión *json*, algunos ejemplos se muestran a continuación para descargar:\
+Los cursos diseñados por los colaboradores deben tener la extensión *json*, algunos ejemplos se muestran a continuación para descargar:
 
-Curso inglés: ([curso-Ing.json](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso1.md))\
-Curso francés: ([curso-Fr.json](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso1.md))\
-Curso español: ([curso-Esp.json](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso1.md))\
+Curso inglés:  [curso-Ing.json]https://github.com/the-HaMo/PDS-proyect/blob/main/cursos/curso-Ing.json\
+Curso francés: [curso-Fr.json](https://github.com/the-HaMo/PDS-proyect/blob/main/cursos/curso-Fr.json)\
+Curso español: [curso-Esp.json](https://github.com/the-HaMo/PDS-proyect/blob/main/cursos/curso-Esp.json)
 
