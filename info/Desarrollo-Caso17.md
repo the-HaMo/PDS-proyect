@@ -1,33 +1,33 @@
 ﻿## Caso de uso
-Nombre: Elegir curso disponible
+Nombre: Mostrar una lista ordenada de los cursos según el número de descargas
 
 Diagrama:
 @startuml
-left to right direction
-entity BibliotecaPublica
-entity Curso
-actor Estudiante
-BibliotecaPublica --> Curso : Tiene
-Estudiante --> Curso : Descarga
+actor Colaborador
+participant Sistema
+
+Colaborador -> Sistema : Pulsa "TOP descargas"
+Sistema -> Colaborador : Muestra lista ordenada
 @enduml
 
-![alt text](imagen-4.png)
+![alt text](imagen-17.png)
 
 ### Precondiciones:
-- El usuario debe estar logueado como Estudiante.
-- El curso a escoger debe estar subido y publicado por un Colaborador.
+- El usuario debe estar logueado como Colaborador.
+- Deben existir varios cursos publicados.
 
 ### Flujo Básico:
-1. El estudiante elige el curso que quiere descargarse.
-2. Con el curso escogido, dandole a Descargar, este se le guardara en la biblioteca privada.
-3. En la biblioteca privada el estudiante puede ejecutar el curso y empezarlo.
+1. El colaborador pulsa el botón TOP descargas.
+2. El sistema obtiene la lista de todos los cursos publicados.
+3. El sistema ordena la lista de cursos de forma de descente por el número de total de descargas.
+4. El colaborador visualiza la lista de cursos ordenados.
 
 ### Postcondiciones:
-- El estudiante tiene ya descargado ese curso en su biblioteca interna.
-- El sistema actualizara la estadistica del curso.
-- El estudiante ya no podra eliminar ese curso de su biblioteca interna.
+- Se muestra correctamente una lista ordenada de cursos por número de descargas en orden descendente.
+- El sistema no permite modificar o eliminar cursos desde esta vista.
 
 ### Reglas de Negocio:
 - Cada descarga del curso implica una actualizacion de la estadistica del curso.
+- Solo los cursos publicados deben ser incluidos.
 
 
