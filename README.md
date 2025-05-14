@@ -32,44 +32,44 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 ***Caso de uso:*** Realizar ejercicio de un tema del curso ([Desarrollo-Caso6](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso6.md))\
 ***Actor:*** Estudiante
 
-***Caso de uso:*** Dentro de un curso, elige estrategia de aprendizaje\
+***Caso de uso:*** Dentro de un curso, elige estrategia de aprendizaje ([Desarrollo-Caso7](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso7.md))\
 ***Actor:*** Estudiante
 
-***Caso de uso:*** Instalar nuevos cursos en su biblioteca interna\
+***Caso de uso:*** Instalar nuevos cursos en su biblioteca interna ([Desarrollo-Caso8](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso8.md))\
 ***Actor:*** Estudiante 
 
-***Caso de uso:*** Ver estadísticas de uso en la plataforma\
+***Caso de uso:*** Ver estadísticas de uso en la plataforma ([Desarrollo-Caso9](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso9.md))\
 ***Actor:*** Estudiante
 
-***Caso de uso:*** Subir cursos a la plataforma\
+***Caso de uso:*** Subir cursos a la plataforma ([Desarrollo-Caso10](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso10.md))\
 ***Actor:*** Colaborador
 
-***Caso de uso:*** Compartir cursos\
+***Caso de uso:*** Compartir cursos ([Desarrollo-Caso11](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso11.md))\
 ***Actor:*** Colaborador
 
-***Caso de uso:*** Guarda estado del curso para un usuario\
+***Caso de uso:*** Guarda estado del curso para un usuario ([Desarrollo-Caso12](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso12.md))\
 ***Actor:*** Sistema
 
-#### Funcionalidad extra (expresada en casos de uso) 
+### Funcionalidad extra (expresada en casos de uso) 
 
-***Caso de uso:*** Examinarse de un curso\
+***Caso de uso:*** Examinarse de un curso ([Desarrollo-Caso13](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso13.md))\
 ***Actor:*** Estudiante 
 
-***Caso de uso:*** Ver el número de me gustas que ha recibido un curso\
+***Caso de uso:*** Ver el número de me gustas que ha recibido un curso ([Desarrollo-Caso14](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso14.md))\
 ***Actor:*** Estudiante
 
-***Caso de uso:*** Mostrar una lista ordenada de los cursos según el número de likes\
+***Caso de uso:*** Mostrar una lista ordenada de los cursos según el número de likes ([Desarrollo-Caso15](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso15.md))\
 ***Actor:*** Estudiante
 
-***Caso de uso:*** Ver el número de descargas que ha recibido un curso\
+***Caso de uso:*** Ver el número de descargas que ha recibido un curso ([Desarrollo-Caso16](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso16.md))\
 ***Actor:*** Colaborador
 
-***Caso de uso:*** Mostrar una lista ordenada de los cursos según el número de descargas\
+***Caso de uso:*** Mostrar una lista ordenada de los cursos según el número de descargas ([Desarrollo-Caso17](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso17.md))\
 ***Actor:*** Colaborador
 
 ### Diseño
 
-A continuación, mostraremos una primera versión en el siguiente apartado del modelo de dominio de AppLearning donde se destaca la existencia de dos tipos de entidades que heredan de Usuario que son **Creador** y **Estudiante**. La primera entidad es la encargada de crear cursos, mientras que la segunda tiene el rol de realizar esos cursos. 
+A continuación, mostraremos la versión final en el siguiente apartado del modelo de dominio de AppLearning donde se destaca la existencia de dos tipos de entidades que heredan de Usuario que son **Creador** y **Estudiante**. La primera entidad es la encargada de crear cursos, mientras que la segunda tiene el rol de realizar esos cursos. 
 
 Otras cuestiones de interés son que la clase **Ejercicio** es una clase abstracta lo que permite añadir nuevos tipos de ejercicio en un futuro . Además se muestra la relación entre los estudiantes y su progreso mediante la clase **Progreso**, permitiendo así un seguimiento detallado del aprendizaje.
 
@@ -79,14 +79,10 @@ Como funcionalidad adicional, hemos añadido la clase **EstadísticaCurso**, que
 
 ![Mdominio.V1-0](https://github.com/the-HaMo/PDS-proyect/blob/main/info/diagramaV3.jpg)
 
-### Diseño de Vistas
+### MANUAL DE USO 
 
-Una primera versión de las vistas en la aplicación es la siguiente:
+La aplicación ... 
 
-![Login.V1-0](https://github.com/the-HaMo/PDS-proyect/blob/main/info/login.jpg)
-
-![MenuPrincipal.V1-0](https://github.com/the-HaMo/PDS-proyect/blob/main/info/menu_principal.jpg)
-
-
+### Ejemplos de Cursos
 
 
