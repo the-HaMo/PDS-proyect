@@ -19,8 +19,6 @@ public class ProgresoCurso {
     @ManyToOne
     private BloqueContenido bloque;
     
-    private Estrategia estrategia;
-
     public ProgresoCurso() {}
 
     public ProgresoCurso(Estudiante estudiante, Curso curso, BloqueContenido bloque) {
@@ -28,13 +26,7 @@ public class ProgresoCurso {
         this.curso = curso;
         this.bloque = bloque;
     }
-    
-    public ProgresoCurso(Estudiante estudiante, Curso curso, BloqueContenido bloque, Estrategia estrategia) {
-    	 this.estudiante = estudiante;
-         this.curso = curso;
-         this.bloque = bloque;
-         this.estrategia = estrategia;
-    }
+
 
     // Getters y setters
     public Integer getId() {
@@ -64,17 +56,5 @@ public class ProgresoCurso {
     public void setBloque(BloqueContenido bloque) {
         this.bloque = bloque;
     }
-    
-	public Estrategia getEstrategia() {
-		return estrategia;
-	}
-	
-	public boolean isEstrategia() {
-		return this.getEstrategia() != null;
-	}
-	
-	public void setEstrategia(Estrategia estrategia) {
-		this.estrategia = estrategia;
-	}
-	
+    	
 }

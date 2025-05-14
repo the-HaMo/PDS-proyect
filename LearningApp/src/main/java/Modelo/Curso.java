@@ -21,11 +21,13 @@ public class Curso {
 	private String idioma;
 	
 	@ManyToOne
-	@JoinColumn(name = "autor_id", nullable = false)
+	@JoinColumn(name = "autor_id")
 	private Colaborador autor;
 	
 	private int NumDescargas;
 	private int NumMeGustas;
+	
+	private Estrategia estrategia;
 	
 	private boolean esPublico;
 	
@@ -39,14 +41,23 @@ public class Curso {
 	}
 	
 	
-public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos, int NumDescargas, int NumMeGustas, String idioma) {
+	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos, int NumDescargas, int NumMeGustas, String idioma) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.bloques_contenidos = bloques_contenidos;
 		this.NumDescargas = NumDescargas;
 		this.NumMeGustas = NumMeGustas;
 		this.idioma = idioma;
-		//this.estrategia = estrategia;
+	}
+	
+	public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_contenidos, int NumDescargas, int NumMeGustas, String idioma, Estrategia estrategia) {
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.bloques_contenidos = bloques_contenidos;
+		this.NumDescargas = NumDescargas;
+		this.NumMeGustas = NumMeGustas;
+		this.idioma = idioma;
+		this.estrategia = estrategia;
 	}
 
 	
@@ -116,23 +127,17 @@ public Curso(String nombre, String descripcion, List<BloqueContenido> bloques_co
 		this.idioma = idioma;
 	}
 	
-	/*
 	public Estrategia getEstrategia() {
 		return estrategia;
 	}
-	*/
 	
-	/*
 	public boolean isEstrategia() {
 		return this.getEstrategia() != null;
 	}
-	*/
 	
-	/*
 	public void setEstrategia(Estrategia estrategia) {
 		this.estrategia = estrategia;
 	}
-	*/
 
 	public void setBloquesContenidos(List<BloqueContenido> bloques_contenidos) {
 		for (BloqueContenido bloque : bloques_contenidos) {

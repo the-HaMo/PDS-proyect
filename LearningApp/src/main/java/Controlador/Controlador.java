@@ -100,7 +100,7 @@ public enum Controlador {
 		repositorioCursos.actualizarCurso(curso);
 	}
 
-	public void exportarCurso(Curso c) {
+	public void exportarCurso(Curso c) { // o DescargarCurso
 	    if (usuarioActual instanceof Estudiante) {
 	        List<Curso> cursos = usuarioActual.getCursos();
 	        if (!cursos.contains(c)){ 
@@ -187,7 +187,6 @@ public enum Controlador {
 	    this.cursoActual = curso;
 	}
 	
-	// En Controlador.java
 	public Usuario obtenerUsuarioPorNombre(String nombre) {
 	    return repositorioUsuarios.obtenerUsuarioPorNombre(nombre);
 	}
@@ -246,8 +245,8 @@ public enum Controlador {
 	    this.repositorioLikes = new RepositorioLike();
 	    this.usuarioActual = null;
 	    this.cursoActual = null;
-	    repositorioUsuarios.eliminarTodo();
 	    repositorioCursos.eliminarTodo();
+	    repositorioUsuarios.eliminarTodo();   
 	    repositorioLikes.LimpiarBaseDeDatos();
 	}
 	

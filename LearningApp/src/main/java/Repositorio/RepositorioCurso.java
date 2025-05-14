@@ -113,18 +113,19 @@ public class RepositorioCurso {
     }
     
     public void eliminarTodo() {
-    	EntityManager em = emf.createEntityManager();
-    	try {
-    		em.getTransaction().begin();
-    		List<Curso> cursos = obtenerTodos();
-    		cursos.stream()
-    		.map(u -> u.getId())
-    		.forEach(id -> eliminarCurso(id));
-    		em.getTransaction().commit();
-    	} finally {
-    		em.close();
-    	}
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            List<Curso> cursos = em.createQuery("SELECT c FROM Curso c", Curso.class).getResultList();
+            for (Curso curso : cursos) {
+                em.remove(curso);  // curso está gestionado, se puede eliminar directamente
+            }
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
+
     
 
 }
