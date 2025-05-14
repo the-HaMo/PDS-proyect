@@ -4,7 +4,7 @@
 
 **LearningApp** es una aplicación de aprendizaje de idiomas totalmente gratuita desarrollada por los alumnos; **Mohammed Amrou Labied Nasser**, **Sergio García García** y **Jorge Fernández Córcoles**, bajo la supervisión del profesor **Antonio Lopéz Martinéz Carrasco**.
 
-El propósito de LearningApp es facilitar el aprendizaje de idiomas como el inglés, francés o el italiano a través de cursos diseñados tanto por la propia aplicación como por otros usuarios con experiencia en la enseñanza.Esto permite a los usuarios acceder a una gran variedad de materiales adaptados a diferentes niveles y estilos de aprendizaje. 
+El propósito de LearningApp es facilitar el aprendizaje de idiomas como el inglés, francés o el español a través de cursos diseñados tanto por la propia aplicación como por otros usuarios con experiencia en la enseñanza.Esto permite a los usuarios acceder a una gran variedad de materiales adaptados a diferentes niveles y estilos de aprendizaje. 
 
 Además, LearningApp brinda la oportunidad de que cada usuario pueda crear y compartir su propio curso, ofreciendo una comunidad de aprendiazje colaboratica donde los estudiantes pueden beneficiarse de contenidos personalizados y adaptados a sus necesidades. 
 
@@ -26,7 +26,7 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 ***Caso de uso:*** Elegir curso disponible ([Desarrollo-Caso4](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso4.md))\
 ***Actor:*** Estudiante 
 
-***Caso de uso:*** Mostrar ejercicios dentro de un curso elegido ([Desarrollo-Caso5](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso5.md))\
+***Caso de uso:*** Ejecutar y realizar Curso ([Desarrollo-Caso5](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso5.md))\
 ***Actor:*** Estudiante
 
 ***Caso de uso:*** Realizar ejercicio de un tema del curso ([Desarrollo-Caso6](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso6.md))\
@@ -38,28 +38,34 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 ***Caso de uso:*** Instalar nuevos cursos en su biblioteca interna\
 ***Actor:*** Estudiante 
 
-***Caso de uso:*** Crear curso\
-***Actor:*** Colaborador
+***Caso de uso:*** Ver estadísticas de uso en la plataforma\
+***Actor:*** Estudiante
 
 ***Caso de uso:*** Subir cursos a la plataforma\
 ***Actor:*** Colaborador
 
-***Caso de uso:*** Modificar un curso creado\
+***Caso de uso:*** Compartir cursos\
 ***Actor:*** Colaborador
 
 ***Caso de uso:*** Guarda estado del curso para un usuario\
 ***Actor:*** Sistema
 
->_Nota:_ A continuación, se muestra los casos de uso de la funcionalidad adicional que hemos diseñado.
+#### Funcionalidad extra (expresada en casos de uso) 
 
-***Caso de uso:*** Visualizar información estádistica sobre un curso\
-***Actor:*** Estudiante y Colaborador 
+***Caso de uso:*** Examinarse de un curso\
+***Actor:*** Estudiante 
 
 ***Caso de uso:*** Ver el número de me gustas que ha recibido un curso\
-***Actor:*** Estudiante y Colaborador 
+***Actor:*** Estudiante
 
 ***Caso de uso:*** Mostrar una lista ordenada de los cursos según el número de likes\
-***Actor:*** Sistema
+***Actor:*** Estudiante
+
+***Caso de uso:*** Ver el número de descargas que ha recibido un curso\
+***Actor:*** Colaborador
+
+***Caso de uso:*** Mostrar una lista ordenada de los cursos según el número de descargas\
+***Actor:*** Colaborador
 
 ### Diseño
 
