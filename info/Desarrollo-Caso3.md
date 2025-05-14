@@ -1,31 +1,30 @@
 ﻿## Caso de uso
-Nombre: Registrarse en la aplicacion
+Nombre: Cerrar Sesion
 
 Diagrama:
 @startuml
 left to right direction
-:Usuario: --> (Registrarse)
+actor Usuario
+(Iniciar Sesion) --> Usuario
+Usuario --> (Cerrar Sesion)
 @enduml
 
-![alt text](image-1.png)
+![alt text](image-3.png)
 
 ### Precondiciones:
-- El nombre de usuario no debe estar registrado previamente en el sistema.
-- El sistema debe estar disponible para nuevos registros.
+- El usuario debe estar registrado en el sistema.
+- El sistema debe estar logueado en el sistema.
 
 ### Flujo Básico:
-1. El usuario accede a la página de registro.
-2. El sistema muestra un formulario de registro a rellenar.
-3. El usuario completa el formulario con sus datos.
-4. El sistema verifica que los datos introducidos por el usuario son válidos.
-5. El sistema registra finalmente al usuario.
+1. El usuario selecciona el boton de cerrar sesion.
+2. El sistema cerrara la pestaña principal.
+3. El sistema dejara de tener un usuario logueado.
+4. El sistema abrira la ventana de inicio de sesion.
 
 ### Postcondiciones:
-- El usuario que intenta registrarse queda registrado en el sistema
-- El usuario podrá iniciar sesión en la aplicación haciendo uso de sus nuevas credenciales (usuario, contraseña).
-- El sistema actualiza la base de datos con las credenciales del nuevo usuario.
+- El usuario podrá voler a iniciar sesion o cerrar la aplicacion.
+- El sistema podra ser capaz de permitir a otro usuario loguearse
 
 ### Reglas de Negocio:
-- La contraseña debe ser segura (combinación de caracteres especifica y longitud máxima de caracteres).
-
+- Un usuario solo puede cerrar sesion si esta logueado en el sistema
 
