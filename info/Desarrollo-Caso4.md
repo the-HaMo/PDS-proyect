@@ -1,31 +1,33 @@
 ﻿## Caso de uso
-Nombre: Registrarse en la aplicacion
+Nombre: Elegir curso disponible
 
 Diagrama:
 @startuml
 left to right direction
-:Usuario: --> (Registrarse)
+entity BibliotecaPublica
+entity Curso
+actor Estudiante
+BibliotecaPublica --> Curso : Tiene
+Estudiante --> Curso : Descarga
 @enduml
 
-![alt text](image-1.png)
+![alt text](imagen-4.png)
 
 ### Precondiciones:
-- El nombre de usuario no debe estar registrado previamente en el sistema.
-- El sistema debe estar disponible para nuevos registros.
+- El usuario debe estar logueado como Estudiante.
+- El curso a escoger debe estar subido y publicado por un Colaborador.
 
 ### Flujo Básico:
-1. El usuario accede a la página de registro.
-2. El sistema muestra un formulario de registro a rellenar.
-3. El usuario completa el formulario con sus datos.
-4. El sistema verifica que los datos introducidos por el usuario son válidos.
-5. El sistema registra finalmente al usuario.
+1. El estudiante elige el curso que quiere descargarse.
+2. Con el curso escogido, dandole a Descargar, este se le guardara en la biblioteca privada.
+3. En la biblioteca privada el estudiante puede ejecutar el curso y empezarlo.
 
 ### Postcondiciones:
-- El usuario que intenta registrarse queda registrado en el sistema
-- El usuario podrá iniciar sesión en la aplicación haciendo uso de sus nuevas credenciales (usuario, contraseña).
-- El sistema actualiza la base de datos con las credenciales del nuevo usuario.
+- El estudiante tiene ya descargado ese curso en su biblioteca interna.
+- El sistema actualizara la estadistica del curso.
+- El estudiante ya no podra eliminar ese curso de su biblioteca interna.
 
 ### Reglas de Negocio:
-- La contraseña debe ser segura (combinación de caracteres especifica y longitud máxima de caracteres).
+- Cada descarga del curso implica una actualizacion de la estadistica del curso.
 
 
