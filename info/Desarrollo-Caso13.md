@@ -1,33 +1,38 @@
 ﻿## Caso de uso
-Nombre: Elegir curso disponible
+Nombre: Examinarse de un curso 
 
 Diagrama:
 @startuml
-left to right direction
-entity BibliotecaPublica
-entity Curso
 actor Estudiante
-BibliotecaPublica --> Curso : Tiene
-Estudiante --> Curso : Descarga
+participant Sistema
+
+Estudiante -> Sistema : Selecciona curso y pulsa "Examinarse"
+Sistema -> Estudiante : Muestra examen generado
+Estudiante -> Sistema : Envía respuestas
+Sistema -> Estudiante : Muestra resultado final
 @enduml
 
-![alt text](imagen-4.png)
+![alt text](imagen-13.png)
 
 ### Precondiciones:
 - El usuario debe estar logueado como Estudiante.
-- El curso a escoger debe estar subido y publicado por un Colaborador.
+- El curso debe estar descargado y disponible en la biblioteca privada.
+- El estudiante debe a ver elegido la estrategia de aprendizaje previamente.
 
 ### Flujo Básico:
-1. El estudiante elige el curso que quiere descargarse.
-2. Con el curso escogido, dandole a Descargar, este se le guardara en la biblioteca privada.
-3. En la biblioteca privada el estudiante puede ejecutar el curso y empezarlo.
+1. El estudiante elige el curso.
+2. Selecciona el botón examinarse.
+3. El sistema consulta la estrategia de aprendizaje.
+4. El sistema generá preguntas de todos los bloques pertenecientes al curso.
+5. El estudiante empieza el examen.
+6. Al finalizar el examen, el sistema evalúa las respuestas.
+7. El sistema muestra el resultado final del examen al estudiante.
 
 ### Postcondiciones:
-- El estudiante tiene ya descargado ese curso en su biblioteca interna.
-- El sistema actualizara la estadistica del curso.
-- El estudiante ya no podra eliminar ese curso de su biblioteca interna.
+- El estudiante pueder ver su nota.
+- El estudiante puede volver a realizar el examen.
 
 ### Reglas de Negocio:
-- Cada descarga del curso implica una actualizacion de la estadistica del curso.
-
+- El examen será generado de acuerdo a la estrategia de aprendizaje.
+- Las preguntas del examen serán pertencientes a las preguntas de los bloques de conteni
 

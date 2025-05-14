@@ -1,33 +1,32 @@
 ﻿## Caso de uso
-Nombre: Elegir curso disponible
+Nombre: Ver el número de descargas que ha recibido un curso
 
 Diagrama:
 @startuml
 left to right direction
-entity BibliotecaPublica
-entity Curso
-actor Estudiante
-BibliotecaPublica --> Curso : Tiene
-Estudiante --> Curso : Descarga
+actor Colaborador
+rectangle Sistema {
+  (Ver descargas de Curso)
+}
+Colaborador --> (Ver descargas de Curso)
 @enduml
 
-![alt text](imagen-4.png)
+![alt text](image-16.png)
 
 ### Precondiciones:
-- El usuario debe estar logueado como Estudiante.
-- El curso a escoger debe estar subido y publicado por un Colaborador.
+- El usuario debe estar logueado como Colaborador.
+- Deben existir cursos publicados.
 
 ### Flujo Básico:
-1. El estudiante elige el curso que quiere descargarse.
-2. Con el curso escogido, dandole a Descargar, este se le guardara en la biblioteca privada.
-3. En la biblioteca privada el estudiante puede ejecutar el curso y empezarlo.
+1. El colaborador accede al panel de cursos publicados.
+2. El sistema muestra distintas informaciones entre ellas el número de descargas que ha recibido cada curso.
 
 ### Postcondiciones:
-- El estudiante tiene ya descargado ese curso en su biblioteca interna.
-- El sistema actualizara la estadistica del curso.
-- El estudiante ya no podra eliminar ese curso de su biblioteca interna.
+- El colaborador visualiza el número de descargas de cada curso publicado.
+- No se permite modificar la información de esa vista.
 
 ### Reglas de Negocio:
-- Cada descarga del curso implica una actualizacion de la estadistica del curso.
+- Cada vez que un estudiante descargue un curso, el numero de descargas de ese curso se incrementa en uno.
+- Solo los colaboradores pueden acceder a esta información.
 
 

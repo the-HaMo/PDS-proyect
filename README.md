@@ -29,10 +29,10 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 ***Caso de uso:*** Ejecutar y realizar Curso ([Desarrollo-Caso5](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso5.md))\
 ***Actor:*** Estudiante
 
-***Caso de uso:*** Realizar ejercicio de un tema del curso ([Desarrollo-Caso6](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso6.md))\
+***Caso de uso:*** Realizar ejercicio de un tema del curso ([Desarrollo-Caso6](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso6.md))\ QUITAR
 ***Actor:*** Estudiante
 
-***Caso de uso:*** Dentro de un curso, elige estrategia de aprendizaje ([Desarrollo-Caso7](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso7.md))\
+***Caso de uso:*** Dentro de un curso, elige estrategia de aprendizaje ([Desarrollo-Caso7](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso7.md))\ QUITAR
 ***Actor:*** Estudiante
 
 ***Caso de uso:*** Instalar nuevos cursos en su biblioteca interna ([Desarrollo-Caso8](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso8.md))\
@@ -55,7 +55,7 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 ***Caso de uso:*** Examinarse de un curso ([Desarrollo-Caso13](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso13.md))\
 ***Actor:*** Estudiante 
 
-***Caso de uso:*** Ver el número de me gustas que ha recibido un curso ([Desarrollo-Caso14](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso14.md))\
+***Caso de uso:*** Dar like a un Curso ([Desarrollo-Caso14](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso14.md))\
 ***Actor:*** Estudiante
 
 ***Caso de uso:*** Mostrar una lista ordenada de los cursos según el número de likes ([Desarrollo-Caso15](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso15.md))\
@@ -85,4 +85,9 @@ La aplicación ...
 
 ### Ejemplos de Cursos
 
+Los cursos diseñados por los colaboradores deben tener la extensión *json*, algunos ejemplos se muestran a continuación:\
+
+Curso inglés: 
+Curso francés:
+Curso español:
 

@@ -1,33 +1,32 @@
 ﻿## Caso de uso
-Nombre: Elegir curso disponible
+Nombre: Mostrar una lista ordenada de los cursos según el número de likes
 
 Diagrama:
 @startuml
-left to right direction
-entity BibliotecaPublica
-entity Curso
-actor Estudiante
-BibliotecaPublica --> Curso : Tiene
-Estudiante --> Curso : Descarga
+rectangle Sistema {
+  (Mostrar cursos ordenados por likes)
+}
+Estudiante -> (Mostrar cursos ordenados por likes)
 @enduml
 
-![alt text](imagen-4.png)
+![alt text](imagen-15.png)
 
 ### Precondiciones:
 - El usuario debe estar logueado como Estudiante.
-- El curso a escoger debe estar subido y publicado por un Colaborador.
+- Deben existir cursos publicados.
 
 ### Flujo Básico:
-1. El estudiante elige el curso que quiere descargarse.
-2. Con el curso escogido, dandole a Descargar, este se le guardara en la biblioteca privada.
-3. En la biblioteca privada el estudiante puede ejecutar el curso y empezarlo.
+1. El estudiante pulsa el botón de Tendencias.
+2. El sistema recupera todos los cursos publicados con sus respectivos likes.
+3. El sistema ordena los cursos de forma descendente según el número de likes de cada curso.
+4. El sistema muestra al estudiante la lista ordenada de cursos.
 
 ### Postcondiciones:
-- El estudiante tiene ya descargado ese curso en su biblioteca interna.
-- El sistema actualizara la estadistica del curso.
-- El estudiante ya no podra eliminar ese curso de su biblioteca interna.
+- El estudiante visualiza correctamente una lista de cursos ordenada por likes.
+- No se permite modificar la vista.
 
 ### Reglas de Negocio:
-- Cada descarga del curso implica una actualizacion de la estadistica del curso.
+- Solo los cursos publicados deben ser mostrados.
+- El orden debe ser de mayor a menor número de likes.
 
 

@@ -1,33 +1,34 @@
 ﻿## Caso de uso
-Nombre: Elegir curso disponible
+Nombre: Dar like a un curso
 
 Diagrama:
 @startuml
-left to right direction
-entity BibliotecaPublica
-entity Curso
 actor Estudiante
-BibliotecaPublica --> Curso : Tiene
-Estudiante --> Curso : Descarga
+rectangle Sistema {
+  (Dar like a un curso)
+}
+Estudiante -> (Dar like a un curso)
 @enduml
 
-![alt text](imagen-4.png)
+![alt text](image-14.png)
 
 ### Precondiciones:
 - El usuario debe estar logueado como Estudiante.
-- El curso a escoger debe estar subido y publicado por un Colaborador.
+- El curso debe estar publicado.
+- El estudiante no debe hacer dado like previamente al curso.
 
 ### Flujo Básico:
-1. El estudiante elige el curso que quiere descargarse.
-2. Con el curso escogido, dandole a Descargar, este se le guardara en la biblioteca privada.
-3. En la biblioteca privada el estudiante puede ejecutar el curso y empezarlo.
+1. El estudiante selecciona un curso.
+2. Con el curso escogido, dandole al boton Dar like , el sistema verifica que el estudiante aún no ha dado like a ese curso.
+3. El sistema incrementa el contador de likes del curso.
+4. El sistema registra la acción y actualiza la vista aumentando el numero de likes en uno.
 
 ### Postcondiciones:
-- El estudiante tiene ya descargado ese curso en su biblioteca interna.
-- El sistema actualizara la estadistica del curso.
-- El estudiante ya no podra eliminar ese curso de su biblioteca interna.
+- El curso muestra el nuevo número de likes actualizado.
+- La relación entre el estudiante y el curso queda registrada.
 
 ### Reglas de Negocio:
-- Cada descarga del curso implica una actualizacion de la estadistica del curso.
+- Un estudiante solo puede dar un like por curso.
+- Los likes no se pueden deshacer.
 
 
