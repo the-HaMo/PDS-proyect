@@ -87,7 +87,7 @@ La aplicación ...
 
 Los cursos diseñados por los colaboradores deben tener la extensión *json*, algunos ejemplos se muestran a continuación para descargar:
 
-Curso inglés:  [curso-Ing.json]https://github.com/the-HaMo/PDS-proyect/blob/main/cursos/curso-Ing.json\
+Curso inglés:  [curso-Ing.json](https://github.com/the-HaMo/PDS-proyect/blob/main/cursos/curso-Ing.json)\
 Curso francés: [curso-Fr.json](https://github.com/the-HaMo/PDS-proyect/blob/main/cursos/curso-Fr.json)\
 Curso español: [curso-Esp.json](https://github.com/the-HaMo/PDS-proyect/blob/main/cursos/curso-Esp.json)
 
