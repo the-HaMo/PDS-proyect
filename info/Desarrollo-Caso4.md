@@ -1,5 +1,5 @@
 ﻿## Caso de uso
-Nombre: Elegir curso disponible
+Nombre: Instalar curso disponible en biblioteca interna
 
 Diagrama:
 @startuml
@@ -16,6 +16,7 @@ Estudiante --> Curso : Descarga
 ### Precondiciones:
 - El usuario debe estar logueado como Estudiante.
 - El curso a escoger debe estar subido y publicado por un Colaborador.
+- El curso no debe estar haber sido descargado anteriormente por el Estudiante.
 
 ### Flujo Básico:
 1. El estudiante elige el curso que quiere descargarse.
