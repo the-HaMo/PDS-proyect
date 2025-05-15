@@ -72,7 +72,68 @@ Como funcionalidad adicional, hemos añadido la clase **EstadísticaUsiario**, q
 
 ### MANUAL DE USO 
 
-La aplicación ... 
+Este manual describe cómo utilizar la aplicación, incluyendo el registro de usuarios, el inicio de sesión y las funcionalidades disponibles según el **rol**: **Colaborador** o **Estudiante**.
+
+## Registro de usuario
+Desde la pantalla principal puedes registrarte como **Estudiante** o **Colaborador**.
+
+1. Haz clic en el botón **"Registrarse"**.
+2. Introduce tu nombre, contraseña y selecciona tu rol.
+3. Pulsa **"Aceptar"** para completar el registro.
+
+![VentanaRegistro](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Ventana-Registro.png)
+
+
+## Inicio de Sesión
+
+Una vez registrado, podrás acceder con tus credenciales:
+
+1. Introduce tu **nombre** y **contraseña** que has utilizado al registrarte como estudiante o colaborador.
+2. Pulsa **"Iniciar sesión"**.
+3. Serás redirigido al panel correspondiente a tu rol.
+
+![Ventana-Login](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Ventana-Login.png)
+
+
+## Rol Colaborador
+
+El colaborador puede crear y gestionar cursos educativos.
+
+### Funcionalidades:
+- **Importar curso (.json)** con bloques y preguntas.
+- **Compartir un curso** a la biblioteca pública para que los estudiantes puedan acceder a hacerlos.
+- **Ordenar cursos** por número de descargas.
+- **Log out** si quieres iniciar sesión con otra cuenta.
+
+![VentanaColaborador](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Ventana-Colaborador.png)
+
+Para importar el curso pulsa el botón de **"Importar Curso"** y se desplegará tu biblioteca de arvhivos del sistema. 
+
+![Biblioteca](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Biblioteca.png)
+
+Ahora podrás seleccionar el curso **con extensión .json** y al aceptar debería aparecer en la biblioteca privada llamada **"Cursos subidos"**.
+
+Una vez tengas el curso en la biblioteca privada, podrás hacerlo público para que otros usuarios puedan verlo y hacerlo. Para ello, pulsa en **"Compartir Curso"**.
+
+![CursoSinPublicar](https://github.com/the-HaMo/PDS-proyect/blob/main/info/CursoSinPublicar.png)
+
+Otros usuarios pueden dar **"like"** a tu curso. Otra funcionalidad del sistema es ordenar los cursos por número de descargas.
+De esta manera, si apretas el botón **"TOP descargas"** se ordenarán los cursos para poder ver qué curso va líder en el ranking. 
+
+
+## Rol Estudiante
+
+El estudiante puede visualizar y resolver cursos disponibles.
+### Funcionalidades:
+- **Ver cursos públicos** creados por colaboradores.
+- **Dar like** a los cursos.
+- **Exportar cursos** para guardarlos en su biblioteca privada.
+- **Resolver bloques** de contenido uno a uno.
+- **Elegir estrategia** de aprendizaje al comenzar un curso.
+- **Ver progreso** y rachas de respuestas correctas.
+
+Sergio pon aqui tus imagenes y explicas un poco, yo mientras sigo arriba.
+
 
 ### Ejemplos de Cursos
 
