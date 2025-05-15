@@ -23,14 +23,11 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 ***Caso de uso:*** Cerrar Sesion ([Desarrollo-Caso3](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso3.md))\
 ***Actor:*** Estudiante y Colaborador 
 
-***Caso de uso:*** Elegir curso disponible ([Desarrollo-Caso4](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso4.md))\
+***Caso de uso:***Instalar curso disponible ([Desarrollo-Caso4](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso4.md))\
 ***Actor:*** Estudiante 
 
 ***Caso de uso:*** Ejecutar y realizar Curso ([Desarrollo-Caso5](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso5.md))\
 ***Actor:*** Estudiante
-
-***Caso de uso:*** Instalar nuevos cursos en su biblioteca interna ([Desarrollo-Caso8](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso8.md))\
-***Actor:*** Estudiante 
 
 ***Caso de uso:*** Ver estadísticas de uso en la plataforma ([Desarrollo-Caso9](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso9.md))\
 ***Actor:*** Estudiante
