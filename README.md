@@ -130,12 +130,50 @@ El estudiante puede visualizar y resolver cursos disponibles.
 - **Exportar cursos** para guardarlos en su biblioteca privada.
 - **Resolver bloques** de contenido uno a uno.
 - **Elegir estrategia** de aprendizaje al comenzar un curso.
-- **Ver progreso** y rachas de respuestas correctas.
+- **Examinarse** del curso descargado y ejecutado
+- **Ver estadisticas del Usuario** y rachas de respuestas correctas.
 
-Sergio pon aqui tus imagenes y explicas un poco, yo mientras sigo arriba.
+### Ver Cursos Publicos:
+Como cualquier estudiante, lo mas importante es poder ver los cursos subidos por los colaboradores de la aplicacion. Para ello primero hay que asumir que hay cursos publicados en la aplicacion. Para saber cuales son los cursos subidos, en el menu habran dos listas, una para los cursos publicos y otro para los cursos que el usuario se ha descargado, en este caso el que nos interesa es la lista de la izquierda marcado en la imagen inferior:
+
+![VerCursos](https://github.com/the-HaMo/PDS-proyect/blob/main/info/vercursos.png)
+
+### Dar like
+Una funcionalidad que tiene la aplicacion LearningApp es poder darle like a un curso a nuestro gusto. Obviamente, no es posible darle mas de una vez un like a un curso. Cuando se le de me gusta a un curso, aumentara el contador de me gustas que tiene cada Elemento del curso en la lista tanto privada como publica. Para dar un me gusta, hay que seleccionar el curso y darle al boton de "Dar Like" indicado a continuacion:
+
+![DarLike](https://github.com/the-HaMo/PDS-proyect/blob/main/info/darlike.png)
+
+### Exportar cursos
+Para poder ejecutar un curso primero hay que importarlo a la biblioteca privada de cada alumno. Para ello lo que hay que hacer es seleccionar el curso de la lista publica y hacer clic sobre el boton de Descargar. Con ello, el curso se agregara en nuestra lista de cursos privados como se puede apreciar a continuacion:
+
+![ExportarCursos](https://github.com/the-HaMo/PDS-proyect/blob/main/info/exportarcursos.png)
+
+### Elegir Estrategia
+A la hora de examinarse de un curso, primero habra que selecionar el tipo de Estrategia que queremos aplicar al examinarnos del curso. Hay que tener en cuenta que la estrategia no se puede cambiar, una vez se le asigne una estrategia a un curso que esta guardado no se podra modificar. Para aplicar una estrategia hay que primero ejecutar el curso, para eso hay que hacer doble clic donde se nos abrira una ventana con tres posibles opciones; Secuencial, Aleatoria y Repeticion Espaciada. La estrategia Secuencial es simplemente que las preguntas del examen sigan el orden normal del curso. Estrategia aleatoria es la que genera el examen con preguntas ordenadas de forma aleatoria de todos los bloques. Por ultimo, la repeticion espaciada es que se van repitiendo de manera aleatoria preguntas del test.
+
+![ElegirEstrategia](https://github.com/the-HaMo/PDS-proyect/blob/main/info/elegirestrategia.png)
+
+### Resolver bloques
+Con la estategia escogida, nos metera dentro del curso. Aqui tiene la opcion de ser capaz de testearse a si mismo con los bloques de contenido. Aqui es capaz de ir ejecutandos bloque por bloque de manera independiente:
+
+![Bloques](https://github.com/the-HaMo/PDS-proyect/blob/main/info/bloques.png)
+
+Una vez realizado un bloque de contenido, nos marcara si esta completado el bloque de contenido como se puede ver a continuacion:
+
+![ResolverBloques](https://github.com/the-HaMo/PDS-proyect/blob/main/info/resolverbloques.png)
+
+### Examinarse
+Cuando el alumno quiera, puede examinarse del curso, en esta funcionalidad si se aplicara la estrategia como ya mencionada anteriormente. Cuando se examine el alumno, simplemente le dara la opcion de responder, cerrar la ventana o ir a la siguiente pregunta pero no dejara ir a la pregunta anterior. Al final del examen dira cuantas respuestas se han tenido correctas.
+
+![Examenes](https://github.com/the-HaMo/PDS-proyect/blob/main/info/examenes.png)
+
+### Ver estadisticas del Usuario
+Un usuario tiene la capacidad de ver sus estadisticas ya sean Tiempo conectado, mejor racha de preguntas contestadas de manera correcta y la racha actual de preguntas correctas:
+
+![VerProgreso](https://github.com/the-HaMo/PDS-proyect/blob/main/info/verprogreso.png)
 
 
-### Ejemplos de Cursos
+## Ejemplos de Cursos
 
 Los cursos diseñados por los colaboradores deben tener la extensión *json*, algunos ejemplos se muestran a continuación para descargar:
 
