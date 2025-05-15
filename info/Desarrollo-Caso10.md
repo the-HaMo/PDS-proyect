@@ -1,33 +1,33 @@
 ﻿## Caso de uso
-Nombre: Elegir curso disponible
+Nombre: Subir cursos a la plataforma
 
 Diagrama:
 @startuml
-left to right direction
-entity BibliotecaPublica
+actor Usuario
 entity Curso
-actor Estudiante
-BibliotecaPublica --> Curso : Tiene
-Estudiante --> Curso : Descarga
+database UsuarioDB
+Usuario --> Curso : Seleccionar curso
+Curso --> UsuarioDB : Guardar curso en usuario
 @enduml
 
-![alt text](imagen-4.png)
+![alt text](image-10.png)
 
 ### Precondiciones:
-- El usuario debe estar logueado como Estudiante.
-- El curso a escoger debe estar subido y publicado por un Colaborador.
+- El usuario debe estar logueado como Colaborador.
+- El curso debe estar guardado en el ordenador del Colaborador.
+- El curso debe estar guardado en JSON.
 
 ### Flujo Básico:
-1. El estudiante elige el curso que quiere descargarse.
-2. Con el curso escogido, dandole a Descargar, este se le guardara en la biblioteca privada.
-3. En la biblioteca privada el estudiante puede ejecutar el curso y empezarlo.
+1. El colaborador selecciona el boton Importar Curso.
+2. El colaborador busca el curso deseado.
+3. Una vez seleccionado, el sistema lee el archivo y si esta correcto el archivo, aparecera en la lista del colaborador.
 
 ### Postcondiciones:
-- El estudiante tiene ya descargado ese curso en su biblioteca interna.
-- El sistema actualizara la estadistica del curso.
-- El estudiante ya no podra eliminar ese curso de su biblioteca interna.
+- Una vez el curso seleccionado, este aparece en la lista privada del Colaborador.
+- Se guardara el curso en la lista privada hasta que se realice alguna accion sobre este.
 
 ### Reglas de Negocio:
-- Cada descarga del curso implica una actualizacion de la estadistica del curso.
+- Se considerara "Autor" del curso a aquel usuario que suba el curso.
+- Pueden existir cursos con el mismo nombre
 
 
