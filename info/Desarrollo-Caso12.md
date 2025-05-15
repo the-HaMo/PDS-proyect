@@ -1,33 +1,32 @@
 ﻿## Caso de uso
-Nombre: Elegir curso disponible
+Nombre: Guarda estado del curso para un usuario
 
 Diagrama:
 @startuml
-left to right direction
-entity BibliotecaPublica
-entity Curso
-actor Estudiante
-BibliotecaPublica --> Curso : Tiene
-Estudiante --> Curso : Descarga
+entity Sistema
+
+Sistema --> (Progreso) : Guarda avance
+(Progreso) --> (Curso): Restablece progreso
 @enduml
 
-![alt text](imagen-4.png)
+![alt text](image-12.png)
 
 ### Precondiciones:
-- El usuario debe estar logueado como Estudiante.
-- El curso a escoger debe estar subido y publicado por un Colaborador.
+- El estudiante debe tener importado el curso.
 
 ### Flujo Básico:
-1. El estudiante elige el curso que quiere descargarse.
-2. Con el curso escogido, dandole a Descargar, este se le guardara en la biblioteca privada.
-3. En la biblioteca privada el estudiante puede ejecutar el curso y empezarlo.
+1. El estudiante selecciona un curso a ejecutar.
+2. El sistema busca en la base de datos, sobre el progreso del Estudiante.
+3. El sistema marca como finalizado bloques de contenido del curso.
 
 ### Postcondiciones:
-- El estudiante tiene ya descargado ese curso en su biblioteca interna.
-- El sistema actualizara la estadistica del curso.
-- El estudiante ya no podra eliminar ese curso de su biblioteca interna.
+- Cuando el estudiante vuelva a meterse al curso, su progreso se restablecera.
+- El sistema ante cualquier avance en el curso lo guardara para futuras ocasiones.
+-  Ante cualquier cambio en el progreso el sistema lo guardara en memoria.
 
 ### Reglas de Negocio:
 - Cada descarga del curso implica una actualizacion de la estadistica del curso.
+- No se puede borrar ningun progreso.
+- El progreso que se guarda es sobre los bloques de contenido que hay hechos.
 
 
