@@ -1,32 +1,32 @@
 ﻿## Caso de uso
-Nombre: Guarda estado del curso para un usuario
+Nombre: Mostrar una lista ordenada de los cursos según el número de likes
 
 Diagrama:
 @startuml
-entity Sistema
-
-Sistema --> (Progreso) : Guarda avance
-(Progreso) --> (Curso): Restablece progreso
+rectangle Sistema {
+  (Mostrar cursos ordenados por likes)
+}
+Estudiante -> (Mostrar cursos ordenados por likes)
 @enduml
 
-![alt text](image-12.png)
+![alt text](image-15.png)
 
 ### Precondiciones:
-- El estudiante debe tener importado el curso.
+- El usuario debe estar logueado como Estudiante.
+- Deben existir cursos publicados.
 
 ### Flujo Básico:
-1. El estudiante selecciona un curso a ejecutar.
-2. El sistema busca en la base de datos, sobre el progreso del Estudiante.
-3. El sistema marca como finalizado bloques de contenido del curso.
+1. El estudiante pulsa el botón de Tendencias.
+2. El sistema recupera todos los cursos publicados con sus respectivos likes.
+3. El sistema ordena los cursos de forma descendente según el número de likes de cada curso.
+4. El sistema muestra al estudiante la lista ordenada de cursos.
 
 ### Postcondiciones:
-- Cuando el estudiante vuelva a meterse al curso, su progreso se restablecera.
-- El sistema ante cualquier avance en el curso lo guardara para futuras ocasiones.
--  Ante cualquier cambio en el progreso el sistema lo guardara en memoria.
+- El estudiante visualiza correctamente una lista de cursos ordenada por likes.
+- No se permite modificar la vista.
 
 ### Reglas de Negocio:
-- Cada descarga del curso implica una actualizacion de la estadistica del curso.
-- No se puede borrar ningun progreso.
-- El progreso que se guarda es sobre los bloques de contenido que hay hechos.
+- Solo los cursos publicados deben ser mostrados.
+- El orden debe ser de mayor a menor número de likes.
 
 

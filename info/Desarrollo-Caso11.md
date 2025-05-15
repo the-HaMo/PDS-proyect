@@ -1,27 +1,34 @@
 ﻿## Caso de uso
-Nombre: Compartir cursos
+Nombre: Dar like a un curso
 
 Diagrama:
 @startuml
-actor Usuario
-Usuario --> (Curso) : Publicar curso
+actor Estudiante
+rectangle Sistema {
+  (Dar like a un curso)
+}
+Estudiante -> (Dar like a un curso)
 @enduml
-![alt text](image-11.png)
+
+![alt text](image-14.png)
 
 ### Precondiciones:
-- El curso a compartir ha de estar subido en privado por el Colaborador.
-- El curso no debe estar publico.
+- El usuario debe estar logueado como Estudiante.
+- El curso debe estar publicado.
+- El estudiante no debe hacer dado like previamente al curso.
 
 ### Flujo Básico:
-1. El colaborador selecciona el curso que quiere publicar.
-2. Presiona sobre el boton compartir que hay en la ventana.
-3. El curso pasara a estar en la ventana de cursos publicos.
+1. El estudiante selecciona un curso.
+2. Con el curso escogido, dandole al boton Dar like , el sistema verifica que el estudiante aún no ha dado like a ese curso.
+3. El sistema incrementa el contador de likes del curso.
+4. El sistema registra la acción y actualiza la vista aumentando el numero de likes en uno.
 
 ### Postcondiciones:
-- El colaborador tendra el curso en ambas listas, sus cursos y todos los cursos publicados.
-- El curso ahora es descargable por parte de un estudiante.
+- El curso muestra el nuevo número de likes actualizado.
+- La relación entre el estudiante y el curso queda registrada.
 
 ### Reglas de Negocio:
-- Una vez compartido, no se puede poner en privado el curso.
+- Un estudiante solo puede dar un like por curso.
+- Los likes no se pueden deshacer.
 
 

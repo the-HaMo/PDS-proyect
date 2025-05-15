@@ -1,34 +1,33 @@
 ﻿## Caso de uso
-Nombre: Dar like a un curso
+Nombre: Mostrar una lista ordenada de los cursos según el número de descargas
 
 Diagrama:
 @startuml
-actor Estudiante
-rectangle Sistema {
-  (Dar like a un curso)
-}
-Estudiante -> (Dar like a un curso)
+actor Colaborador
+participant Sistema
+
+Colaborador -> Sistema : Pulsa "TOP descargas"
+Sistema -> Colaborador : Muestra lista ordenada
 @enduml
 
-![alt text](image-14.png)
+![alt text](imagen-17.png)
 
 ### Precondiciones:
-- El usuario debe estar logueado como Estudiante.
-- El curso debe estar publicado.
-- El estudiante no debe hacer dado like previamente al curso.
+- El usuario debe estar logueado como Colaborador.
+- Deben existir varios cursos publicados.
 
 ### Flujo Básico:
-1. El estudiante selecciona un curso.
-2. Con el curso escogido, dandole al boton Dar like , el sistema verifica que el estudiante aún no ha dado like a ese curso.
-3. El sistema incrementa el contador de likes del curso.
-4. El sistema registra la acción y actualiza la vista aumentando el numero de likes en uno.
+1. El colaborador pulsa el botón TOP descargas.
+2. El sistema obtiene la lista de todos los cursos publicados.
+3. El sistema ordena la lista de cursos de forma de descente por el número de total de descargas.
+4. El colaborador visualiza la lista de cursos ordenados.
 
 ### Postcondiciones:
-- El curso muestra el nuevo número de likes actualizado.
-- La relación entre el estudiante y el curso queda registrada.
+- Se muestra correctamente una lista ordenada de cursos por número de descargas en orden descendente.
+- El sistema no permite modificar o eliminar cursos desde esta vista.
 
 ### Reglas de Negocio:
-- Un estudiante solo puede dar un like por curso.
-- Los likes no se pueden deshacer.
+- Cada descarga del curso implica una actualizacion de la estadistica del curso.
+- Solo los cursos publicados deben ser incluidos.
 
 
