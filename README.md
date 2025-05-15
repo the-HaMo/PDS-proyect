@@ -29,12 +29,6 @@ En este apartado vamos a identificar los requisitos necesarios para el correcto 
 ***Caso de uso:*** Ejecutar y realizar Curso ([Desarrollo-Caso5](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso5.md))\
 ***Actor:*** Estudiante
 
-***Caso de uso:*** Realizar ejercicio de un tema del curso ([Desarrollo-Caso6](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso6.md))\ QUITAR
-***Actor:*** Estudiante
-
-***Caso de uso:*** Dentro de un curso, elige estrategia de aprendizaje ([Desarrollo-Caso7](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso7.md))\ QUITAR
-***Actor:*** Estudiante
-
 ***Caso de uso:*** Instalar nuevos cursos en su biblioteca interna ([Desarrollo-Caso8](https://github.com/the-HaMo/PDS-proyect/blob/main/info/Desarrollo-Caso8.md))\
 ***Actor:*** Estudiante 
 
