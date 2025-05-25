@@ -6,7 +6,7 @@
 
 El propósito de LearningApp es facilitar el aprendizaje de idiomas como el inglés, francés o el español a través de cursos diseñados tanto por la propia aplicación como por otros usuarios con experiencia en la enseñanza. Esto permite a los usuarios acceder a una gran variedad de materiales adaptados a diferentes niveles y estilos de aprendizaje. 
 
-Además, LearningApp brinda la oportunidad de que cada usuario pueda crear y compartir su propio curso, ofreciendo una comunidad de aprendiazje colaboratica donde los estudiantes pueden beneficiarse de contenidos personalizados y adaptados a sus necesidades. 
+Además, LearningApp brinda la oportunidad de que cada usuario pueda crear y compartir su propio curso, ofreciendo una comunidad de aprendiazje colaboratica donde los estudiantes pueden beneficiarse de contenidos personalizados y adaptados a sus necesidades. Más información en https://deepwiki.com/the-HaMo/PDS-proyect. 
 
 ### Requisitos
 
